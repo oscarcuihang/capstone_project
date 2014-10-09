@@ -1,4 +1,4 @@
-capstone_project
+Capstone Project
 ================
 
-For CS capstone project (University of MIssouri-Columbia)
+For CS capstone project (University of Missouri-Columbia)
