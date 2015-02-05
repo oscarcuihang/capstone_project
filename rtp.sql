@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS `rtp`.`users` (
   `user_first_name` VARCHAR(45) NULL,
   `user_last_name` VARCHAR(45) NULL,
   `user_pass_hash` VARCHAR(45) NULL,
+  `salt` VARCHAR(15) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
