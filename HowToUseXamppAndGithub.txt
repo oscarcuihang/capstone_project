@@ -1,0 +1,3 @@
+How to connect Github and XAMPP
+1. Download XAMPP and Github Desktop APP
+2. Instill both of them
