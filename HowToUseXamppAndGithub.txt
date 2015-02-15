@@ -1,3 +1,26 @@
+!!!!IMPORTANT!!!!
+
+Always pull first everytime when you try to edit or push something, otherwise, you will mess up the entire project!!!!!
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 How to connect Github and XAMPP
 1. Download XAMPP and Github Desktop APP
+
 2. Instill both of them
+
+3. Connect Github with your account and set config so you can push and pull gits
+
+4. Find with you instelled you XAMPP, and open the folder in the order
+	4.1 For OS System, Applications -> XAMPP -> htdocs -> your forlder name
+	4.2 For Windows system, C or D or .. Drive -> XAMPP -> htdocs -> your forlder name
+
+5. Open Github desktop or github web app, clone the "capstone_project" Repostitory to the location "htdocs"
+	5.1 Always pull first everytime when you try to edit or push something, otherwise, you will mess up the entire project!!!!!
+	5.2 After this, you should be able to push and pull code to and from "capstone_project" Repostitory
+
+
+6. Now you can use XAMPP to run localhost
+	6.1 Open XAMPP APP,
+	6.2 On the very top, click Manage Servers, Start MySQL Database and Apach Web Server.
+	6.3 Open Chrome browser, and type "http://localhost/capstone_project/", then you should be able to veiw the project.
