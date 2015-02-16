@@ -1,0 +1,10 @@
+Options -Indexes
+DirectoryIndex index.html
+
+RewriteEngine On
+RewriteRule ^([a-zA-Z0-9_]+).css$ /style/css/$1.css [L]
+RewriteRule ^([a-zA-Z0-9_]+).js$	/style/javascript/$1.js 	[L]
+RewriteRule ^([a-z0-9_]+)/?$	/pages/$1.php [L]
+ErrorDocument 404 /pages/ErrorPages/404.html
+ErrorDocument 500 /pages/ErrorPages/500.html
+ErrorDocument 403 /pages/ErrorPages/403.html
