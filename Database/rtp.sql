@@ -15,15 +15,15 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema rtp
 -- -----------------------------------------------------
---CREATE SCHEMA IF NOT EXISTS `rtp` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
---USE `rtp` ;
+CREATE SCHEMA IF NOT EXISTS `rtp` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `rtp` ;
 
 -- -----------------------------------------------------
--- Table `zjmrb`.`userInfo`
+-- Table `rtp`.`userInfo`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `zjmrb`.`userInfo` ;
+DROP TABLE IF EXISTS `rtp`.`userInfo` ;
 
-CREATE TABLE IF NOT EXISTS `zjmrb`.`userInfo` (
+CREATE TABLE IF NOT EXISTS `rtp`.`userInfo` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_fname` VARCHAR(45) NOT NULL,
   `user_lname` VARCHAR(45) NOT NULL,
@@ -34,13 +34,16 @@ CREATE TABLE IF NOT EXISTS `zjmrb`.`userInfo` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+INSERT INTO `rtp`.`userInfo` VALUES(DEFAULT, 'admin', 'admin', 'admin@admin.com', '', 'admin', 'f6fdffe48c908deb0f4c3bd36c032e72');
+INSERT INTO `rtp`.`userInfo` VALUES(DEFAULT, 'user', 'user', 'user@user.com', '', 'user', '5cc32e366c87c4cb49e4309b75f57d64');
+
 
 -- -----------------------------------------------------
--- Table `zjmrb`.`userLog`
+-- Table `rtp`.`userLog`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `zjmrb`.`userLog` ;
+DROP TABLE IF EXISTS `rtp`.`userLog` ;
 
-CREATE TABLE IF NOT EXISTS `zjmrb`.`userLog` (
+CREATE TABLE IF NOT EXISTS `rtp`.`userLog` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `log_userid` INT NOT NULL,
   `log_ip` VARCHAR(45) NOT NULL,
@@ -50,18 +53,18 @@ CREATE TABLE IF NOT EXISTS `zjmrb`.`userLog` (
   INDEX `fk_userLog_userInfo1_idx` (`log_userid` ASC),
   CONSTRAINT `fk_userLog_userInfo1`
     FOREIGN KEY (`log_userid`)
-    REFERENCES `zjmrb`.`userInfo` (`id`)
+    REFERENCES `rtp`.`userInfo` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `zjmrb`.`tripPlan`
+-- Table `rtp`.`tripPlan`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `zjmrb`.`tripPlan` ;
+DROP TABLE IF EXISTS `rtp`.`tripPlan` ;
 
-CREATE TABLE IF NOT EXISTS `zjmrb`.`tripPlan` (
+CREATE TABLE IF NOT EXISTS `rtp`.`tripPlan` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `trip_userid` INT NOT NULL,
   `trip_title` VARCHAR(50) NOT NULL,
@@ -72,18 +75,18 @@ CREATE TABLE IF NOT EXISTS `zjmrb`.`tripPlan` (
   INDEX `fk_tripPlan_userInfo1_idx` (`trip_userid` ASC),
   CONSTRAINT `fk_tripPlan_userInfo1`
     FOREIGN KEY (`trip_userid`)
-    REFERENCES `zjmrb`.`userInfo` (`id`)
+    REFERENCES `rtp`.`userInfo` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `zjmrb`.`tripDetail`
+-- Table `rtp`.`tripDetail`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `zjmrb`.`tripDetail` ;
+DROP TABLE IF EXISTS `rtp`.`tripDetail` ;
 
-CREATE TABLE IF NOT EXISTS `zjmrb`.`tripDetail` (
+CREATE TABLE IF NOT EXISTS `rtp`.`tripDetail` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `detail_tripid` INT NOT NULL,
   `detail_waypoint1_address` VARCHAR(100) NULL DEFAULT NULL,
@@ -98,18 +101,18 @@ CREATE TABLE IF NOT EXISTS `zjmrb`.`tripDetail` (
   INDEX `fk_tripDetail_tripPlan1_idx` (`detail_tripid` ASC),
   CONSTRAINT `fk_tripDetail_tripPlan1`
     FOREIGN KEY (`detail_tripid`)
-    REFERENCES `zjmrb`.`tripPlan` (`id`)
+    REFERENCES `rtp`.`tripPlan` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `zjmrb`.`question`
+-- Table `rtp`.`question`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `zjmrb`.`question` ;
+DROP TABLE IF EXISTS `rtp`.`question` ;
 
-CREATE TABLE IF NOT EXISTS `zjmrb`.`question` (
+CREATE TABLE IF NOT EXISTS `rtp`.`question` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `question_userid` INT NOT NULL,
   `question_text` VARCHAR(45) NOT NULL,
@@ -118,18 +121,18 @@ CREATE TABLE IF NOT EXISTS `zjmrb`.`question` (
   INDEX `fk_question_userInfo1_idx` (`question_userid` ASC),
   CONSTRAINT `fk_question_userInfo1`
     FOREIGN KEY (`question_userid`)
-    REFERENCES `zjmrb`.`userInfo` (`id`)
+    REFERENCES `rtp`.`userInfo` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `zjmrb`.`answer`
+-- Table `rtp`.`answer`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `zjmrb`.`answer` ;
+DROP TABLE IF EXISTS `rtp`.`answer` ;
 
-CREATE TABLE IF NOT EXISTS `zjmrb`.`answer` (
+CREATE TABLE IF NOT EXISTS `rtp`.`answer` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `answer_userid` INT NOT NULL,
   `answer_questionid` INT NOT NULL,
@@ -140,23 +143,23 @@ CREATE TABLE IF NOT EXISTS `zjmrb`.`answer` (
   INDEX `fk_answer_question1_idx` (`answer_questionid` ASC),
   CONSTRAINT `fk_answer_userInfo1`
     FOREIGN KEY (`answer_userid`)
-    REFERENCES `zjmrb`.`userInfo` (`id`)
+    REFERENCES `rtp`.`userInfo` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_answer_question1`
     FOREIGN KEY (`answer_questionid`)
-    REFERENCES `zjmrb`.`question` (`id`)
+    REFERENCES `rtp`.`question` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `zjmrb`.`travelJournal`
+-- Table `rtp`.`travelJournal`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `zjmrb`.`travelJournal` ;
+DROP TABLE IF EXISTS `rtp`.`travelJournal` ;
 
-CREATE TABLE IF NOT EXISTS `zjmrb`.`travelJournal` (
+CREATE TABLE IF NOT EXISTS `rtp`.`travelJournal` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `journal_userid` INT NOT NULL,
   `journal_title` VARCHAR(100) NOT NULL,
@@ -166,18 +169,18 @@ CREATE TABLE IF NOT EXISTS `zjmrb`.`travelJournal` (
   INDEX `fk_travelJournal_userInfo1_idx` (`journal_userid` ASC),
   CONSTRAINT `fk_travelJournal_userInfo1`
     FOREIGN KEY (`journal_userid`)
-    REFERENCES `zjmrb`.`userInfo` (`id`)
+    REFERENCES `rtp`.`userInfo` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `zjmrb`.`travelJournalComment`
+-- Table `rtp`.`travelJournalComment`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `zjmrb`.`travelJournalComment` ;
+DROP TABLE IF EXISTS `rtp`.`travelJournalComment` ;
 
-CREATE TABLE IF NOT EXISTS `zjmrb`.`travelJournalComment` (
+CREATE TABLE IF NOT EXISTS `rtp`.`travelJournalComment` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `comment_userid` INT NOT NULL,
   `comment_traveljournalid` INT NOT NULL,
@@ -188,12 +191,12 @@ CREATE TABLE IF NOT EXISTS `zjmrb`.`travelJournalComment` (
   INDEX `fk_travelJournalComment_travelJournal1_idx` (`comment_traveljournalid` ASC),
   CONSTRAINT `fk_travelJournalComment_userInfo1`
     FOREIGN KEY (`comment_userid`)
-    REFERENCES `zjmrb`.`userInfo` (`id`)
+    REFERENCES `rtp`.`userInfo` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_travelJournalComment_travelJournal1`
     FOREIGN KEY (`comment_traveljournalid`)
-    REFERENCES `zjmrb`.`travelJournal` (`id`)
+    REFERENCES `rtp`.`travelJournal` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
