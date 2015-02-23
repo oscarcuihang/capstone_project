@@ -11,14 +11,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/capstone_project">Road Trip Planner</a>
+          <a class="navbar-brand" href="#">Road Trip Planner</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/capstone_project/pages/home.php">Home</a></li>
-            <li><a href="/capstone_project/pages/maps/index.php">Trip Plan</a></li>
-            <li><a href="/capstone_project/pages/journal/index.php">Travel Journal</a></li>
-            <li><a href="/capstone_project/pages/qa/index.php">Ask</a></li>
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">Trip Plan</a></li>
+            <li><a href="#contact">Travel Journal</a></li>
+            <li><a href="#contact">Ask</a></li>
 
             <!--<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -38,10 +38,12 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-cog fa-1x"></i><span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">New User Register</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Log Out</a></li>
-                
+<?php if(!isset($_SESSION["email"])){ ?>                
+				<li class = "register-start-btn cursor-pointer"><a>New User Register</a></li>
+                <li class = "sign-in-btn-nav cursor-pointer"><a>Login</a></li>
+<?php } else {	?>
+                <li class = "cursor-pointer sign-out-btn-nav"><a>Log Out</a></li>
+<?php	}	?>               
                 <li class="divider"></li>
                 <li class="dropdown-header">I'm a Dropdown!</li>
                 <li><a href="#">Setting</a></li>
@@ -49,7 +51,7 @@
               </ul>
             </li>
           </ul>
-
-        </div><!--/.nav-collapse -->
+		  <p class = "navbar-text navbar-right">Hi, <?= (isset($_SESSION["email"])? $_SESSION["fname"]. " ". $_SESSION["lname"] : "there"); ?></p>
+		  </div><!--/.nav-collapse -->
       </div>
     </nav>

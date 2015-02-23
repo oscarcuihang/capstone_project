@@ -1,0 +1,51 @@
+.cursor-pointer{
+	cursor: pointer;
+}
+div.cover-window-shell{
+	background: #444444 50% 50% repeat;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	opacity: 0.3;
+	filter: Alpha(opacity = 30);
+	position: fixed;
+	z-index: 1031;
+}
+
+div.sign-in-window-container{
+	display: none;
+	position: absolute;
+	left: 50%;
+	width: 450px;
+	top: 20%;
+	z-index: 1032;
+}
+div.sign-in-window {
+	position: relative;
+	top: 20%;
+	right: 50%;
+	width: 100%;
+}
+
+div.sign-in-window span.input-group-addon{
+	width: 120px;
+}
+div.sign-in-window div.input-group{
+	margin:auto;
+	width: 95%;
+}
+button.btn-sign-in-form-submit{
+	margin-left:80%;
+}
+div.sign-up-window-container{
+	display: none;
+	position: absolute;
+	left: 50%;
+	width: 650px;
+	top: 20%;
+	z-index: 1032;
+}
+button.sign-up-submit{
+	margin-left:87%;
+}
