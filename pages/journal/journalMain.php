@@ -51,14 +51,26 @@
 				</div>
 				<div class="f-cover-flip">&lt; Flip</div>
 			</div>
-
+<?php
+	$query = 'SELECT * FROM travelJournal';
+	$result= mysql_query($query,$conn) or die(mysql_error());
+	$total_num = mysql_num_row($result);
+	$com_num=$total_num/14;
+	$rest_num=$total_num%14;
+	for($i=0;$i<$com_num;i++){
+		
+?>
 			
 			<div class="f-page">
+				<!--The function bar-->
 				<div class="f-title">
-					<a href="http://tympanus.net/Tutorials/CSS3FluidParallaxSlideshow/">Previous Demo</a>
+					<a href="">Previous Demo</a>
 					<h2>Incredible Spacenews</h2>
-					<a href="http://tympanus.net/codrops/2012/05/07/experimental-page-layout-inspired-by-flipboard/">Back to the Codrops Article</a>
+					<a href="">Back to the Codrops Article</a>
 				</div>
+<?php
+		for($j=0;$j<$14;$j++){
+?>
 				<div class="box w-25 h-70">
 					<div class="img-cont img-1"></div>
 					<h3>Japanese Prime Minister Noda with NASA Administrator Bolden <span>Published May 3, 2012</span></h3>
@@ -140,7 +152,10 @@
 					<p>Nisi anim raw denim, occupy seitan magna selvage pork belly leggings gluten-free. Street art consequat aliquip, echo park helvetica enim pariatur fanny pack aesthetic et laboris pickled jean shorts ethical. Austin pop-up next level esse, retro quinoa locavore mollit etsy elit nesciunt quis salvia beard. Quis magna consequat selvage, ullamco commodo exercitation. VHS polaroid fugiat quis gastropub, cosby sweater aliquip aesthetic velit jean shorts swag. Put a bird on it etsy pork belly synth nisi, pitchfork wes anderson semiotics cliche ea. Cliche officia cosby sweater ullamco, quis stumptown est blog vinyl pork belly. Helvetica ex godard selvage, sriracha echo park ut portland forage cardigan. Retro readymade williamsburg cliche laboris pinterest. Mollit aliqua direct trade, tumblr vegan lo-fi shoreditch semiotics sed 8-bit. Incididunt keffiyeh PBR cray, assumenda yr butcher nisi. Mustache brunch kogi, farm-to-table small batch odio fugiat consequat fap esse quinoa. Iphone banh mi brunch jean shorts sartorial, letterpress culpa direct trade master cleanse banksy fap whatever quinoa biodiesel. Portland eiusmod minim nihil Austin, sartorial aesthetic occupy tofu sriracha pitchfork seitan.</p>
 				</div>
 			</div>
-			
+<?php
+		}
+	}
+?>			
 			<div class="f-page f-cover-back">
 				<div id="codrops-ad-wrapper">
 					
