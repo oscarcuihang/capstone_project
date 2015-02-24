@@ -51,6 +51,7 @@
 				</div>
 				<div class="f-cover-flip">&lt; Flip</div>
 			</div>
+
 			
 			<div class="f-page">
 				<div class="f-title">
