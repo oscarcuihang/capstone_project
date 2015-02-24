@@ -41,7 +41,12 @@
                 <li><a href="#">New User Register</a></li>
                 <li><a href="#">Login</a></li>
                 <li><a href="#">Log Out</a></li>
-                
+<?php if(!isset($_SESSION["email"])){ ?>                
+        <li class = "register-start-btn cursor-pointer"><a>New User Register</a></li>
+                <li class = "sign-in-btn-nav cursor-pointer"><a>Login</a></li>
+<?php } else {  ?>
+                <li class = "cursor-pointer sign-out-btn-nav"><a>Log Out</a></li>
+<?php } ?> 
                 <li class="divider"></li>
                 <li class="dropdown-header">I'm a Dropdown!</li>
                 <li><a href="#">Setting</a></li>
