@@ -37,7 +37,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-cog fa-1x"></i><span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">                
+              <ul class="dropdown-menu" role="menu">
 <?php if(!isset($_SESSION["email"])){ ?>                
         <li class = "register-start-btn cursor-pointer"><a>New User Register</a></li>
                 <li class = "sign-in-btn-nav cursor-pointer"><a>Login</a></li>
@@ -51,7 +51,7 @@
               </ul>
             </li>
           </ul>
-
+		<p class = "navbar-text navbar-right">Hi, <?= (isset($_SESSION["email"])? $_SESSION["fname"]. " ". $_SESSION["lname"] : "there"); ?></p>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
