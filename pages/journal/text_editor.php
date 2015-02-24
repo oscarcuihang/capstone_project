@@ -124,12 +124,22 @@
 					<div class="form-horizontal">
 						<div class="form-group">
 							<label for="journal_title" class="col-sm-2 control-label">Title</label>
-							<div class="col-sm-10">
+							<div class="col-sm-9">
 								<input type="text" name = "journal" class="form-control" id="journal_title" placeholder="Journal title">
 							</div>
 						</div>
 					</div>
 					<textarea class = "form-control" rows = "3" name = "editor" id = "editor"></textarea>
+					
+					<div style = "margin-top: 10px;">
+						<label for="journal_tag">Please set Tags: </label>
+						<input type = "text" name = "tag1" id = "tag1" placeholder = "tag1" style = "width:90px">
+						<input type = "text" name = "tag2" id = "tag2" placeholder = "tag2" style = "width:90px">
+						<input type = "text" name = "tag3" id = "tag3" placeholder = "tag3" style = "width:90px">
+						<input type = "text" name = "tag4" id = "tag4" placeholder = "tag4" style = "width:90px">
+						<input type = "text" name = "tag5" id = "tag5" placeholder = "tag5" style = "width:90px">
+					</div>
+					
 					<button type = "button" class = "btn btn-primary" onclick = "GetContents()">Submit</button>
 				</form>
 			</div>
