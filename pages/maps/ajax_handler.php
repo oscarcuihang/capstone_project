@@ -27,6 +27,19 @@ function register_new_user($user, $conn){
 	$_SESSION["email"] = $user["email"];
 	$_SESSION["lname"] = $user["lname"];
 	$_SESSION["fname"] = $user["fname"];
+	$dir = "users";
+	while(!is_dir($dir))
+		$dir = "../". $dir;
+	//echo "$dir/$email";
+	mkdir("$dir/$email") or die("ER1");
+	mkdir("$dir/$email/pic") or die("ER2");
+	mkdir("$dir/$email/journal") or die("ER3");
+	$result = mysql_query("SELECT id FROM userinfo WHERE user_email = '$email'");
+	$row = mysql_fetch_assoc($result);
+	$user_id = $row["id"];
+	$ip = $_SERVER["REMOTE_ADDR"];
+	mysql_query("INSERT INTO userlog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'register')");
+	mysql_query("INSERT INTO userlog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'log in')");
 	return 1;
 }
 
@@ -49,16 +62,24 @@ function authentication_user($user, $conn){
 		$_SESSION["email"] = $row["user_email"];
 		$_SESSION["lname"] = $row["user_lname"];
 		$_SESSION["fname"] = $row["user_fname"];
+		$user_id = $row["id"];
+		$ip = $_SERVER["REMOTE_ADDR"];
+		mysql_query("INSERT INTO userlog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'log in')");
 		return 1;	// 	log in successfully
 	} else return -1;	// password not right
 }
 
 function sign_out_user($user, $conn){
 	if(isset($_SESSION["email"])){
+		$email = $_SESSION["email"];
 		unset($_SESSION["email"]);
 		unset($_SESSION["lname"]);
 		unset($_SESSION["fname"]);
 		session_destroy();
+		$result = mysql_query("SELECT id FROM userinfo WHERE user_email = '$email'");
+		$ip = $_SERVER["REMOTE_ADDR"];
+		$user_id = mysql_fetch_assoc($result)["id"];
+		mysql_query("INSERT INTO userlog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'log out')");
 	}
 }
 
