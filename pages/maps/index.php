@@ -1,6 +1,5 @@
 <?php include '../templates/header.html'; ?>
 
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
   html,body{
     height:100%;
@@ -18,19 +17,23 @@
 
 <?php include '../templates/navbar.html'; ?>
 
-<div id="map-canvas"></div>
-<div id="push"></div>
-<div class="container">
-  <!-- Main component for a primary marketing message or call to action -->
-  <!--<div id="map_canvas"></div>-->
-</div> <!-- /container -->
+
+    <div id="map-canvas"></div>
+    <div id="push"></div>
+
+    <div class="container">
+
+    </div> <!-- /container -->
+
 
 <?php include '../templates/footer.html'; ?>
 
-<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<!--
 <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+-->
+
 <script type='text/javascript' src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
-<!-- JavaScript jQuery code from Bootply.com editor  -->
+
 <script type='text/javascript'>
   $(document).ready(function() {
     function initialize() {
@@ -76,4 +79,3 @@
     ga('create', 'UA-40413119-1', 'bootply.com');
     ga('send', 'pageview');
   </script>
-
