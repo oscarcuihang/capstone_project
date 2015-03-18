@@ -58,7 +58,7 @@
 	$com_num=$total_num/14;
 	$rest_num=$total_num%14;
 
-	for($i=0;$i<$com_num;i++){
+	for($i=0;$i<$com_num;$i++){
 		
 ?>
 			
