@@ -61,7 +61,7 @@ DROP TABLE IF EXISTS question;
 CREATE TABLE question (
 	question_id SERIAL NOT NULL,
 	question_userid INT NOT NULL,
-	question_text TEXT NOT NULL,
+	question_text VARCHAR(1024) NOT NULL,
 	question_timestamp TIMESTAMP NOT NULL,
 	PRIMARY KEY (question_id)
 );
@@ -71,7 +71,7 @@ DROP TABLE IF EXISTS answer;
 CREATE TABLE answer (
 	answer_id SERIAL NOT NULL,
 	answer_userid INT NOT NULL,
-	answer_text TEXT NOT NULL,
+	answer_text VARCHAR(1024) NOT NULL,
 	answer_timestamp TIMESTAMP NOT NULL,
 	PRIMARY KEY (answer_id)
 );
@@ -80,7 +80,7 @@ DROP TABLE IF EXISTS travelJournal;
 CREATE TABLE travelJournal (
 	journal_id SERIAL NOT NULL,
 	journal_userid INT NOT NULL,
-	journal_link VARCHAR(100) NOT NULL,
+	journal_content TEXT NOT NULL,
 	PRIMARY KEY (journal_id)
 );
 
@@ -88,16 +88,6 @@ DROP TABLE IF EXISTS travelJournalComment;
 CREATE TABLE travelJournalComment (
 	comment_id SERIAL NOT NULL,
 	comment_userid INT NOT NULL,
-	comment_text TEXT NOT NULL,
+	comment_text VARCHAR(512) NOT NULL,
 	PRIMARY KEY (comment_id)
 );
-
-
-
-
-
-
-
-
-
-
