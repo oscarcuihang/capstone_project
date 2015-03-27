@@ -52,7 +52,7 @@
 				<div class="f-cover-flip">&lt; Flip</div>
 			</div>
 <?php
-	$query = 'SELECT * FROM travelJournal';
+	$query = "SELECT * FROM travelJournal";
 	$result= mysql_query($query,$conn) or die(mysql_error());
 	$total_num = mysql_num_row($result);
 	$com_num=$total_num/14;
@@ -75,26 +75,27 @@
 					<div class="img-cont img-1"></div>
 					<?php $record= mysqli_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
-					<p><?php printf("%s", $record[""]) ?></p>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
 				</div>
 				<div class="box w-50 h-70 box-b-l box-b-r">
 					<?php $record= mysqli_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
 				</div>
 				<div class="box w-25 h-70">
 					<?php $record= mysqli_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
-					<p><?php printf("%s", $record[""]) ?></p>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
 				</div>
 				<div class="box w-50 h-30 box-b-r title-top">
 					<?php $record= mysqli_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
-					<p><?php printf("%s", $record[""]) ?></p>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
 				</div>
 				<div class="box w-50 h-30 title-top">
-				<?php $record= mysqli_fetch_assoc($result);?>
+					<?php $record= mysqli_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
-					<p><?php printf("%s", $record[""]) ?></p>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
 				</div>
 			</div>
 			
@@ -108,24 +109,24 @@
 					<div class="img-cont img-4"></div>
 					<?php $record= mysqli_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
-					<p><?php printf("%s", $record[""]) ?></p>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
 				</div>
 				<div class="box w-30 h-50">
 					<div class="img-cont img-5"></div>
 					<?php $record= mysqli_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
-					<p><?php printf("%s", $record[""]) ?></p>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
 				</div>
 				<div class="box w-30 h-50 box-b-r title-top">
 					<?php $record= mysqli_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
-					<p><?php printf("%s", $record[""]) ?></p>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
 				</div>
 				<div class="box w-70 h-50 title-top box-img-left">
 					<div class="img-cont img-6"></div>
 					<?php $record= mysqli_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
-					<p><?php printf("%s", $record[""]) ?></p>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
 				</div>
 			</div>
 			
@@ -138,40 +139,316 @@
 				<div class="box w-30 h-60 box-b-r title-top">
 					<?php $record= mysqli_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
-					<p><?php printf("%s", $record[""]) ?></p>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
 				</div>
 				<div class="box w-70 h-60 box-img-left title-top">
 					<div class="img-cont img-7"></div>
 					<?php $record= mysqli_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
-					<p><?php printf("%s", $record[""]) ?></p>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
 				</div>
 				<div class="box w-40 h-40 box-img-left box-b-r title-top">
 					<div class="img-cont img-8"></div>
 					<?php $record= mysqli_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
-					<p><?php printf("%s", $record[""]) ?></p>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
 				</div>
 				<div class="box w-30 h-40 box-b-r title-top">
 					<?php $record= mysqli_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
-					<p><?php printf("%s", $record[""]) ?></p>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
 				</div>
 				<div class="box w-30 h-40 title-top">
-				<?php $record= mysqli_fetch_assoc($result);?>
+					<?php $record= mysqli_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
-					<p><?php printf("%s", $record[""]) ?></p>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
 				</div>
 			</div>
+<?php	
+	}
+	if($rest_num>0){
+		if($rest_num<=5){
+?>
+			<div class="f-page">;	
+				<div class="f-title">
+					<a href="">Previous Demo</a>
+					<h2>Incredible Spacenews</h2>
+					<a href="">Back to the Codrops Article</a>
+				</div>
 <?php
-		
+			if($rest_num>=1){
+?>
+				<div class="box w-25 h-70">
+					<div class="img-cont img-1"></div>
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+<?php
+			}
+			if($rest_num>=2){
+?>
+				<div class="box w-50 h-70 box-b-l box-b-r">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+<?php
+			}
+			if($rest_num>=3){
+?>
+				<div class="box w-25 h-70">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+<?php
+			}
+			if($rest_num>=4){
+?>
+				<div class="box w-50 h-30 box-b-r title-top">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+<?php
+			}
+			if($rest_num==5){
+?>	
+				<div class="box w-50 h-30 title-top">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+<?php
+			}
+?>
+			</div>;
+<?php
+		}			
+		if($rest_num>5 && $rest_num<=9){
+?>
+			<div class="f-page">
+				<!--The function bar-->
+				
+				<div class="f-title">
+					<a href="">Previous Demo</a>
+					<h2>Incredible Spacenews</h2>
+					<a href="">Back to the Codrops Article</a>
+				</div>
+				
+				<div class="box w-25 h-70">
+					<div class="img-cont img-1"></div>
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+				<div class="box w-50 h-70 box-b-l box-b-r">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+				<div class="box w-25 h-70">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+				<div class="box w-50 h-30 box-b-r title-top">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+				<div class="box w-50 h-30 title-top">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+			</div>
+			<div class="f-page">
+				<div class="f-title">
+					<a href="">Previous Demo</a>
+					<h2>Incredible Spacenews</h2>
+					<a href="">Back to the Codrops Article</a>
+				</div>
+			
+<?php
+			if($rest_num>=6){
+?>
+				<div class="box w-70 h-50 box-b-r title-top box-img-left">
+					<div class="img-cont img-4"></div>
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>	
+<?php
+			}
+			if($rest_num>=7){
+?>				
+				<div class="box w-30 h-50">
+					<div class="img-cont img-5"></div>
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>				
+<?php				
+			}
+			if($rest_num>=8){
+?>
+				<div class="box w-30 h-50 box-b-r title-top">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>	
+				
+<?php
+			}
+			if($rest_num==9){
+?>
+				<div class="box w-70 h-50 title-top box-img-left">
+					<div class="img-cont img-6"></div>
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>			
+<?php			
+			}
+?>
+			</div>
+<?php			
+		}
+		if($rest_num>9&&$rest_num<=14){
+?>
+			<div class="f-page">
+				<!--The function bar-->
+				
+				<div class="f-title">
+					<a href="">Previous Demo</a>
+					<h2>Incredible Spacenews</h2>
+					<a href="">Back to the Codrops Article</a>
+				</div>
+				
+				<div class="box w-25 h-70">
+					<div class="img-cont img-1"></div>
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+				<div class="box w-50 h-70 box-b-l box-b-r">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+				<div class="box w-25 h-70">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+				<div class="box w-50 h-30 box-b-r title-top">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+				<div class="box w-50 h-30 title-top">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+			</div>
+			
+			<div class="f-page">
+				<div class="f-title">
+					<a href="">Previous Demo</a>
+					<h2>Incredible Spacenews</h2>
+					<a href="">Back to the Codrops Article</a>
+				</div>
+				<div class="box w-70 h-50 box-b-r title-top box-img-left">
+					<div class="img-cont img-4"></div>
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+				<div class="box w-30 h-50">
+					<div class="img-cont img-5"></div>
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+				<div class="box w-30 h-50 box-b-r title-top">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+				<div class="box w-70 h-50 title-top box-img-left">
+					<div class="img-cont img-6"></div>
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+			</div>
+			
+			<div class="f-page">
+				<div class="f-title">
+					<a href="">Previous Demo</a>
+					<h2>Incredible Spacenews</h2>
+					<a href="">Back to the Codrops Article</a>
+				</div>			
+<?php
+			if($rest_num>=10){
+?>
+				<div class="box w-30 h-60 box-b-r title-top">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>				
+<?php
+			}
+			if($rest_num>=11){
+?>
+				<div class="box w-70 h-60 box-img-left title-top">
+					<div class="img-cont img-7"></div>
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>				
+<?php			
+			}
+			if($rest_num>=12){
+?>
+				<div class="box w-40 h-40 box-img-left box-b-r title-top">
+					<div class="img-cont img-8"></div>
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+<?php
+			}
+			if($rest_num>=13){
+?>
+				<div class="box w-30 h-40 box-b-r title-top">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+<?php
+			}
+			if($rest_num==14){
+?>
+				<div class="box w-30 h-40 title-top">
+					<?php $record= mysqli_fetch_assoc($result);?>
+					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>
+				</div>
+<?php
+			}
+?>
+			</div>			
+<?php		
+		}
 	}
-	if(rest_num>0){
-		
-	}
-?>			
+?>
 			<div class="f-page f-cover-back">
 				<div id="codrops-ad-wrapper">
+					
 					
 				</div>
 			</div>
