@@ -46,7 +46,11 @@
 <?php } ?> 
                 <li class="divider"></li>
                 <li class="dropdown-header">I'm a Dropdown!</li>
+
+<?php if(!isset($_SESSION["email"])){ ?>                
+<?php } else {  ?>
                 <li><a href="#">Setting</a></li>
+<?php } ?> 
                 <li><a href="/capstone_project/pages/about/aboutus.php">About RTP Team</a></li>
               </ul>
             </li>
