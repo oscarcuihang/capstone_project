@@ -103,7 +103,7 @@
 	//
 	
 	$(document).ready(function(){
-		var markers = []
+		// Google Map setup 
 		var myOptions = {
 			zoom: 11
 		}
@@ -121,9 +121,24 @@
 				map: map,
 				draggable: true
 			})
-			//markers.push(marker);
+			var infocontent = "";
+			google.maps.event.addListener(marker, "click", function(){
+				var lat = marker.getPosition().lat();
+				var lon = marker.getPosition().lng();
+				$.ajax({
+					url: "http://maps.googleapis.com/maps/api/geocode/json",
+					type: "GET",
+					data: { latlng: lat + "," + lon, sensor: "true_or_false"},
+					success: function(data, status){
+						results = data.results;
+						var infowindow = new google.maps.InfoWindow({content: results[0].formatted_address});
+						infowindow.open(map, marker);
+					}
+				})
+			})
 		});
 		
+		// sidebar setup
 		if(!$("#wrapper").hasClass("toggled"))
 			$("#menu-toggle").css("right", "250px");
 	})
