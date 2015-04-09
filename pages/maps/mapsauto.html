@@ -67,8 +67,8 @@ function initialize() {
   });
 
   var defaultBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(-33.8902, 151.1759),
-      new google.maps.LatLng(-33.8474, 151.2631));
+      new google.maps.LatLng(49.726838, -127.173465),
+      new google.maps.LatLng(21.905664, -68.023072));
   map.fitBounds(defaultBounds);
 
   // Create the search box and link it to the UI element.
@@ -114,7 +114,7 @@ function initialize() {
 
       markers.push(marker);
 
-      bounds.extend(place.geometry.location);
+      bounds.extend(place.geometry.viewport);
     }
 
     map.fitBounds(bounds);
