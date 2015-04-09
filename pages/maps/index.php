@@ -67,8 +67,8 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
+                    <a href="">
+                        My Trip
                     </a>
                 </li>
                 <li>
@@ -90,7 +90,7 @@
                     <a href="#">Services</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="#">Save this Trip</a>
                 </li>
             </ul>
         </div>
