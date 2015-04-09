@@ -2,7 +2,11 @@
 
 
 <style type="text/css">
+    #imagestyle {
+        width:250px;
+        height:250px
 
+    }
 </style><!-- Custom Fonts CSS -->
 
 
@@ -11,7 +15,7 @@
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">About Us
+                <h1 class="page-header">About Team
                     <small>Road Trip Planner</small>
                 </h1>
             </div>
@@ -22,7 +26,7 @@
         <div class="row">
             <div class="col-md-7">
                 <a href="#">
-                    <img class="img-responsive" src="hc.png" alt="" style="width:300px;height:300px">
+                    <img class="img-responsive" src="hc.png" alt="" id = "imagestyle">
                 </a>
             </div>
             <div class="col-md-5">
@@ -43,7 +47,7 @@
         <div class="row">
             <div class="col-md-7">
                 <a href="#">
-                    <img class="img-responsive" src="zh.png" alt="" style="width:300px;height:300px">
+                    <img class="img-responsive" src="zh.png" alt="" id = "imagestyle">
                 </a>
             </div>
             <div class="col-md-5">
@@ -64,7 +68,7 @@
         <div class="row">
             <div class="col-md-7">
                 <a href="#">
-                    <img class="img-responsive" src="123.gif" alt="" style="width:300px;height:300px">
+                    <img class="img-responsive" src="123.gif" alt="" id = "imagestyle">
                 </a>
             </div>
             <div class="col-md-5">
@@ -84,7 +88,7 @@
 
             <div class="col-md-7">
                 <a href="#">
-                    <img class="img-responsive" src="bx.png" alt="" style="width:300px;height:300px">
+                    <img class="img-responsive" src="bx.png" alt="" id = "imagestyle">
                 </a>
             </div>
             <div class="col-md-5">
