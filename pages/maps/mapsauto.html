@@ -114,10 +114,14 @@ function initialize() {
 
       markers.push(marker);
 
-      bounds.extend(place.geometry.viewport);
-    }
+//////
+//changes here. .viewport or .location
+/////
 
-    map.fitBounds(bounds);
+      //bounds.extend(place.geometry.location);
+    }
+    map.fitBounds(place.geometry.location);
+      //map.fitBounds(bounds);
   });
   // [END region_getplaces]
 
