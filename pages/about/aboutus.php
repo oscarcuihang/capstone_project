@@ -25,7 +25,7 @@
         <!-- Project One -->
         <div class="row">
             <div class="col-md-7">
-                <a href="#">
+                <a href="hc.png">
                     <img class="img-responsive" src="hc.png" alt="" id = "imagestyle">
                 </a>
             </div>
@@ -46,7 +46,7 @@
         <!-- Project Two -->
         <div class="row">
             <div class="col-md-7">
-                <a href="#">
+                <a href="zh.png">
                     <img class="img-responsive" src="zh.png" alt="" id = "imagestyle">
                 </a>
             </div>
@@ -57,7 +57,7 @@
                 <p>Database</p>
                 <p>User Sharing</p>
                                
-				<a class="btn btn-primary" href="#">View <span class="glyphicon glyphicon-chevron-right"></span></a>
+				<a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
         <!-- /.row -->
@@ -67,7 +67,7 @@
         <!-- Project Three -->
         <div class="row">
             <div class="col-md-7">
-                <a href="#">
+                <a href="123.gif">
                     <img class="img-responsive" src="123.gif" alt="" id = "imagestyle">
                 </a>
             </div>
@@ -76,7 +76,7 @@
                 <h4>Subheading</h4>
 				<p>Trip Plan, Google Maps API</p>
                 <p>UI Design</p>
-				<a class="btn btn-primary" href="#">View <span class="glyphicon glyphicon-chevron-right"></span></a>
+				<a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
         <!-- /.row -->
@@ -87,7 +87,7 @@
         <div class="row">
 
             <div class="col-md-7">
-                <a href="#">
+                <a href="bx.png">
                     <img class="img-responsive" src="bx.png" alt="" id = "imagestyle">
                 </a>
             </div>
@@ -96,7 +96,7 @@
                 <h4>Doubi</h4>
                 <p>Travel Journal</p>
                 <p>User Sharing</p>
-                <a class="btn btn-primary" href="#">View <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
         <!-- /.row -->
