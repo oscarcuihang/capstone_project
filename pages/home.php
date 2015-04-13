@@ -14,7 +14,7 @@
 <div class="container">
   <div class="row">
         <div class="col-md-6">
-        <h2>Find Your Trip/Travel Journal</h2>
+        <h2>Find a ...</h2>
             
             <form method="POST" action="">
             <div id="custom-search-input">
