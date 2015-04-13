@@ -68,7 +68,7 @@
         <div class="row">
             <div class="col-md-7">
                 <a href="123.gif">
-                    <img class="img-responsive" src="123.gif" alt="" id = "imagestyle">
+                    <img class="img-responsive" src="zj.png" alt="" id = "imagestyle">
                 </a>
             </div>
             <div class="col-md-5">
