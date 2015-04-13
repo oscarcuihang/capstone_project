@@ -1,22 +1,29 @@
 <?php include '../templates/header.html'; ?>
+
 <?php include '../templates/navbar.html'; ?>
 
 
-    
+<div class="container">
+  <div class="row">
+        <div class="col-md-6">
+        <h2>Find Your Trip/Travel Journal</h2>
+            
+            <form method="POST" action="~/asdasda/asdas">
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="Search Anything" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            </form>
 
-    <div class="container">
-
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
-      </div>
-
-    </div> <!-- /container -->
+        </div>
+  </div>
+</div>
 
 
 <?php include '../templates/footer.html'; ?>
