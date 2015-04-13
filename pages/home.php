@@ -8,7 +8,7 @@
         <div class="col-md-6">
         <h2>Find Your Trip/Travel Journal</h2>
             
-            <form method="POST" action="~/asdasda/asdas">
+            <form method="POST" action="">
             <div id="custom-search-input">
                 <div class="input-group col-md-12">
                     <input type="text" class="form-control input-lg" placeholder="Search Anything" />
@@ -23,6 +23,9 @@
 
         </div>
   </div>
+
+  <hr>
+
 </div>
 
 
