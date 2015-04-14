@@ -140,28 +140,34 @@ else{
     //charactors limit for journal detail
     $(function() {
         var limit = 270;
-        var chars = $(".myPara").text(); 
-        if (chars.length > limit) {
-            var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
-            var dots = $("<span class='dots'>... </span>");
+        for (var i = 0; i < $(".myPara").length; i++)
+        {
+            var chars = $(".myPara").eq(i).text(); 
+            if (chars.length > limit) {
+                var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
+                var dots = $("<span class='dots'>... </span>");
 
-            $(".myPara").empty()
-                .append(visiblePart)
-                .append(dots);
+                $(".myPara").eq(i).empty()
+                    .append(visiblePart)
+                    .append(dots);
+            }
         }
     });
 
     //charactors limit for question
     $(function() {
         var limit = 200;
-        var chars = $(".myquestion").text(); 
-        if (chars.length > limit) {
-            var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
-            var dots = $("<span class='dots'>... </span>");
+        for (var j = 0; j < $(".myquestion").length; j++)
+        { 
+            var chars = $(".myquestion").eq(j).text(); 
+            if (chars.length > limit) {
+                var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
+                var dots = $("<span class='dots'>... </span>");
 
-            $(".myquestion").empty()
-                .append(visiblePart)
-                .append(dots);
+                $(".myquestion").eq(j).empty()
+                    .append(visiblePart)
+                    .append(dots);
+            }
         }
     });
 </script>
