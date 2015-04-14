@@ -36,13 +36,12 @@
 <?php if(isset($_POST['search']))
 {
 ?>
-  <!-- Project One -->
-        <div class="row">
-            <div class="col-md-7">
-                <a href="">
-                    <img class="img-responsive" src="" alt="" id = "imagestyle">
+<div class="row">
+    <div class="col-md-7">
+        <a href="">
+            <img class="img-responsive" src="" alt="" id = "imagestyle">
                 </a>
-            </div>
+    </div>
             <div class="col-md-5">
                 <h3>Searched Title</h3>
                 <h4>Searched Cata</h4>
@@ -51,73 +50,89 @@
                 <p>Searched Details</p>
                 <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
-        </div>
+</div>
         <!-- /.row -->
         <hr>
 <?php
 }
+
 else{
 ?>
 <div class="row">
-<div class="col-md-6">
+    <!--display Trip journal col-->
+    <div class="col-md-6"><h3>Trip Journals</h3><hr>
 <?php
-  $query = "SELECT * FROM travelJournal WHERE journal_status = 1";
-  $result = mysql_query($query,$conn) or die(mysql_error());
-  //$total_num = mysql_num_row($result);
+        $query_journal = "SELECT * FROM travelJournal WHERE journal_status = 1";
+        $result = mysql_query($query_journal,$conn) or die(mysql_error());
+        //$total_num = mysql_num_row($result);
+        while ($line = mysql_fetch_assoc($result)) 
+        {
+            $journal_title = $line['journal_title'];
+            $journal_timestamp = $line['journal_timestamp'];
+            $journal_userid  = $line['journal_userid'];
+            $journal_content  = $line['journal_content'];
 
-  
-      while ($line = mysql_fetch_assoc($result)) 
-      {
-        $journal_title = $line['journal_title'];
-        $journal_timestamp = $line['journal_timestamp'];
-        $journal_userid  = $line['journal_userid'];
-        $journal_content  = $line['journal_content'];
+            $query_user = "SELECT * FROM userInfo WHERE id = '$journal_userid'";
+            $result_user = mysql_query($query_user,$conn) or die(mysql_error());
+            $user_info = mysql_fetch_assoc($result_user);
+            $user_name = $user_info['user_fname'] . " " . $user_info['user_lname'] ;
+?>        
+            <h3><?php echo $journal_title; ?></h3>
+            <h4><?php echo $user_name; ?></h4>
+            <p><?php echo $journal_timestamp; ?></p>
 
-        $query_user = "SELECT * FROM userInfo WHERE id = '$journal_userid'";
-        $result_user = mysql_query($query_user,$conn) or die(mysql_error());
-        $user_info = mysql_fetch_assoc($result_user);
-        $user_name = $user_info['user_fname'] . " " . $user_info['user_lname'] ;
+            <p class="myPara"><?php echo $journal_content; ?></p>
+            <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <hr>
+<?php
+        }
 ?>
-        
-            
-                
-                    <h3><?php echo $journal_title; ?></h3>
-                    <h4><?php echo $user_name; ?></h4>
-                    <p><?php echo $journal_timestamp; ?></p>
+    </div>
 
-                    <p class="myPara"><?php echo $journal_content; ?></p>
-                    <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
-            
-        
-        
-
+    <!--display trip plan col-->
+    <div class="col-md-3"><h3>Trip Plans</h3><hr>
 <?php
-      }
+        $query_trip = "SELECT * FROM tripPlan";
+        $result = mysql_query($query_trip,$conn) or die(mysql_error());
+        while ($line = mysql_fetch_assoc($result)) 
+        {
+            $trip_title = $line['trip_title'];
+            $trip_id = $line['id'];
+            $trip_startaddress = $line['trip_startaddress'];
+            $trip_endaddress  = $line['trip_endaddress'];
 ?>
-</div>
-    <div class="col-md-3">
-        
-                
-                    <h3>12</h3>
-                    <h4>12</h4>
-                    <p>12</p>
-            
-        </div>
-        <div class="col-md-3">
-            
-                
-                    <h3>12</h3>
-                    <h4>12</h4>
-                    <p>12</p>
-           
-        </div>
+            <h4><?php echo $trip_title; ?></h4>
+            <p><?php echo $trip_startaddress." -> ".$trip_endaddress; ?></p> 
+            <hr>
+<?php
+        }
+?>   
+    </div>
+
+    <!--display QA col-->
+    <div class="col-md-3"><h3>Q/As</h3><hr>
+<?php
+        $query_trip = "SELECT * FROM tripPlan";
+        $result = mysql_query($query_trip,$conn) or die(mysql_error());
+        while ($line = mysql_fetch_assoc($result)) 
+        {
+            $trip_title = $line['trip_title'];
+            $trip_id = $line['id'];
+            $trip_startaddress = $line['trip_startaddress'];
+            $trip_endaddress  = $line['trip_endaddress'];
+?>
+            <h4><?php echo $trip_title; ?></h4>
+            <p><?php echo $trip_startaddress." -> ".$trip_endaddress; ?></p> 
+            <hr>
+<?php
+        }
+?>   
+    </div>
 </div>
 <?php
-
 }
-
 ?>
-</div>
+</div> <!--container div end-->
 
 
 <?php include '../templates/footer.html'; ?>
