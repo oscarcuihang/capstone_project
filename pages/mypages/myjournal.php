@@ -39,7 +39,6 @@
                 <p><?php echo $journal_timestamp; ?></p>
 
                 <p class="myPara"><?php echo $journal_content; ?></p>
-                <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
                 <a class="btn btn-warning" href="">Update <span class="glyphicon glyphicon-chevron-right"></span></a>
                 <a class="btn btn-danger" href="">Delet <span class="glyphicon glyphicon-chevron-right"></span></a>
 
