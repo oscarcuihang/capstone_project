@@ -144,6 +144,12 @@ CREATE TABLE IF NOT EXISTS `rtp`.`question` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+INSERT INTO `rtp`.`question` VALUES(DEFAULT, '1', 'My  trip', DEFAULT);
+INSERT INTO `rtp`.`question` VALUES(DEFAULT, '1', 'M1p', DEFAULT);
+INSERT INTO `rtp`.`question` VALUES(DEFAULT, '1', 'My  wdsadip', DEFAULT);
+INSERT INTO `rtp`.`question` VALUES(DEFAULT, '1', 'Myascq trip', DEFAULT);
+INSERT INTO `rtp`.`question` VALUES(DEFAULT, '1', 'My  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  trip', DEFAULT);
+
 
 -- -----------------------------------------------------
 -- Table `rtp`.`answer`
