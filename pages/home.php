@@ -59,7 +59,7 @@
 }
 else{
   
-  $query = "SELECT * FROM travelJournal";
+  $query = "SELECT * FROM travelJournal WHERE journal_status = 1";
   $result = mysql_query($query,$conn) or die(mysql_error());
   //$total_num = mysql_num_row($result);
 
