@@ -28,7 +28,7 @@ $(".sign-out-btn-nav").click(function(){
 		url: "ajax_handler.php",
 		data: {signout:"sign out"}
 	}).done(function(data){
-		location.reload();
+		window.location.href = data;
 	})
 })
 

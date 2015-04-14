@@ -27,6 +27,7 @@ function register_new_user($user, $conn){
 	$_SESSION["email"] = $user["email"];
 	$_SESSION["lname"] = $user["lname"];
 	$_SESSION["fname"] = $user["fname"];
+	$_SESSION["id"] = $user["id"];
 	$dir = "users";
 	while(!is_dir($dir))
 		$dir = "../". $dir;
@@ -62,6 +63,7 @@ function authentication_user($user, $conn){
 		$_SESSION["email"] = $row["user_email"];
 		$_SESSION["lname"] = $row["user_lname"];
 		$_SESSION["fname"] = $row["user_fname"];
+		$_SESSION["id"] = $row["id"];
 		$user_id = $row["id"];
 		$ip = $_SERVER["REMOTE_ADDR"];
 		mysql_query("INSERT INTO userlog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'log in')");
@@ -75,12 +77,26 @@ function sign_out_user($user, $conn){
 		unset($_SESSION["email"]);
 		unset($_SESSION["lname"]);
 		unset($_SESSION["fname"]);
+		unset($_SESSION["id"]);
 		session_destroy();
 		$result = mysql_query("SELECT id FROM userinfo WHERE user_email = '$email'");
 		$ip = $_SERVER["REMOTE_ADDR"];
 		$user_id = mysql_fetch_assoc($result)["id"];
 		mysql_query("INSERT INTO userlog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'log out')");
 	}
+}
+
+// Calculate the relative url for the current page, require the target url to be a file name
+// the second parameter is used to define the number of iterations before the while-loop should stop
+// If relative url calculation between two different url is need, new function shoul be defined
+function relative_url($target_url, $i = 10){
+	$relative_url = "$target_url";
+	while(!is_file($relative_url) && (--$i)){
+		$relative_url = "../". $relative_url;
+	}
+	if($i == 0)
+		return null;
+	else return $relative_url;
 }
 
 if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
@@ -94,6 +110,7 @@ if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
 	//	Sign out ajax handler
 	//
 	sign_out_user($_SESSION["email"], $conn);
+	echo relative_url("home.php");
 } else if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'register'){
 	//
 	//	Register new user
