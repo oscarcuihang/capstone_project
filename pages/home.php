@@ -36,13 +36,12 @@
 <?php if(isset($_POST['search']))
 {
 ?>
-  <!-- Project One -->
-        <div class="row">
-            <div class="col-md-7">
-                <a href="">
-                    <img class="img-responsive" src="" alt="" id = "imagestyle">
+<div class="row">
+    <div class="col-md-7">
+        <a href="">
+            <img class="img-responsive" src="" alt="" id = "imagestyle">
                 </a>
-            </div>
+    </div>
             <div class="col-md-5">
                 <h3>Searched Title</h3>
                 <h4>Searched Cata</h4>
@@ -51,70 +50,124 @@
                 <p>Searched Details</p>
                 <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
-        </div>
+</div>
         <!-- /.row -->
         <hr>
-
 <?php
 }
+
 else{
-  
-  $query = "SELECT * FROM travelJournal WHERE journal_status = 1";
-  $result = mysql_query($query,$conn) or die(mysql_error());
-  //$total_num = mysql_num_row($result);
-
-  
-      while ($line = mysql_fetch_assoc($result)) 
-      {
-        $journal_title = $line['journal_title'];
-        $journal_timestamp = $line['journal_timestamp'];
-        $journal_userid  = $line['journal_userid'];
-        $journal_content  = $line['journal_content'];
-
-        $query_user = "SELECT * FROM userInfo WHERE id = '$journal_userid'";
-        $result_user = mysql_query($query_user,$conn) or die(mysql_error());
-        $user_info = mysql_fetch_assoc($result_user);
-        $user_name = $user_info['user_fname'] . " " . $user_info['user_lname'] ;
 ?>
-        <div class="row">
-            <div class="col-md-7">
-                <a href="">
-                    <img class="img-responsive" src="" alt="" id = "imagestyle">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h3><?php echo $journal_title; ?></h3>
-                <h4><?php echo $user_name; ?></h4>
-                <p><?php echo $journal_timestamp; ?></p>
-
-                <p class="myPara"><?php echo $journal_content; ?></p>
-                <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-        <hr>
+<div class="row">
+    <!--display Trip journal col-->
+    <div class="col-md-6"><h3>Trip Journals</h3><hr>
 <?php
-      }
+        $query_journal = "SELECT * FROM travelJournal WHERE journal_status = 1";
+        $result = mysql_query($query_journal,$conn) or die(mysql_error());
+        //$total_num = mysql_num_row($result);
+        while ($line = mysql_fetch_assoc($result)) 
+        {
+            $journal_title = $line['journal_title'];
+            $journal_timestamp = $line['journal_timestamp'];
+            $journal_userid  = $line['journal_userid'];
+            $journal_content  = $line['journal_content'];
 
-}
+            $query_user = "SELECT * FROM userInfo WHERE id = '$journal_userid'";
+            $result_user = mysql_query($query_user,$conn) or die(mysql_error());
+            $user_info = mysql_fetch_assoc($result_user);
+            $user_name = $user_info['user_fname'] . " " . $user_info['user_lname'] ;
+?>        
+            <h3><?php echo $journal_title; ?></h3>
+            <h4><?php echo $user_name; ?></h4>
+            <p><?php echo $journal_timestamp; ?></p>
 
+            <p class="myPara"><?php echo $journal_content; ?></p>
+            <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <hr>
+<?php
+        }
 ?>
+    </div>
+
+    <!--display trip plan col-->
+    <div class="col-md-3"><h3>Trip Plans</h3><hr>
+<?php
+        $query_trip = "SELECT * FROM tripPlan";
+        $result = mysql_query($query_trip,$conn) or die(mysql_error());
+        while ($line = mysql_fetch_assoc($result)) 
+        {
+            $trip_title = $line['trip_title'];
+            $trip_id = $line['id'];
+            $trip_startaddress = $line['trip_startaddress'];
+            $trip_endaddress  = $line['trip_endaddress'];
+?>
+            <h4><?php echo $trip_title; ?></h4>
+            <p><?php echo $trip_startaddress." -> ".$trip_endaddress; ?></p> 
+            <hr>
+<?php
+        }
+?>   
+    </div>
+
+    <!--display QA col-->
+    <div class="col-md-3"><h3>Q/As</h3><hr>
+<?php
+        $query_question = "SELECT * FROM question";
+        $result = mysql_query($query_question,$conn) or die(mysql_error());
+        while ($line = mysql_fetch_assoc($result)) 
+        {
+            $question_id= $line['id'];
+            $question_text = $line['question_text'];
+           
+?>
+            
+            <p class="myquestion"><?php echo $question_text; ?></p> 
+            <hr>
+<?php
+        }
+?>   
+    </div>
 </div>
+<?php
+}
+?>
+</div> <!--container div end-->
 
 
 <?php include '../templates/footer.html'; ?>
 
-
 <script type="text/javascript">
+    //charactors limit for journal detail
     $(function() {
         var limit = 270;
-        var chars = $(".myPara").text(); 
-        if (chars.length > limit) {
-            var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
-            var dots = $("<span class='dots'>... </span>");
+        for (var i = 0; i < $(".myPara").length; i++)
+        {
+            var chars = $(".myPara").eq(i).text(); 
+            if (chars.length > limit) {
+                var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
+                var dots = $("<span class='dots'>... </span>");
 
-            $(".myPara").empty()
-                .append(visiblePart)
-                .append(dots);
+                $(".myPara").eq(i).empty()
+                    .append(visiblePart)
+                    .append(dots);
+            }
+        }
+    });
+
+    //charactors limit for question
+    $(function() {
+        var limit = 200;
+        for (var j = 0; j < $(".myquestion").length; j++)
+        { 
+            var chars = $(".myquestion").eq(j).text(); 
+            if (chars.length > limit) {
+                var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
+                var dots = $("<span class='dots'>... </span>");
+
+                $(".myquestion").eq(j).empty()
+                    .append(visiblePart)
+                    .append(dots);
+            }
         }
     });
 </script>
