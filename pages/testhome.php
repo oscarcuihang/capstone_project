@@ -54,11 +54,13 @@
         </div>
         <!-- /.row -->
         <hr>
-
 <?php
 }
 else{
-  
+?>
+<div class="row">
+<div class="col-md-6">
+<?php
   $query = "SELECT * FROM travelJournal WHERE journal_status = 1";
   $result = mysql_query($query,$conn) or die(mysql_error());
   //$total_num = mysql_num_row($result);
@@ -76,8 +78,8 @@ else{
         $user_info = mysql_fetch_assoc($result_user);
         $user_name = $user_info['user_fname'] . " " . $user_info['user_lname'] ;
 ?>
-        <div class=".col-md-3">
-            <div class="row">
+        
+            
                 
                     <h3><?php echo $journal_title; ?></h3>
                     <h4><?php echo $user_name; ?></h4>
@@ -85,15 +87,31 @@ else{
 
                     <p class="myPara"><?php echo $journal_content; ?></p>
                     <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
+            
+        
         
 
 <?php
       }
 ?>
-    <div class=".col-md-3">
+</div>
+    <div class="col-md-3">
+        
+                
+                    <h3>12</h3>
+                    <h4>12</h4>
+                    <p>12</p>
+            
         </div>
+        <div class="col-md-3">
+            
+                
+                    <h3>12</h3>
+                    <h4>12</h4>
+                    <p>12</p>
+           
+        </div>
+</div>
 <?php
 
 }
