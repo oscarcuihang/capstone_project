@@ -27,7 +27,7 @@
 		height: 100%;
 		float: right;
 		background-color: #f8f8f8;
-		border-color: #ccc;
+		border: 1px solid #ccc;
 		border-radius: 4px;
 	}  
 	  
@@ -45,7 +45,7 @@
 	 
 	#menu-toggle i{
 		font-size: 27px;
-		color: white;
+		color: black;
 	}
 </style>
 
@@ -132,13 +132,10 @@
 			})
 		});
 		
-		// sidebar setup
-		if(!$("#wrapper").hasClass("toggled"))
-			$("#menu-toggle").css("right", "250px");
+		$("#menu-toggle").click(function() {
+			var target = $(this).attr("data-target");
+			var width = $(target).width() == 0? "250px" : "0px";
+			$(target).animate({width: width}, 700);
+		});
 	})
-    $("#menu-toggle").click(function() {
-        var target = $(this).attr("data-target");
-		var width = $(target).width() == 0? "250px" : "0px";
-		$(target).animate({width: width}, 700);
-    });
 </script>

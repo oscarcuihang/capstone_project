@@ -48,16 +48,39 @@
 	}
 	  
 	#wrapper{
-		position: absolute;
+		position: fixed;
+		z-index: 1000;
+		width: 300px;
+		right: 0px;
+		height: 100%;
 	}
 	  
+	#sidebar-wrapper{
+		width: 0px;
+		height: 100%;
+		float: right;
+		background-color: #f8f8f8;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}  
+	  
 	#menu-toggle{
-		position: absolute;
-		z-index:1000;
-		right: 0px;
+		float: right;
+		width: 50px;
+		height: 43px;
+		cursor: pointer;
+		margin-top: 100px;
+		background-color: #f8f8f8;
+		border-right-width: 0px;
+		border-top-right-radius: 0px;
+		border-bottom-right-radius: 0px;
+	}
+	 
+	#menu-toggle i{
+		font-size: 27px;
+		color: black;
 	}
 </style>
-<link rel = "stylesheet" href = "../../style/css/simple-sidebar.css">
 
 <?php include '../templates/navbar.html'; ?>
 
@@ -65,39 +88,12 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="">
-                        My Trip
-                    </a>
-                </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Save this Trip</a>
-                </li>
-            </ul>
+            
         </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
+        <!--<div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -106,9 +102,9 @@
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-
+		<a class="btn btn-default" data-target = "#sidebar-wrapper" id="menu-toggle"><i class = "glyphicon glyphicon-menu-hamburger"></i></a>
     </div>
-    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+    
                       <input id="pac-input" class="controls" type="text"
         placeholder="Enter a location">
     <div id="map-canvas"></div>
@@ -166,7 +162,7 @@ function initialize() {
       map.fitBounds(place.geometry.viewport);
     } else {
       map.setCenter(place.geometry.location);
-      map.setZoom(17);  // Why 17? Because it looks good.
+      map.setZoom(17);  // Why 17? Because it looks good.(crap)
     }
     marker.setIcon(/** @type {google.maps.Icon} */({
       url: place.icon,
@@ -201,7 +197,7 @@ function initialize() {
   }
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+	google.maps.event.addDomListener(window, 'load', initialize);
 
   </script>
         
@@ -209,14 +205,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
   <script>
 	$(document).ready(function(){
-		if(!$("#wrapper").hasClass("toggled"))
-			$("#menu-toggle").css("right", "250px");
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			var target = $(this).attr("data-target");
+			var width = $(target).width() == 0? "250px" : "0px";
+			$(target).animate({width: width}, 700);
+		});
 	})
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-		if($("#wrapper").hasClass("toggled"))
-			$("#menu-toggle").animate({right: "0px"});
-		else $("#menu-toggle").animate({right: "250px"});
-    });
     </script>
