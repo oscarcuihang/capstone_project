@@ -67,7 +67,7 @@
 				<!--The function bar-->
 				
 				<div class="f-title">
-					<a href="">Create</a>
+					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
 					<a href="">Search</a>
 				</div>
@@ -77,63 +77,153 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-50 h-70 box-b-l box-b-r">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-25 h-70">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-50 h-30 box-b-r title-top">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-50 h-30 title-top">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 			</div>
 			
 			<div class="f-page">
 				<div class="f-title">
-					<a href="">Previous Demo</a>
-					<h2>Incredible Spacenews</h2>
-					<a href="">Back to the Codrops Article</a>
+					<a href="text_editor.php">Create</a>
+					<h2>Travel Journal</h2>
+					<a href="">Search</a>
 				</div>
 				<div class="box w-70 h-50 box-b-r title-top box-img-left">
 					<div class="img-cont img-4"></div>
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-30 h-50">
 					<div class="img-cont img-5"></div>
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-30 h-50 box-b-r title-top">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-70 h-50 title-top box-img-left">
 					<div class="img-cont img-6"></div>
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 			</div>
 			
 			<div class="f-page">
 				<div class="f-title">
-					<a href="">Create</a>
+					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
 					<a href="">Search</a>
 				</div>
@@ -141,28 +231,78 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-70 h-60 box-img-left title-top">
 					<div class="img-cont img-7"></div>
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-40 h-40 box-img-left box-b-r title-top">
 					<div class="img-cont img-8"></div>
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-30 h-40 box-b-r title-top">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
-					<p><?php printf("%s", $record["journal_content"]) ?></p>
+					<p><?php printf("%s", $record["journal_content"]) ?></p>				
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-30 h-40 title-top">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 			</div>
 <?php	
@@ -172,7 +312,7 @@
 ?>
 			<div class="f-page">;	
 				<div class="f-title">
-					<a href="">Create</a>
+					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
 					<a href="">Search</a>
 				</div>
@@ -184,6 +324,16 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 <?php
 			}
@@ -193,6 +343,16 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 <?php
 			}
@@ -202,6 +362,16 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 <?php
 			}
@@ -211,6 +381,16 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 <?php
 			}
@@ -220,6 +400,16 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 <?php
 			}
@@ -232,7 +422,7 @@
 			<div class="f-page">
 				<!--The function bar-->				
 				<div class="f-title">
-					<a href="">Create</a>
+					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
 					<a href="">Search</a>
 				</div>
@@ -242,31 +432,81 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-50 h-70 box-b-l box-b-r">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-25 h-70">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-50 h-30 box-b-r title-top">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-50 h-30 title-top">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 			</div>			
 			<div class="f-page">
 				<div class="f-title">
-					<a href="">Create</a>
+					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
 					<a href="">Search</a>
 				</div>
@@ -278,6 +518,16 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>	
 <?php
 			}
@@ -288,6 +538,16 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>				
 <?php				
 			}
@@ -297,6 +557,16 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>	
 				
 <?php
@@ -308,6 +578,16 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>			
 <?php			
 			}
@@ -319,7 +599,7 @@
 ?>
 			<div class="f-page">
 				<div class="f-title">
-					<a href="">Create</a>
+					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
 					<a href="">Search</a>
 				</div>
@@ -330,33 +610,83 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-50 h-70 box-b-l box-b-r">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-25 h-70">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-50 h-30 box-b-r title-top">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-50 h-30 title-top">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 			</div>
 			
 
 			<div class="f-page">
 				<div class="f-title">
-					<a href="">Create</a>
+					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
 					<a href="">Search</a>
 				</div>
@@ -365,30 +695,70 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-30 h-50">
 					<div class="img-cont img-5"></div>
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>					
 				</div>
 				<div class="box w-30 h-50 box-b-r title-top">
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 				<div class="box w-70 h-50 title-top box-img-left">
 					<div class="img-cont img-6"></div>
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 			</div>
 			
 
 			<div class="f-page">
 				<div class="f-title">
-					<a href="">Create</a>
+					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
 					<a href="">Search</a>
 				</div>	
@@ -399,6 +769,16 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>				
 <?php
 			}
@@ -409,6 +789,16 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>				
 <?php			
 			}
@@ -419,6 +809,16 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 <?php
 			}
@@ -428,6 +828,16 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 <?php
 			}
@@ -437,6 +847,16 @@
 					<?php $record= mysql_fetch_assoc($result);?>
 					<h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
 					<p><?php printf("%s", $record["journal_content"]) ?></p>
+<?php
+	if (isset($_SESSION["id"])){
+		if( $_SESSION["id"]==$record["journal_userid"]){
+?>
+					<a href="text_editor.php">Edit</a>
+					<a href="">Delete</a>
+<?php 
+		}
+	}
+?>
 				</div>
 <?php
 			}
