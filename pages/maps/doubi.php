@@ -15,16 +15,39 @@
 	}
 	  
 	#wrapper{
-		position: absolute;
+		position: fixed;
+		z-index: 1000;
+		width: 300px;
+		right: 0px;
+		height: 100%;
 	}
 	  
+	#sidebar-wrapper{
+		width: 0px;
+		height: 100%;
+		float: right;
+		background-color: #f8f8f8;
+		border-color: #ccc;
+		border-radius: 4px;
+	}  
+	  
 	#menu-toggle{
-		position: absolute;
-		z-index:1000;
-		right: 0px;
+		float: right;
+		width: 50px;
+		height: 43px;
+		cursor: pointer;
+		margin-top: 100px;
+		background-color: #f8f8f8;
+		border-right-width: 0px;
+		border-top-right-radius: 0px;
+		border-bottom-right-radius: 0px;
+	}
+	 
+	#menu-toggle i{
+		font-size: 27px;
+		color: white;
 	}
 </style>
-<link rel = "stylesheet" href = "../../style/css/simple-sidebar.css">
 
 <?php include '../templates/navbar.html'; ?>
 
@@ -32,50 +55,21 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
-                    </a>
-                </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-
+		<a class="btn btn-default" data-target = "#sidebar-wrapper" id="menu-toggle"><i class = "glyphicon glyphicon-menu-hamburger"></i></a>
         <!-- Page Content -->
-        <div id="page-content-wrapper">
+        <!--<div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- /#page-content-wrapper -->
 
     </div>
-    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     
 	<div id="map-canvas"></div>
     <div id="push"></div>
@@ -142,11 +136,9 @@
 		if(!$("#wrapper").hasClass("toggled"))
 			$("#menu-toggle").css("right", "250px");
 	})
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-		if($("#wrapper").hasClass("toggled"))
-			$("#menu-toggle").animate({right: "0px"});
-		else $("#menu-toggle").animate({right: "250px"});
+    $("#menu-toggle").click(function() {
+        var target = $(this).attr("data-target");
+		var width = $(target).width() == 0? "250px" : "0px";
+		$(target).animate({width: width}, 700);
     });
 </script>
