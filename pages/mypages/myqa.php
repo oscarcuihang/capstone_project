@@ -1,22 +1,108 @@
 <?php include '../templates/header.html'; ?>
 <?php include '../templates/navbar.html'; ?>
 
+<div class="container">
 
-    
+<hr>
 
-    <div class="container">
 
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
-      </div>
+<form method="POST" action="">
 
+  <button class="btn btn-info" type="submit" name = "question"> My Questions <span class="glyphicon glyphicon-chevron-right"></span></button>
+  <button class="btn btn-info" type="submit" name = "answer"> My Answers <span class="glyphicon glyphicon-chevron-right"></span></button>
+
+</form>
+
+<hr>
+<?php
+  if(isset($_POST['anser']))
+  {
+    $user_id = $_SESSION["id"];
+  $query = "SELECT * FROM travelJournal WHERE journal_userid = '$user_id' AND journal_status = 0";
+  
+  $result = mysql_query($query,$conn) or die(mysql_error());  
+      while ($line = mysql_fetch_assoc($result)) 
+      {
+        $journal_title = $line['journal_title'];
+        $journal_timestamp = $line['journal_timestamp'];
+        $journal_userid  = $line['journal_userid'];
+        $journal_content  = $line['journal_content'];
+
+        $query_user = "SELECT * FROM userInfo WHERE id = '$journal_userid'";
+        $result_user = mysql_query($query_user,$conn) or die(mysql_error());
+        $user_info = mysql_fetch_assoc($result_user);
+        $user_name = $user_info['user_fname'] . " " . $user_info['user_lname'] ;
+?>
+        <div class="row">
+            <div class="col-md-12" style="weight:300px">
+                <h3><?php echo $journal_title; ?></h3>
+                <p><?php echo $journal_timestamp; ?></p>
+
+                <p class="myPara"><?php echo $journal_content; ?></p>
+                <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-warning" href="">Update <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-danger" href="">Delet <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+            </div>
+        </div>
+        <hr>
+<?php
+      }
+
+  }
+  else
+  {
+  $user_id = $_SESSION["id"];
+  $query = "SELECT * FROM travelJournal WHERE journal_userid = '$user_id' AND journal_status = 1";
+  
+  $result = mysql_query($query,$conn) or die(mysql_error());  
+      while ($line = mysql_fetch_assoc($result)) 
+      {
+        $journal_title = $line['journal_title'];
+        $journal_timestamp = $line['journal_timestamp'];
+        $journal_userid  = $line['journal_userid'];
+        $journal_content  = $line['journal_content'];
+
+        $query_user = "SELECT * FROM userInfo WHERE id = '$journal_userid'";
+        $result_user = mysql_query($query_user,$conn) or die(mysql_error());
+        $user_info = mysql_fetch_assoc($result_user);
+        $user_name = $user_info['user_fname'] . " " . $user_info['user_lname'] ;
+?>
+        <div class="row">
+            <div class="col-md-12" style="weight:300px">
+                <h3><?php echo $journal_title; ?></h3>
+                <p><?php echo $journal_timestamp; ?></p>
+
+                <p class="myPara"><?php echo $journal_content; ?></p>
+                <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-warning" href="">Update <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-danger" href="">Delet <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+            </div>
+        </div>
+        <hr>
+<?php
+      }
+    }
+?>
     </div> <!-- /container -->
 
 
 <?php include '../templates/footer.html'; ?>
+
+
+<script type="text/javascript">
+    $(function() {
+        var limit = 1500;
+        var chars = $(".myPara").text(); 
+        if (chars.length > limit) {
+            var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
+            var dots = $("<span class='dots'>... </span>");
+
+            $(".myPara").empty()
+                .append(visiblePart)
+                .append(dots);
+        }
+    });
+</script>
+
