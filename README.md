@@ -1,4 +1,20 @@
-Capstone Project
-================
+# Road Trip Planner
 
-For CS capstone project (University of Missouri-Columbia)
+University of Missouri - Columbia Computer Science Capstone Project
+
+## Installation
+
+
+## Usage
+
+
+## API Reference
+1. [Google Maps API WEB](https://developers.google.com/maps/web/)
+
+## History
+
+
+## Credits
+
+
+## License
