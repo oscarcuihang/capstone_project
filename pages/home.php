@@ -54,7 +54,12 @@ if(isset($_POST['search'])){
 <?php
         $query_journal = "SELECT * FROM travelJournal WHERE journal_status = 1 AND (journal_title LIKE '%$input%' OR journal_content LIKE '%$input%') ORDER BY journal_timestamp DESC LIMIT 20";
         $result = mysql_query($query_journal,$conn) or die(mysql_error());
-        //$total_num = mysql_num_row($result);
+        $rows = mysql_num_rows($result);
+        if ($rows == 0){
+?>
+            <h4><?php echo "Oops... NO Journal Related to: " . $input; ?></h4> 
+<?php
+        }
         while ($line = mysql_fetch_assoc($result)) 
         {
             $journal_title = $line['journal_title'];
@@ -84,6 +89,12 @@ if(isset($_POST['search'])){
 <?php
         $query_trip = "SELECT * FROM tripPlan WHERE (trip_title LIKE '%$input%' OR trip_startaddress LIKE '%$input%' OR trip_endaddress LIKE '%$input%') ORDER BY trip_last_updated DESC LIMIT 20";
         $result = mysql_query($query_trip,$conn) or die(mysql_error());
+        $rows = mysql_num_rows($result);
+        if ($rows == 0){
+?>
+            <h4><?php echo "Oops... NO Trip Related to: " . $input; ?></h4> 
+<?php
+        }
         while ($line = mysql_fetch_assoc($result)) 
         {
             $trip_title = $line['trip_title'];
@@ -106,13 +117,17 @@ if(isset($_POST['search'])){
 <?php
         $query_question = "SELECT * FROM question WHERE (question_text LIKE '%$input%') ORDER BY question_timestamp DESC LIMIT 20";
         $result = mysql_query($query_question,$conn) or die(mysql_error());
+        $rows = mysql_num_rows($result);
+        if ($rows == 0){
+?>
+            <h4><?php echo "Oops... NO Q/A Related to: " . $input; ?></h4> 
+<?php
+        }
         while ($line = mysql_fetch_assoc($result)) 
         {
             $question_id= $line['id'];
             $question_text = $line['question_text'];
-           
 ?>
-            
             <p class="myquestion"><?php echo $question_text; ?></p> 
             <hr>
 <?php
@@ -187,10 +202,8 @@ else {
         while ($line = mysql_fetch_assoc($result)) 
         {
             $question_id= $line['id'];
-            $question_text = $line['question_text'];
-           
+            $question_text = $line['question_text'];         
 ?>
-            
             <p class="myquestion"><?php echo $question_text; ?></p> 
             <hr>
 <?php
