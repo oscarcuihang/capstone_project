@@ -5,38 +5,29 @@
 
 <hr>
 
-
-<form method="POST" action="">
-
-  <button class="btn btn-info" type="submit" name = "question"> My Questions <span class="glyphicon glyphicon-chevron-right"></span></button>
-  <button class="btn btn-info" type="submit" name = "answer"> My Answers <span class="glyphicon glyphicon-chevron-right"></span></button>
-
-</form>
+<h2>My Trip Plans</h2>
 
 <hr>
 <?php
   
     $user_id = $_SESSION["id"];
-    $query = "SELECT * FROM question WHERE question_userid = '$user_id' ORDER BY question_timestamp DESC";
+    $query = "SELECT * FROM tripPlan WHERE trip_userid = '$user_id'";
   
     $result = mysql_query($query,$conn) or die(mysql_error());  
       while ($line = mysql_fetch_assoc($result)) 
       {
-        $question_id= $line['id'];
-        $question_text = $line['question_text'];
-        $question_timestamp  = $line['question_timestamp'];
+        $trip_id = $line['id'];
+        $trip_title = $line['trip_title'];
+        $trip_startaddress  = $line['trip_startaddress'];
+        $trip_endaddress  = $line['trip_endaddress'];
+        $trip_detailid  = $line['trip_detailid'];
 
-        $query_answers = "SELECT * FROM answer WHERE answer_questionid = '$question_id'";
-        $result_answers = mysql_query($query_answers,$conn) or die(mysql_error());
-        $answers = mysql_fetch_assoc($result_answers);
-        $numberofanswers = mysql_num_rows($result_answers);
-        //$user_name = $user_info['user_fname'] . " " . $user_info['user_lname'] ;
 ?>
         <div class="row">
             <div class="col-md-12" style="weight:300px">
-                <h3><?php echo $question_text; ?></h3>
-                <p><?php echo $numberofanswers . " answers."; ?></p>
-                <p><?php echo "Posted on: " .$question_timestamp; ?></p>
+                <h3><?php echo $trip_title; ?></h3>
+                <p><?php echo $trip_startaddress . " -> ".$trip_endaddress; ?></p>
+                
             </div>
         </div>
         <hr>
