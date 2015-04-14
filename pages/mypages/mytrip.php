@@ -1,21 +1,49 @@
 <?php include '../templates/header.html'; ?>
 <?php include '../templates/navbar.html'; ?>
 
+<div class="container">
 
+<hr>
+
+
+<form method="POST" action="">
+
+  <button class="btn btn-info" type="submit" name = "question"> My Questions <span class="glyphicon glyphicon-chevron-right"></span></button>
+  <button class="btn btn-info" type="submit" name = "answer"> My Answers <span class="glyphicon glyphicon-chevron-right"></span></button>
+
+</form>
+
+<hr>
+<?php
+  
+    $user_id = $_SESSION["id"];
+    $query = "SELECT * FROM question WHERE question_userid = '$user_id' ORDER BY question_timestamp DESC";
+  
+    $result = mysql_query($query,$conn) or die(mysql_error());  
+      while ($line = mysql_fetch_assoc($result)) 
+      {
+        $question_id= $line['id'];
+        $question_text = $line['question_text'];
+        $question_timestamp  = $line['question_timestamp'];
+
+        $query_answers = "SELECT * FROM answer WHERE answer_questionid = '$question_id'";
+        $result_answers = mysql_query($query_answers,$conn) or die(mysql_error());
+        $answers = mysql_fetch_assoc($result_answers);
+        $numberofanswers = mysql_num_rows($result_answers);
+        //$user_name = $user_info['user_fname'] . " " . $user_info['user_lname'] ;
+?>
+        <div class="row">
+            <div class="col-md-12" style="weight:300px">
+                <h3><?php echo $question_text; ?></h3>
+                <p><?php echo $numberofanswers . " answers."; ?></p>
+                <p><?php echo "Posted on: " .$question_timestamp; ?></p>
+            </div>
+        </div>
+        <hr>
+<?php
+      }
     
-
-    <div class="container">
-
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
-      </div>
-
+?>
     </div> <!-- /container -->
 
 
