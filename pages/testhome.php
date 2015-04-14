@@ -112,17 +112,16 @@ else{
     <!--display QA col-->
     <div class="col-md-3"><h3>Q/As</h3><hr>
 <?php
-        $query_trip = "SELECT * FROM tripPlan";
-        $result = mysql_query($query_trip,$conn) or die(mysql_error());
+        $query_question = "SELECT * FROM question";
+        $result = mysql_query($query_question,$conn) or die(mysql_error());
         while ($line = mysql_fetch_assoc($result)) 
         {
-            $trip_title = $line['trip_title'];
-            $trip_id = $line['id'];
-            $trip_startaddress = $line['trip_startaddress'];
-            $trip_endaddress  = $line['trip_endaddress'];
+            $question_id= $line['id'];
+            $question_text = $line['question_text'];
+           
 ?>
-            <h4><?php echo $trip_title; ?></h4>
-            <p><?php echo $trip_startaddress." -> ".$trip_endaddress; ?></p> 
+            
+            <p class="myquestion"><?php echo $question_text; ?></p> 
             <hr>
 <?php
         }
@@ -137,8 +136,8 @@ else{
 
 <?php include '../templates/footer.html'; ?>
 
-
 <script type="text/javascript">
+    //charactors limit for journal detail
     $(function() {
         var limit = 270;
         var chars = $(".myPara").text(); 
@@ -147,6 +146,20 @@ else{
             var dots = $("<span class='dots'>... </span>");
 
             $(".myPara").empty()
+                .append(visiblePart)
+                .append(dots);
+        }
+    });
+
+    //charactors limit for question
+    $(function() {
+        var limit = 200;
+        var chars = $(".myquestion").text(); 
+        if (chars.length > limit) {
+            var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
+            var dots = $("<span class='dots'>... </span>");
+
+            $(".myquestion").empty()
                 .append(visiblePart)
                 .append(dots);
         }
