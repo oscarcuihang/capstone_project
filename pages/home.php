@@ -15,11 +15,22 @@
   <div class="row">
         <div class="col-md-6">
         <h2>Find a ...</h2>
-            
             <form method="POST" action="">
             <div id="custom-search-input">
                 <div class="input-group col-md-12">
+<?php 
+                    if(isset($_POST['search'])){
+                        $placeholder = $_POST['search'];
+?>
+                        <input type="text" name="search" class="form-control input-lg" value="<?php echo $placeholder?>" />
+<?php
+                    }
+                    else{
+?>
                     <input type="text" name="search" class="form-control input-lg" placeholder="Search Anything" />
+<?php  
+                    } 
+?>
                     <span class="input-group-btn">
                         <button class="btn btn-info btn-lg" type="submit">
                             <i class="glyphicon glyphicon-search"></i>
@@ -33,30 +44,84 @@
   </div>
   <hr>
 
-<?php if(isset($_POST['search']))
-{
+<?php 
+if(isset($_POST['search'])){
+    $input = $_POST['search'];
 ?>
 <div class="row">
-    <div class="col-md-7">
-        <a href="">
-            <img class="img-responsive" src="" alt="" id = "imagestyle">
-                </a>
+    <!--display Trip journal col-->
+    <div class="col-md-6"><h2>Trip Journals</h2><hr>
+<?php
+        $query_journal = "SELECT * FROM travelJournal WHERE journal_status = 1 AND (journal_title LIKE '%$input%' OR journal_content LIKE '%$input%') ORDER BY journal_timestamp DESC LIMIT 20";
+        $result = mysql_query($query_journal,$conn) or die(mysql_error());
+        //$total_num = mysql_num_row($result);
+        while ($line = mysql_fetch_assoc($result)) 
+        {
+            $journal_title = $line['journal_title'];
+            $journal_timestamp = $line['journal_timestamp'];
+            $journal_userid  = $line['journal_userid'];
+            $journal_content  = $line['journal_content'];
+
+            $query_user = "SELECT * FROM userInfo WHERE id = '$journal_userid'";
+            $result_user = mysql_query($query_user,$conn) or die(mysql_error());
+            $user_info = mysql_fetch_assoc($result_user);
+            $user_name = $user_info['user_fname'] . " " . $user_info['user_lname'] ;
+?>        
+            <h3><?php echo $journal_title; ?></h3>
+            <h4><?php echo $user_name; ?></h4>
+            <p><?php echo $journal_timestamp; ?></p>
+
+            <p class="myPara"><?php echo $journal_content; ?></p>
+            <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <hr>
+<?php
+        }
+?>
     </div>
-            <div class="col-md-5">
-                <h3>Searched Title</h3>
-                <h4>Searched Cata</h4>
-                <p>Searched PostDate</p>
-                <p>Searched Author</p>
-                <p>Searched Details</p>
-                <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
+
+    <!--display trip plan col-->
+    <div class="col-md-3"><h2>Trip Plans</h2><hr>
+<?php
+        $query_trip = "SELECT * FROM tripPlan WHERE (trip_title LIKE '%$input%' OR trip_startaddress LIKE '%$input%' OR trip_endaddress LIKE '%$input%') ORDER BY trip_last_updated DESC LIMIT 20";
+        $result = mysql_query($query_trip,$conn) or die(mysql_error());
+        while ($line = mysql_fetch_assoc($result)) 
+        {
+            $trip_title = $line['trip_title'];
+            $trip_id = $line['id'];
+            $trip_startaddress = $line['trip_startaddress'];
+            $trip_endaddress  = $line['trip_endaddress'];
+?>
+            <h4><?php echo $trip_title; ?></h4>
+            <p><?php echo $trip_startaddress." -> ".$trip_endaddress; ?></p> 
+            <hr>
+<?php
+        }
+?>   
+    </div>
+
+    <!--display QA col-->
+    <div class="col-md-3"><h2>Q/As</h2><hr>
+<?php
+        $query_question = "SELECT * FROM question WHERE (question_text LIKE '%$input%') ORDER BY question_timestamp DESC LIMIT 20";
+        $result = mysql_query($query_question,$conn) or die(mysql_error());
+        while ($line = mysql_fetch_assoc($result)) 
+        {
+            $question_id= $line['id'];
+            $question_text = $line['question_text'];
+           
+?>
+            
+            <p class="myquestion"><?php echo $question_text; ?></p> 
+            <hr>
+<?php
+        }
+?>   
+    </div>
 </div>
-        <!-- /.row -->
-        <hr>
 <?php
 }
 
-else{
+else {
 ?>
 <div class="row">
     <!--display Trip journal col-->
