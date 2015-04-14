@@ -94,14 +94,17 @@
 <script type="text/javascript">
     $(function() {
         var limit = 1500;
-        var chars = $(".myPara").text(); 
-        if (chars.length > limit) {
-            var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
-            var dots = $("<span class='dots'>... </span>");
+        for (var i = 0; i < $(".myPara").length; i++)
+        {
+            var chars = $(".myPara").eq(i).text(); 
+            if (chars.length > limit) {
+                var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
+                var dots = $("<span class='dots'>... </span>");
 
-            $(".myPara").empty()
-                .append(visiblePart)
-                .append(dots);
+                $(".myPara").eq(i).empty()
+                    .append(visiblePart)
+                    .append(dots);
+            }
         }
     });
 </script>
