@@ -90,8 +90,10 @@ if(isset($_POST['search'])){
             $trip_id = $line['id'];
             $trip_startaddress = $line['trip_startaddress'];
             $trip_endaddress  = $line['trip_endaddress'];
+            $trip_last_updated  = $line['trip_last_updated'];
 ?>
             <h4><?php echo $trip_title; ?></h4>
+            <p2><?php echo $trip_last_updated; ?></p2>
             <p><?php echo $trip_startaddress." -> ".$trip_endaddress; ?></p> 
             <hr>
 <?php
@@ -165,8 +167,11 @@ else {
             $trip_id = $line['id'];
             $trip_startaddress = $line['trip_startaddress'];
             $trip_endaddress  = $line['trip_endaddress'];
+            $trip_last_updated  = $line['trip_last_updated'];
 ?>
             <h4><?php echo $trip_title; ?></h4>
+            <p2><?php echo $trip_last_updated; ?></p2>
+            
             <p><?php echo $trip_startaddress." -> ".$trip_endaddress; ?></p> 
             <hr>
 <?php
