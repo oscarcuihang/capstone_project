@@ -9,7 +9,7 @@
 <form method="POST" action="">
 
   <button class="btn btn-info" type="submit" name = "question"> My Questions <span class="glyphicon glyphicon-chevron-right"></span></button>
-  <button class="btn btn-info" type="submit" name = "answer"> My Answers <span class="glyphicon glyphicon-chevron-right"></span></button>
+  <button class="btn btn-info" type="submit" name = "answer"> Answered <span class="glyphicon glyphicon-chevron-right"></span></button>
 
 </form>
 
