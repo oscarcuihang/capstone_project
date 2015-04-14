@@ -15,69 +15,62 @@
 
 <hr>
 <?php
-  if(isset($_POST['anser']))
+  if(isset($_POST['answer']))
   {
     $user_id = $_SESSION["id"];
-  $query = "SELECT * FROM travelJournal WHERE journal_userid = '$user_id' AND journal_status = 0";
-  
-  $result = mysql_query($query,$conn) or die(mysql_error());  
+    $query = "SELECT * FROM answer WHERE answer_userid = '$user_id' GROUP BY answer_questionid ORDER BY answer_timestamp DESC";
+    $result = mysql_query($query,$conn) or die(mysql_error());  
+
       while ($line = mysql_fetch_assoc($result)) 
       {
-        $journal_title = $line['journal_title'];
-        $journal_timestamp = $line['journal_timestamp'];
-        $journal_userid  = $line['journal_userid'];
-        $journal_content  = $line['journal_content'];
-
-        $query_user = "SELECT * FROM userInfo WHERE id = '$journal_userid'";
-        $result_user = mysql_query($query_user,$conn) or die(mysql_error());
-        $user_info = mysql_fetch_assoc($result_user);
-        $user_name = $user_info['user_fname'] . " " . $user_info['user_lname'] ;
+        $question_id= $line['answer_questionid'];
+        $query_question = "SELECT * FROM question WHERE id = '$question_id'";
+        $result_question = mysql_query($query_question,$conn) or die(mysql_error());
+        while ($line2 = mysql_fetch_assoc($result_question)){
+          $question_id= $line2['id'];
+          $question_text = $line2['question_text'];
+          $question_timestamp  = $line2['question_timestamp'];
+          $query_answers = "SELECT * FROM answer WHERE answer_questionid = '$question_id'";
+          $result_answers = mysql_query($query_answers,$conn) or die(mysql_error());
+          $answers = mysql_fetch_assoc($result_answers);
+          $numberofanswers = mysql_num_rows($result_answers);
 ?>
-        <div class="row">
+          <div class="row">
             <div class="col-md-12" style="weight:300px">
-                <h3><?php echo $journal_title; ?></h3>
-                <p><?php echo $journal_timestamp; ?></p>
-
-                <p class="myPara"><?php echo $journal_content; ?></p>
-                <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
-                <a class="btn btn-warning" href="">Update <span class="glyphicon glyphicon-chevron-right"></span></a>
-                <a class="btn btn-danger" href="">Delet <span class="glyphicon glyphicon-chevron-right"></span></a>
-
+                <h3><?php echo $question_text; ?></h3>
+                <p><?php echo $numberofanswers . " answers."; ?></p>
+                <p><?php echo "Posted on: " .$question_timestamp; ?></p>
             </div>
-        </div>
-        <hr>
+          </div>
+          <hr>
 <?php
+        }
       }
 
   }
   else
   {
-  $user_id = $_SESSION["id"];
-  $query = "SELECT * FROM travelJournal WHERE journal_userid = '$user_id' AND journal_status = 1";
+    $user_id = $_SESSION["id"];
+    $query = "SELECT * FROM question WHERE question_userid = '$user_id' ORDER BY question_timestamp DESC";
   
-  $result = mysql_query($query,$conn) or die(mysql_error());  
+    $result = mysql_query($query,$conn) or die(mysql_error());  
       while ($line = mysql_fetch_assoc($result)) 
       {
-        $journal_title = $line['journal_title'];
-        $journal_timestamp = $line['journal_timestamp'];
-        $journal_userid  = $line['journal_userid'];
-        $journal_content  = $line['journal_content'];
+        $question_id= $line['id'];
+        $question_text = $line['question_text'];
+        $question_timestamp  = $line['question_timestamp'];
 
-        $query_user = "SELECT * FROM userInfo WHERE id = '$journal_userid'";
-        $result_user = mysql_query($query_user,$conn) or die(mysql_error());
-        $user_info = mysql_fetch_assoc($result_user);
-        $user_name = $user_info['user_fname'] . " " . $user_info['user_lname'] ;
+        $query_answers = "SELECT * FROM answer WHERE answer_questionid = '$question_id'";
+        $result_answers = mysql_query($query_answers,$conn) or die(mysql_error());
+        $answers = mysql_fetch_assoc($result_answers);
+        $numberofanswers = mysql_num_rows($result_answers);
+        //$user_name = $user_info['user_fname'] . " " . $user_info['user_lname'] ;
 ?>
         <div class="row">
             <div class="col-md-12" style="weight:300px">
-                <h3><?php echo $journal_title; ?></h3>
-                <p><?php echo $journal_timestamp; ?></p>
-
-                <p class="myPara"><?php echo $journal_content; ?></p>
-                <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
-                <a class="btn btn-warning" href="">Update <span class="glyphicon glyphicon-chevron-right"></span></a>
-                <a class="btn btn-danger" href="">Delet <span class="glyphicon glyphicon-chevron-right"></span></a>
-
+                <h3><?php echo $question_text; ?></h3>
+                <p><?php echo $numberofanswers . " answers."; ?></p>
+                <p><?php echo "Posted on: " .$question_timestamp; ?></p>
             </div>
         </div>
         <hr>
@@ -89,20 +82,3 @@
 
 
 <?php include '../templates/footer.html'; ?>
-
-
-<script type="text/javascript">
-    $(function() {
-        var limit = 1500;
-        var chars = $(".myPara").text(); 
-        if (chars.length > limit) {
-            var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
-            var dots = $("<span class='dots'>... </span>");
-
-            $(".myPara").empty()
-                .append(visiblePart)
-                .append(dots);
-        }
-    });
-</script>
-
