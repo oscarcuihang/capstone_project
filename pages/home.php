@@ -60,9 +60,9 @@ else{
 ?>
 <div class="row">
     <!--display Trip journal col-->
-    <div class="col-md-6"><h3>Trip Journals</h3><hr>
+    <div class="col-md-6"><h2>Trip Journals</h2><hr>
 <?php
-        $query_journal = "SELECT * FROM travelJournal WHERE journal_status = 1";
+        $query_journal = "SELECT * FROM travelJournal WHERE journal_status = 1 ORDER BY journal_timestamp DESC LIMIT 20";
         $result = mysql_query($query_journal,$conn) or die(mysql_error());
         //$total_num = mysql_num_row($result);
         while ($line = mysql_fetch_assoc($result)) 
@@ -90,9 +90,9 @@ else{
     </div>
 
     <!--display trip plan col-->
-    <div class="col-md-3"><h3>Trip Plans</h3><hr>
+    <div class="col-md-3"><h2>Trip Plans</h2><hr>
 <?php
-        $query_trip = "SELECT * FROM tripPlan";
+        $query_trip = "SELECT * FROM tripPlan ORDER BY trip_last_updated DESC LIMIT 20";
         $result = mysql_query($query_trip,$conn) or die(mysql_error());
         while ($line = mysql_fetch_assoc($result)) 
         {
@@ -110,9 +110,9 @@ else{
     </div>
 
     <!--display QA col-->
-    <div class="col-md-3"><h3>Q/As</h3><hr>
+    <div class="col-md-3"><h2>Q/As</h2><hr>
 <?php
-        $query_question = "SELECT * FROM question";
+        $query_question = "SELECT * FROM question ORDER BY question_timestamp DESC LIMIT 20";
         $result = mysql_query($query_question,$conn) or die(mysql_error());
         while ($line = mysql_fetch_assoc($result)) 
         {
