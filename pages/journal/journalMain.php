@@ -55,7 +55,7 @@
 <?php
 	$query = "SELECT * FROM travelJournal";
 	$result= mysql_query($query,$conn) or die(mysql_error());
-	$total_num = mysql_num_row($result);
+	$total_num = mysql_num_rows($result);
 	$com_num=$total_num/14;
 	$rest_num=$total_num%14;
 
@@ -69,7 +69,7 @@
 				<div class="f-title">
 					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
-					<a href="">Search</a>
+					<a href="../home.php">Search</a>
 				</div>
 				
 				<div class="box w-25 h-70">
