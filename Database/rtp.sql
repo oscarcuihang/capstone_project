@@ -35,14 +35,7 @@ CREATE TABLE IF NOT EXISTS `rtp`.`userInfo` (
 ENGINE = InnoDB;
 
 INSERT INTO `rtp`.`userInfo` VALUES(DEFAULT, 'admin', 'admin', 'admin@admin.com', '', 'admin', 'f6fdffe48c908deb0f4c3bd36c032e72');
-INSERT INTO `rtp`.`userInfo` VALUES(DEFAULT, 'user8', 'user8', 'user8@user8.com', '', 'user8', '5cc32e366c87c4cb49e4309b75f57d64');
-INSERT INTO `rtp`.`userInfo` VALUES(DEFAULT, 'user7', 'user7', 'user7@user7.com', '', 'user7', '5cc32e366c87c4cb49e4309b75f57d64');
-INSERT INTO `rtp`.`userInfo` VALUES(DEFAULT, 'user6', 'user6', 'user6@user6.com', '', 'user6', '5cc32e366c87c4cb49e4309b75f57d64');
-INSERT INTO `rtp`.`userInfo` VALUES(DEFAULT, 'user5', 'user5', 'user5@user5.com', '', 'user5', '5cc32e366c87c4cb49e4309b75f57d64');
-INSERT INTO `rtp`.`userInfo` VALUES(DEFAULT, 'user4', 'user4', 'user4@user4.com', '', 'user4', '5cc32e366c87c4cb49e4309b75f57d64');
-INSERT INTO `rtp`.`userInfo` VALUES(DEFAULT, 'user3', 'user3', 'user3@user3.com', '', 'user3', '5cc32e366c87c4cb49e4309b75f57d64');
-INSERT INTO `rtp`.`userInfo` VALUES(DEFAULT, 'user2', 'user2', 'user2@user2.com', '', 'user2', '5cc32e366c87c4cb49e4309b75f57d64');
-INSERT INTO `rtp`.`userInfo` VALUES(DEFAULT, 'user1', 'user1', 'user1@user1.com', '', 'user1', '5cc32e366c87c4cb49e4309b75f57d64');
+INSERT INTO `rtp`.`userInfo` VALUES(DEFAULT, 'user', 'user', 'user@user.com', '', 'user', '5cc32e366c87c4cb49e4309b75f57d64');
 
 
 -- -----------------------------------------------------
@@ -87,16 +80,6 @@ CREATE TABLE IF NOT EXISTS `rtp`.`tripPlan` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-INSERT INTO `rtp`.`tripPlan` VALUES(DEFAULT, '1', 'My first trip', 'A', 'G', '1', DEFAULT);
-INSERT INTO `rtp`.`tripPlan` VALUES(DEFAULT, '2', 'My secon trip', 'B', 'A', '2', DEFAULT);
-INSERT INTO `rtp`.`tripPlan` VALUES(DEFAULT, '3', 'My  trip', 'C', 'B', '3', DEFAULT);
-INSERT INTO `rtp`.`tripPlan` VALUES(DEFAULT, '4', 'My  trip', 'D', 'C', '4', DEFAULT);
-INSERT INTO `rtp`.`tripPlan` VALUES(DEFAULT, '5', 'My  trip', 'E', 'C', '5', DEFAULT);
-INSERT INTO `rtp`.`tripPlan` VALUES(DEFAULT, '6', 'My  trip', 'F', 'B', '6', DEFAULT);
-INSERT INTO `rtp`.`tripPlan` VALUES(DEFAULT, '7', 'My  trip', 'G', 'B', '7', DEFAULT);
-INSERT INTO `rtp`.`tripPlan` VALUES(DEFAULT, '8', 'My  trip', 'H', 'B', '8', DEFAULT);
-INSERT INTO `rtp`.`tripPlan` VALUES(DEFAULT, '9', 'My  trip', 'I', 'A', '9', DEFAULT);
 
 
 -- -----------------------------------------------------
@@ -143,12 +126,6 @@ CREATE TABLE IF NOT EXISTS `rtp`.`question` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-INSERT INTO `rtp`.`question` VALUES(DEFAULT, '1', 'My  trip', DEFAULT);
-INSERT INTO `rtp`.`question` VALUES(DEFAULT, '1', 'M1p', DEFAULT);
-INSERT INTO `rtp`.`question` VALUES(DEFAULT, '1', 'My  wdsadip', DEFAULT);
-INSERT INTO `rtp`.`question` VALUES(DEFAULT, '1', 'Myascq trip', DEFAULT);
-INSERT INTO `rtp`.`question` VALUES(DEFAULT, '1', 'My  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  tripMy  trip', DEFAULT);
 
 
 -- -----------------------------------------------------
@@ -200,17 +177,6 @@ CREATE TABLE IF NOT EXISTS `rtp`.`travelJournal` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-INSERT INTO `rtp`.`travelJournal` VALUES(DEFAULT, '2', 'ABCDEFGHIJKLMN', 'ABCDEFGHIJKLMNasddd , sakdhjhjkfjjj, asdhhvvghasd, asjhdjksahjkr, hhhasdjkjj, asdaszzxc, jasdjhjh,asjdhjkjkjkkjkjjk,
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia. Curabitur laoreet, nulla nec venenatis sagittis, libero magna aliquam tellus, et convallis leo tellus eu nulla. Quisque libero nisi, viverra nec interdum at, accumsan id tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia. Curabitur laoreet, nulla nec venenatis sagittis, libero magna aliquam tellus, et convallis leo tellus eu nulla. Quisque libero nisi, viverra nec interdum at, accumsan id tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia. Curabitur laoreet, nulla nec venenatis sagittis, libero magna aliquam tellus, et convallis leo tellus eu nulla. Quisque libero nisi, viverra nec interdum at, accumsan id tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia. Curabitur laoreet, nulla nec venenatis sagittis, libero magna aliquam tellus, et convallis leo tellus eu nulla. Quisque libero nisi, viverra nec interdum at, accumsan id tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia. Curabitur laoreet, nulla nec venenatis sagittis, libero magna aliquam tellus, et convallis leo tellus eu nulla. Quisque libero nisi, viverra nec interdum at, accumsan id tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia. Curabitur laoreet, nulla nec venenatis sagittis, libero magna aliquam tellus, et convallis leo tellus eu nulla. Quisque libero nisi, viverra nec interdum at, accumsan id tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia. Curabitur laoreet, nulla nec venenatis sagittis, libero magna aliquam tellus, et convallis leo tellus eu nulla. Quisque libero nisi, viverra nec interdum at, accumsan id tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia. Curabitur laoreet, nulla nec venenatis sagittis, libero magna aliquam tellus, et convallis leo tellus eu nulla. Quisque libero nisi, viverra nec interdum at, accumsan id tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia.', '2015-04-13 16:43:31', '', '1');
-INSERT INTO `rtp`.`travelJournal` VALUES(DEFAULT, '1', 'I am a new Journal!', 'Im a new Journal!
-Test 
-Test 
-Test Test
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia. Curabitur laoreet, nulla nec venenatis sagittis, libero magna aliquam tellus, et convallis leo tellus eu nulla. Quisque libero nisi, viverra nec interdum at, accumsan id tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia. Curabitur laoreet, nulla nec venenatis sagittis, libero magna aliquam tellus, et convallis leo tellus eu nulla. Quisque libero nisi, viverra nec interdum at, accumsan id tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia. Curabitur laoreet, nulla nec venenatis sagittis, libero magna aliquam tellus, et convallis leo tellus eu nulla. Quisque libero nisi, viverra nec interdum at, accumsan id tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia. Curabitur laoreet, nulla nec venenatis sagittis, libero magna aliquam tellus, et convallis leo tellus eu nulla. Quisque libero nisi, viverra nec interdum at, accumsan id tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, libero sed consectetur aliquet, elit ipsum varius velit, eget tristique tortor nunc ut ligula. Donec in imperdiet tortor. Sed commodo purus vel dolor adipiscing ut dapibus massa lacinia.', '2015-04-13 18:43:31', '', '1');
-
 
 
 -- -----------------------------------------------------
