@@ -58,7 +58,7 @@
 		editor.setData( value );
 	}
 
-	function GetContents() {
+	function SubmitContents() {
 		// Get the editor instance that you want to interact with.
 		var editor = CKEDITOR.instances.editor;
 
@@ -66,7 +66,7 @@
 		// http://docs.ckeditor.com/#!/api/CKEDITOR.editor-method-getData
 		//alert( editor.getData() );
 		console.log(editor.getData());
-		document.getElementsByClassName("journal")[0].submit()
+		document.getElementsByClassName("journal")[0].submit();
 	}
 
 	function ExecuteCommand( commandName ) {
@@ -120,12 +120,12 @@
     <div class="container">
 		<div style = "left:50%;position:absolute;width:">
 			<div style = "right: 50%;position:relative;">
-				<form action = 'test.php' method = "POST" class = "journal">
+				<form action = 'getSubmitJournal.php' method = "POST" class = "journal">
 					<div class="form-horizontal">
 						<div class="form-group">
 							<label for="journal_title" class="col-sm-2 control-label">Title</label>
 							<div class="col-sm-9">
-								<input type="text" name = "journal" class="form-control" id="journal_title" placeholder="Journal title">
+								<input type="text" name = "journal_title" class="form-control" id="journal_title" placeholder="Journal title">
 							</div>
 						</div>
 					</div>
@@ -140,7 +140,7 @@
 						<input type = "text" name = "tag5" id = "tag5" placeholder = "tag5" style = "width:90px">
 					</div>
 					
-					<button type = "button" class = "btn btn-primary" onclick = "GetContents()">Submit</button>
+					<button type = "button" class = "btn btn-primary" onclick = "SubmitContents()">Submit</button>
 				</form>
 			</div>
 		</div>
