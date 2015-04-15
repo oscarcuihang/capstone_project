@@ -39,7 +39,6 @@
                 <p><?php echo $journal_timestamp; ?></p>
 
                 <p class="myPara"><?php echo $journal_content; ?></p>
-                <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
                 <a class="btn btn-warning" href="">Update <span class="glyphicon glyphicon-chevron-right"></span></a>
                 <a class="btn btn-danger" href="">Delet <span class="glyphicon glyphicon-chevron-right"></span></a>
 
@@ -94,14 +93,17 @@
 <script type="text/javascript">
     $(function() {
         var limit = 1500;
-        var chars = $(".myPara").text(); 
-        if (chars.length > limit) {
-            var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
-            var dots = $("<span class='dots'>... </span>");
+        for (var i = 0; i < $(".myPara").length; i++)
+        {
+            var chars = $(".myPara").eq(i).text(); 
+            if (chars.length > limit) {
+                var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
+                var dots = $("<span class='dots'>... </span>");
 
-            $(".myPara").empty()
-                .append(visiblePart)
-                .append(dots);
+                $(".myPara").eq(i).empty()
+                    .append(visiblePart)
+                    .append(dots);
+            }
         }
     });
 </script>
