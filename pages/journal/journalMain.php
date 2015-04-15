@@ -25,9 +25,21 @@
 				</div>
 			</div>			
 </script>
+<script>
+function clickAction(form, Jid, action)
+{
+  document.forms[form].elements['Jid'].value = Jid;
+  document.forms[form].elements['action'].value = action;
+
+  document.getElementById(form).submit();
+}
+</script>
 <?php include '../templates/navbar.html'; ?>
    
- 
+<form action='text_editor.php' id='action_form' method='POST'>
+		<input type='hidden' name =	'Jide'>
+		<input type='hidden' name = 'action'>
+</form>
 	
  
 <div class="container" style="margin: 0px;height:100%;">
@@ -81,7 +93,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -96,7 +108,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -111,7 +123,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -126,7 +138,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -141,7 +153,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -154,7 +166,7 @@
 				<div class="f-title">
 					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
-					<a href="">Search</a>
+					<a href="../home.php">Search</a>
 				</div>
 				<div class="box w-70 h-50 box-b-r title-top box-img-left">
 					<div class="img-cont img-4"></div>
@@ -165,7 +177,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -181,7 +193,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -196,7 +208,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -212,7 +224,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -235,7 +247,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -251,7 +263,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -267,7 +279,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -282,7 +294,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -297,7 +309,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -314,7 +326,7 @@
 				<div class="f-title">
 					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
-					<a href="">Search</a>
+					<a href="../home.php">Search</a>
 				</div>
 <?php
 			if($rest_num>=1){
@@ -328,7 +340,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -347,7 +359,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -366,7 +378,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -385,7 +397,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -404,7 +416,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -436,7 +448,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -451,7 +463,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -466,7 +478,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -481,7 +493,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -496,7 +508,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -508,7 +520,7 @@
 				<div class="f-title">
 					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
-					<a href="">Search</a>
+					<a href="../home.php">Search</a>
 				</div>
 <?php
 			if($rest_num>=6){
@@ -522,7 +534,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -542,7 +554,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -561,7 +573,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -582,7 +594,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -601,7 +613,7 @@
 				<div class="f-title">
 					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
-					<a href="">Search</a>
+					<a href="../home.php">Search</a>
 				</div>
 
 				
@@ -614,7 +626,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -629,7 +641,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -644,7 +656,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -659,7 +671,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -674,7 +686,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -699,7 +711,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -715,7 +727,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -730,7 +742,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -746,7 +758,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -760,7 +772,7 @@
 				<div class="f-title">
 					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
-					<a href="">Search</a>
+					<a href="../home.php">Search</a>
 				</div>	
 <?php
 			if($rest_num>=10){
@@ -773,7 +785,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -793,7 +805,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -813,7 +825,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -832,7 +844,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
@@ -851,7 +863,7 @@
 	if (isset($_SESSION["id"])){
 		if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-					<a href="text_editor.php">Edit</a>
+					<a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
 					<a href="">Delete</a>
 <?php 
 		}
