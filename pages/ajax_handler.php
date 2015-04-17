@@ -27,7 +27,9 @@ function register_new_user($user, $conn){
 	$_SESSION["email"] = $user["email"];
 	$_SESSION["lname"] = $user["lname"];
 	$_SESSION["fname"] = $user["fname"];
-	$_SESSION["id"] = $user["id"];
+	$result = mysql_query("SELECT id FROM userinfo WHERE user_email = '". $user["email"]."'");
+	$k = mysql_fetch_assoc($result);
+	$_SESSION["id"] = $k["id"];
 	$dir = "users";
 	while(!is_dir($dir))
 		$dir = "../". $dir;
