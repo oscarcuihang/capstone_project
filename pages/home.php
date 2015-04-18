@@ -147,8 +147,15 @@ if(isset($_POST['search'])){
         {
             $question_id= $line['id'];
             $question_text = $line['question_text'];
+
+            $query_a = "SELECT COUNT(*) AS number_answer FROM answer WHERE answer_questionid = '$question_id' ";
+            $result_a = mysql_query($query_a,$conn) or die(mysql_error());
+            $line = mysql_fetch_assoc($result_a);
+            $number_answer = $line['number_answer'];
 ?>
             <p class="myquestion"><?php echo $question_text; ?></p> 
+            <p class="myquestion"><?php echo $number_answer . " answers"; ?></p>
+            
             <hr>
 <?php
         }
@@ -232,9 +239,16 @@ else {
         while ($line = mysql_fetch_assoc($result)) 
         {
             $question_id= $line['id'];
-            $question_text = $line['question_text'];         
+            $question_text = $line['question_text'];
+            
+            $query_a = "SELECT COUNT(*) AS number_answer FROM answer WHERE answer_questionid = '$question_id' ";
+            $result_a = mysql_query($query_a,$conn) or die(mysql_error());
+            $line = mysql_fetch_assoc($result_a);
+            $number_answer = $line['number_answer'];
+
 ?>
-            <p class="myquestion"><?php echo $question_text; ?></p> 
+            <p class="myquestion"><?php echo $question_text; ?></p>
+            <p class="myquestion"><?php echo $number_answer . " answers"; ?></p>
             <hr>
 <?php
         }
