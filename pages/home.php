@@ -8,6 +8,17 @@
     }
 </style><!-- Custom Fonts CSS -->
 
+
+<script type="text/javascript">
+function clickAction(form, pk)
+{
+  document.forms[form].elements['pk'].value = pk;
+  
+  document.getElementById(form).submit();
+}
+</script>
+
+
 <?php include '../templates/navbar.html'; ?>
 
 
@@ -55,6 +66,10 @@ if(isset($_POST['search'])){
         $query_journal = "SELECT * FROM travelJournal WHERE journal_status = 1 AND (journal_title LIKE '%$input%' OR journal_content LIKE '%$input%') ORDER BY journal_timestamp DESC LIMIT 20";
         $result = mysql_query($query_journal,$conn) or die(mysql_error());
         $rows = mysql_num_rows($result);
+        
+        echo "<form action='/capstone_project/pages/journal/viewjournal.php' id='action_form' method='POST'>";
+        echo "<input type='hidden' name='pk'>";
+
         if ($rows == 0){
 ?>
             <h4><?php echo "Oops... NO Journal Related to: " . $input; ?></h4> 
@@ -66,6 +81,7 @@ if(isset($_POST['search'])){
             $journal_timestamp = $line['journal_timestamp'];
             $journal_userid  = $line['journal_userid'];
             $journal_content  = $line['journal_content'];
+            $journal_id  = $line['id'];
 
             $query_user = "SELECT * FROM userInfo WHERE id = '$journal_userid'";
             $result_user = mysql_query($query_user,$conn) or die(mysql_error());
@@ -75,13 +91,17 @@ if(isset($_POST['search'])){
             <h3><?php echo $journal_title; ?></h3>
             <h4><?php echo $user_name; ?></h4>
             <p><?php echo $journal_timestamp; ?></p>
+            <p><?php echo $journal_id; ?></p>
 
             <p class="myPara"><?php echo $journal_content; ?></p>
-            <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <?php
+            echo "<input class = \"btn btn-primary\" type=\"button\" name=\"action1\" value=\"View\" onclick=\"clickAction('action_form','".$journal_id."');\" />";
+            ?> 
             <hr>
 <?php
         }
-?>
+?> 
+    </form>
     </div>
 
     <!--display trip plan col-->
@@ -146,6 +166,10 @@ else {
 <?php
         $query_journal = "SELECT * FROM travelJournal WHERE journal_status = 1 ORDER BY journal_timestamp DESC LIMIT 20";
         $result = mysql_query($query_journal,$conn) or die(mysql_error());
+                
+        echo "<form action='/capstone_project/pages/journal/viewjournal.php' id='action_form' method='POST'>";
+        echo "<input type='hidden' name='pk'>";
+
         //$total_num = mysql_num_row($result);
         while ($line = mysql_fetch_assoc($result)) 
         {
@@ -153,6 +177,7 @@ else {
             $journal_timestamp = $line['journal_timestamp'];
             $journal_userid  = $line['journal_userid'];
             $journal_content  = $line['journal_content'];
+            $journal_id  = $line['id'];
 
             $query_user = "SELECT * FROM userInfo WHERE id = '$journal_userid'";
             $result_user = mysql_query($query_user,$conn) or die(mysql_error());
@@ -162,12 +187,17 @@ else {
             <h3><?php echo $journal_title; ?></h3>
             <h4><?php echo $user_name; ?></h4>
             <p><?php echo $journal_timestamp; ?></p>
-
             <p class="myPara"><?php echo $journal_content; ?></p>
+            <?php 
+            echo "<input class = \"btn btn-primary\" type=\"button\" name=\"action1\" value=\"View\" onclick=\"clickAction('action_form','".$journal_id."');\" />";
+            ?>
+            <!--
             <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
+            -->
             <hr>
 <?php
         }
+        echo "</form>";
 ?>
     </div>
 
