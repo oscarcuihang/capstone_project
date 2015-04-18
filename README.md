@@ -15,9 +15,9 @@ University of Missouri - Columbia Computer Science Capstone Project
 
 
 ## Credits
-_[Hang CUI](https://github.com/oscarcuihang)_
-_[Zhenni HU](https://github.com/ZhenniHu) _
-_[Zhongrong JIAN](https://github.com/miaolegewang)_
-_[Bowei XU](https://github.com/Hunter6)_
+[Hang CUI](https://github.com/oscarcuihang) <br />
+[Zhenni HU](https://github.com/ZhenniHu) <br />
+[Zhongrong JIAN](https://github.com/miaolegewang)<br />
+[Bowei XU](https://github.com/Hunter6)<br />
 
 ## License
