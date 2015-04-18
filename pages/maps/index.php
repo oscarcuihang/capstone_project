@@ -201,6 +201,8 @@
 			});
 		}
 		
+		
+		// Add marker by clicking the map
 		google.maps.event.addListener(map, 'click', function(event) {
 			console.log(event.latLng)
 			var marker = new google.maps.Marker({
@@ -209,6 +211,10 @@
 				draggable: true
 			})
 			var infocontent = "";
+			/*google.maps.event.addListener(marker, "dbclick", function(){
+				console.log("miao");
+				marker.setMap(null);
+			})*/
 			google.maps.event.addListener(marker, "click", function(){
 				var lat = marker.getPosition().lat();
 				var lon = marker.getPosition().lng();
@@ -222,6 +228,25 @@
 						infowindow.open(map, marker);
 					}
 				})
+			})
+			google.maps.event.addListener(marker, "mouseover", function(){
+				var infow = new google.maps.InfoWindow({
+					content: "<i class = 'glyphicon glyphicon-remove remove-marker-button'></i>",
+					boxStyle: {
+						padding: "0px",
+						margin: "0px",
+						width: "20px",
+						height: "20px"
+					}
+				})
+				infow.open(map, marker);
+				var iwOuter = $('.gm-style-iw');
+				var iwCloseBtn = iwOuter.next();
+				console.log(iwCloseBtn)
+				iwCloseBtn.remove()
+			})
+			google.maps.event.addListener(marker, "mouseout", function(){
+				console.log("delete")
 			})
 		});
 	}
