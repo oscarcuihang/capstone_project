@@ -63,7 +63,7 @@ if(isset($_POST['search'])){
     <!--display Trip journal col-->
     <div class="col-md-6"><h2>Trip Journals</h2><hr>
 <?php
-        $query_journal = "SELECT * FROM travelJournal WHERE journal_status = 1 AND (journal_title LIKE '%$input%' OR journal_content LIKE '%$input%') ORDER BY journal_timestamp DESC LIMIT 20";
+        $query_journal = "SELECT * FROM travelJournal WHERE journal_status = 1 AND (journal_title LIKE '%$input%' OR journal_content LIKE '%$input%') ORDER BY journal_timestamp DESC LIMIT 10";
         $result = mysql_query($query_journal,$conn) or die(mysql_error());
         $rows = mysql_num_rows($result);
         
@@ -171,7 +171,7 @@ else {
     <!--display Trip journal col-->
     <div class="col-md-6"><h2>Trip Journals</h2><hr>
 <?php
-        $query_journal = "SELECT * FROM travelJournal WHERE journal_status = 1 ORDER BY journal_timestamp DESC LIMIT 20";
+        $query_journal = "SELECT * FROM travelJournal WHERE journal_status = 1 ORDER BY journal_timestamp DESC LIMIT 10";
         $result = mysql_query($query_journal,$conn) or die(mysql_error());
                 
         echo "<form action='/capstone_project/pages/journal/viewjournal.php' id='action_form' method='POST'>";
