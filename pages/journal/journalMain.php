@@ -65,7 +65,7 @@ function clickAction(form, Jid, action)
 				<div class="f-cover-flip">&lt; Flip</div>
 			</div>
 <?php
-	$query = "SELECT * FROM travelJournal";
+	$query = "SELECT * FROM travelJournal WHERE journal_status = 1";
 	$result= mysql_query($query,$conn) or die(mysql_error());
 	$total_num = mysql_num_rows($result);
 	$com_num=$total_num/14;
@@ -237,7 +237,7 @@ function clickAction(form, Jid, action)
 				<div class="f-title">
 					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
-					<a href="">Search</a>
+					<a href="../home.php">Search</a>
 				</div>
 				<div class="box w-30 h-60 box-b-r title-top">
 					<?php $record= mysql_fetch_assoc($result);?>
@@ -700,7 +700,7 @@ function clickAction(form, Jid, action)
 				<div class="f-title">
 					<a href="text_editor.php">Create</a>
 					<h2>Travel Journal</h2>
-					<a href="">Search</a>
+					<a href="../home.php">Search</a>
 				</div>
 				<div class="box w-70 h-50 box-b-r title-top box-img-left">
 					<div class="img-cont img-4"></div>
