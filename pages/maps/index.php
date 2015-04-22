@@ -182,11 +182,12 @@
  
 	var undefined_marker = "";	// markers not in the path, only one will appear on the map
 	var settle_markers = []		// markers included in the path
+	var map = "";
 	function initialize() {
 		var mapOptions = {
 			zoom: 11
 		};
-		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 		
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function (position) {
@@ -316,29 +317,65 @@
 		});
 		$(".add-location").click(function(){
 			var target = $("#menu-toggle").attr("data-target");
-			if($(target).width() != 250) 
-				$(target).animate({width:250}, 700, function(){
+			if($("#sidebar-wrapper > div.row[data-address='" + $(".card-content").html() + "']").length == 0){
+				if($(target).width() != 250) 
+					$(target).animate({width:250}, 700, function(){
+						$("#sidebar-wrapper").append(
+							"<div class = 'row' data-address = '" + $(".card-content").html() + "'>" + 
+								"<div class = 'col-md-6'>" +
+									$(".card-content").html() +
+								"</div>" +
+								"<div class = 'col-md-1'>" +
+									"<i class = 'glyphicon glyphicon-remove close delete-loc'></i>" +
+								"</div>" +
+							"</div>"
+						)
+						$("#sidebar-wrapper").show();
+					})
+				else {
 					$("#sidebar-wrapper").append(
-						"<div class = 'row'>" + 
-							"<div class = 'col-md-5'>" +
+						"<div class = 'row' data-address = '" + $(".card-content").html() + "'>" + 
+							"<div class = 'col-md-6'>" +
 								$(".card-content").html() +
+							"</div>" +
+							"<div class = 'col-md-1'>" +
+								"<i class = 'glyphicon glyphicon-remove close delete-loc'></i>" +
 							"</div>" +
 						"</div>"
 					)
-					$("#sidebar-wrapper").css("display", "block");
+				}
+				undefined_marker.setMap(null);	// Replace the undefined marker with a different marker
+												// to change color into blue
+				var pinColor = "2F76EE";
+				var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+					new google.maps.Size(21, 34),
+					new google.maps.Point(0,0),
+					new google.maps.Point(10, 34)
+				);
+				var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+					new google.maps.Size(40, 37),
+					new google.maps.Point(0, 0),
+					new google.maps.Point(12, 35)
+				);
+				var marker = new google.maps.Marker({
+					position: undefined_marker.getPosition(),
+					map: map,
+					icon: pinImage,
+					shadow: pinShadow
 				})
-			else {
-				$("#sidebar-wrapper").append(
-					"<div class = 'row'>" + 
-						"<div class = 'col-md-5'>" +
-							$(".card-content").html() +
-						"</div>" +
-					"</div>" 
-				)
+				settle_markers[$(".card-content").html()] = marker;
+				undefined_marker = "";
 			}
 		})
 		$(".close-card-info").click(function(){
 			$("#card-info").hide(200)
+		})
+		$("body").on("click", ".delete-loc", function(){
+			var target = $(this).parent().parent().attr("data-address");
+			$("#sidebar-wrapper > div.row[data-address='" + target + "']").remove()
+			console.log(target);
+			settle_markers[target].setMap(null);
+			delete settle_markers[target];
 		})
 	})
 
