@@ -30,6 +30,36 @@
       .pac-container {
         font-family: Roboto;
       }
+	  
+	  #card-info {
+		  background-color: #fff;
+		  font-family: Roboto;
+		  text-overflow: ellipsis;
+		  width: 408px;
+		  height: 64px;
+		  position: absolute;
+		  margin-top: 54px;
+		  margin-left:10px;
+		  border-color:1px solid transparent;
+		  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+		  z-index: 2;
+		  display:none;
+	  }
+	  
+	  #card-info-content{
+		  height:64px;
+		  width:300px;
+	  }
+	  
+	  .vr {
+		  margin-left: 20px;
+		  margin-right: 20px;
+		  height: 50px;
+		  border: 0;
+		  border-left: 1px solid #cccccc;
+		  display: inline-block;
+		  vertical-align: top;
+		}
 
     </style>
 
@@ -80,6 +110,20 @@
 		font-size: 27px;
 		color: black;
 	}
+	
+	.close {
+		font-size:57px;
+	}
+	
+	.row div.button{
+		padding-top:14px;
+	}
+	
+	.row i{
+		font-size:30px;
+		color: #666;
+		cursor: pointer;
+	}
 </style>
 
 <?php include '../templates/navbar.html'; ?>
@@ -105,8 +149,19 @@
 		<a class="btn btn-default" data-target = "#sidebar-wrapper" id="menu-toggle"><i class = "glyphicon glyphicon-menu-hamburger"></i></a>
     </div>
     
-                      <input id="pac-input" class="controls" type="text"
-        placeholder="Enter a location">
+    <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+	<div id = "card-info">
+		<div class = "row">
+			<div class = "col-md-9 card-content">
+			</div>
+			<div class = "col-md-1 button add-location">
+				<i class = "glyphicon glyphicon-plus"></i>
+			</div>
+			<div class = "col-md-1 button close-card-info">
+				<i class = "glyphicon glyphicon-remove"></i>
+			</div>
+		</div>
+	</div>
     <div id="map-canvas"></div>
     <div id="push"></div>
 
@@ -125,6 +180,8 @@
 
 <script type='text/javascript'>
  
+	var undefined_marker = "";	// markers not in the path, only one will appear on the map
+	var settle_markers = []		// markers included in the path
 	function initialize() {
 		var mapOptions = {
 			zoom: 11
@@ -204,49 +261,36 @@
 		
 		// Add marker by clicking the map
 		google.maps.event.addListener(map, 'click', function(event) {
+			if(undefined_marker != "")
+				undefined_marker.setMap(null)
 			console.log(event.latLng)
 			var marker = new google.maps.Marker({
 				position: event.latLng,
 				map: map,
 				draggable: true
 			})
+			undefined_marker = marker;
 			var infocontent = "";
 			/*google.maps.event.addListener(marker, "dbclick", function(){
 				console.log("miao");
 				marker.setMap(null);
 			})*/
+			var lat = event.latLng.lat();
+			var lon = event.latLng.lng();
+			$.ajax({
+				url: "http://maps.googleapis.com/maps/api/geocode/json",
+				type: "GET",
+				async: false,
+				data: { latlng: lat + "," + lon, sensor: "true_or_false"},
+				success: function(data, status){
+					results = data.results;
+					$(".card-content").html(results[0].formatted_address)
+					$("#card-info").hide().show(200);
+				}
+			})
 			google.maps.event.addListener(marker, "click", function(){
-				var lat = marker.getPosition().lat();
-				var lon = marker.getPosition().lng();
-				$.ajax({
-					url: "http://maps.googleapis.com/maps/api/geocode/json",
-					type: "GET",
-					data: { latlng: lat + "," + lon, sensor: "true_or_false"},
-					success: function(data, status){
-						results = data.results;
-						var infowindow = new google.maps.InfoWindow({content: results[0].formatted_address});
-						infowindow.open(map, marker);
-					}
-				})
-			})
-			google.maps.event.addListener(marker, "mouseover", function(){
-				var infow = new google.maps.InfoWindow({
-					content: "<i class = 'glyphicon glyphicon-remove remove-marker-button'></i>",
-					boxStyle: {
-						padding: "0px",
-						margin: "0px",
-						width: "20px",
-						height: "20px"
-					}
-				})
-				infow.open(map, marker);
-				var iwOuter = $('.gm-style-iw');
-				var iwCloseBtn = iwOuter.next();
-				console.log(iwCloseBtn)
-				iwCloseBtn.remove()
-			})
-			google.maps.event.addListener(marker, "mouseout", function(){
-				console.log("delete")
+				if($("#card-info").css("display") == "none")
+					$("#card-info").show(200)
 			})
 		});
 	}
@@ -263,7 +307,39 @@
 			e.preventDefault();
 			var target = $(this).attr("data-target");
 			var width = $(target).width() == 0? "250px" : "0px";
-			$(target).animate({width: width}, 700);
+			if(width == "0px")
+				$("#sidebar-wrapper > .row").hide();
+			$(target).animate({width: width}, 700, function(){
+				if(width == "250px")
+					$("#sidebar-wrapper > .row").show();
+			});
 		});
+		$(".add-location").click(function(){
+			var target = $("#menu-toggle").attr("data-target");
+			if($(target).width() != 250) 
+				$(target).animate({width:250}, 700, function(){
+					$("#sidebar-wrapper").append(
+						"<div class = 'row'>" + 
+							"<div class = 'col-md-5'>" +
+								$(".card-content").html() +
+							"</div>" +
+						"</div>"
+					)
+					$("#sidebar-wrapper").css("display", "block");
+				})
+			else {
+				$("#sidebar-wrapper").append(
+					"<div class = 'row'>" + 
+						"<div class = 'col-md-5'>" +
+							$(".card-content").html() +
+						"</div>" +
+					"</div>" 
+				)
+			}
+		})
+		$(".close-card-info").click(function(){
+			$("#card-info").hide(200)
+		})
 	})
+
     </script>
