@@ -31,7 +31,6 @@
             </div>
             <div class="col-md-5">
                 <h3>Hang CUI</h3>
-                <h4>Lao Da</h4>
                 <p>Web Server</p>
                 <p>Database</p>
                 <p>Trip Plan, Google Maps API</p>
@@ -52,10 +51,10 @@
             </div>
             <div class="col-md-5">
                 <h3>Zhenni HU</h3>
-                <h4>Subheading</h4>
 				<p>Travel Journal</p>
                 <p>Database</p>
                 <p>User Sharing</p>
+                <p>Q/A Section</p>
                                
 				<a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
@@ -73,7 +72,6 @@
             </div>
             <div class="col-md-5">
                 <h3>Zhongrong JIAN</h3>
-                <h4>Subheading</h4>
 				<p>Trip Plan, Google Maps API</p>
                 <p>UI Design</p>
 				<a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -93,9 +91,9 @@
             </div>
             <div class="col-md-5">
                 <h3>Bowei XU</h3>
-                <h4>Doubi</h4>
                 <p>Travel Journal</p>
                 <p>User Sharing</p>
+                <p>Q/A Section</p>
                 <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
