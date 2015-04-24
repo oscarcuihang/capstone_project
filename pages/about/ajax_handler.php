@@ -1,7 +1,7 @@
 <?php
 if(!session_start())
 	die("Error: fail to start session");
-$conn = mysql_connect("localhost", "root", "");
+$conn = mysql_connect("localhost", "root", "root");
 mysql_select_db("rtp", $conn);
 
 function register_new_user($user, $conn){
@@ -20,27 +20,37 @@ function register_new_user($user, $conn){
 	$pass = $user["password"];
 	$hashpass = md5($salt. $pass);
 	//print_r($user);
-	$result = mysql_query("SELECT * FROM userinfo WHERE user_email = '$email'");
-	if(mysql_num_rows($result) > 0)
+	$query = "SELECT * FROM userInfo WHERE user_email = '$email'";
+	$result = mysql_query($query);
+	$rows = mysql_num_rows($result);
+	if($rows != 0) {
 		return -1;	//	user already exist
-	mysql_query("INSERT INTO userinfo VALUES(DEFAULT, '$fname', '$lname', '$email', '$phone', '$salt', '$hashpass')") or die("Error: do not succeed");
-	$_SESSION["email"] = $user["email"];
-	$_SESSION["lname"] = $user["lname"];
-	$_SESSION["fname"] = $user["fname"];
-	$dir = "users";
-	while(!is_dir($dir))
-		$dir = "../". $dir;
-	//echo "$dir/$email";
-	mkdir("$dir/$email") or die("ER1");
-	mkdir("$dir/$email/pic") or die("ER2");
-	mkdir("$dir/$email/journal") or die("ER3");
-	$result = mysql_query("SELECT id FROM userinfo WHERE user_email = '$email'");
-	$row = mysql_fetch_assoc($result);
-	$user_id = $row["id"];
-	$ip = $_SERVER["REMOTE_ADDR"];
-	mysql_query("INSERT INTO userlog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'register')");
-	mysql_query("INSERT INTO userlog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'log in')");
-	return 1;
+	}
+	else {
+		mysql_query("INSERT INTO userInfo VALUES(DEFAULT, '$fname', '$lname', '$email', '$phone', '$salt', '$hashpass')") or die("Error: do not succeed");
+		$_SESSION["email"] = $user["email"];
+		$_SESSION["lname"] = $user["lname"];
+		$_SESSION["fname"] = $user["fname"];
+		$query = "SELECT id FROM userinfo WHERE user_email = '". $user["email"]."'";
+		$result = mysql_query($query);
+		$k = mysql_fetch_assoc($result);
+		$_SESSION["id"] = $k["id"];
+		$dir = "users";
+		while(!is_dir($dir)){
+			$dir = "../". $dir;
+		}
+		//echo "$dir/$email";
+		mkdir("$dir/$email") or die("ER1");
+		mkdir("$dir/$email/pic") or die("ER2");
+		mkdir("$dir/$email/journal") or die("ER3");
+		$result = mysql_query("SELECT id FROM userinfo WHERE user_email = '$email'");
+		$row = mysql_fetch_assoc($result);
+		$user_id = $row["id"];
+		$ip = $_SERVER["REMOTE_ADDR"];
+		mysql_query("INSERT INTO userLog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'register')");
+		mysql_query("INSERT INTO userLog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'log in')");
+		return 1;
+	}
 }
 
 function authentication_user($user, $conn){
@@ -50,21 +60,27 @@ function authentication_user($user, $conn){
 	//	}
 	$email = $user["email"];
 	$pass = $user["password"];
-	$result = mysql_query("SELECT * FROM userinfo WHERE user_email = '$email'");
-	if(mysql_num_rows($result) == 0)
+	$query = "SELECT * FROM userInfo WHERE user_email = '$email'";
+	$result = mysql_query($query);
+	$rows = mysql_num_rows($result);
+    if ($rows == 0) {
 		return 0;	//	user not exist
-	$row = mysql_fetch_assoc($result);
-	//print_r($row);
-	$salt = $row["user_salt"];
-	$user_hash = md5($salt. $pass);
-	$hashpass = $row["user_hashpass"];
+    }
+    else {
+		$row = mysql_fetch_assoc($result);
+		//print_r($row);
+		$salt = $row["user_salt"];
+		$user_hash = md5($salt. $pass);
+		$hashpass = $row["user_hashpass"];
+	}
 	if($hashpass == $user_hash){
 		$_SESSION["email"] = $row["user_email"];
 		$_SESSION["lname"] = $row["user_lname"];
 		$_SESSION["fname"] = $row["user_fname"];
+		$_SESSION["id"] = $row["id"];
 		$user_id = $row["id"];
 		$ip = $_SERVER["REMOTE_ADDR"];
-		mysql_query("INSERT INTO userlog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'log in')");
+		mysql_query("INSERT INTO userLog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'log in')");
 		return 1;	// 	log in successfully
 	} else return -1;	// password not right
 }
@@ -75,12 +91,26 @@ function sign_out_user($user, $conn){
 		unset($_SESSION["email"]);
 		unset($_SESSION["lname"]);
 		unset($_SESSION["fname"]);
+		unset($_SESSION["id"]);
 		session_destroy();
 		$result = mysql_query("SELECT id FROM userinfo WHERE user_email = '$email'");
 		$ip = $_SERVER["REMOTE_ADDR"];
 		$user_id = mysql_fetch_assoc($result)["id"];
-		mysql_query("INSERT INTO userlog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'log out')");
+		mysql_query("INSERT INTO userLog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'log out')");
 	}
+}
+
+// Calculate the relative url for the current page, require the target url to be a file name
+// the second parameter is used to define the number of iterations before the while-loop should stop
+// If relative url calculation between two different url is need, new function shoul be defined
+function relative_url($target_url, $i = 10){
+	$relative_url = "$target_url";
+	while(!is_file($relative_url) && (--$i)){
+		$relative_url = "../". $relative_url;
+	}
+	if($i == 0)
+		return null;
+	else return $relative_url;
 }
 
 if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
@@ -94,6 +124,7 @@ if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
 	//	Sign out ajax handler
 	//
 	sign_out_user($_SESSION["email"], $conn);
+	echo relative_url("home.php");
 } else if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'register'){
 	//
 	//	Register new user
