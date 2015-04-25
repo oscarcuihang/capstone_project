@@ -72,23 +72,6 @@ CREATE TABLE IF NOT EXISTS `rtp`.`tripPlan` (
   `trip_endaddress` VARCHAR(100) NOT NULL,
   `trip_detailid` INT NULL,
   `trip_last_updated` TIMESTAMP NOT NULL,
-  PRIMARY KEY (`id`, `trip_userid`),
-  INDEX `fk_tripPlan_userInfo1_idx` (`trip_userid` ASC),
-  CONSTRAINT `fk_tripPlan_userInfo1`
-    FOREIGN KEY (`trip_userid`)
-    REFERENCES `rtp`.`userInfo` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `rtp`.`tripDetail`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `rtp`.`tripDetail` ;
-
-CREATE TABLE IF NOT EXISTS `rtp`.`tripDetail` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `detail_tripid` INT NOT NULL,
   `detail_waypoint1_address` VARCHAR(100) NULL DEFAULT NULL,
   `detail_waypoint2_address` VARCHAR(100) NULL DEFAULT NULL,
   `detail_waypoint3_address` VARCHAR(100) NULL DEFAULT NULL,
@@ -97,11 +80,13 @@ CREATE TABLE IF NOT EXISTS `rtp`.`tripDetail` (
   `detail_waypoint6_address` VARCHAR(100) NULL DEFAULT NULL,
   `detail_waypoint7_address` VARCHAR(100) NULL DEFAULT NULL,
   `detail_waypoint8_address` VARCHAR(100) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`, `detail_tripid`),
-  INDEX `fk_tripDetail_tripPlan1_idx` (`detail_tripid` ASC),
-  CONSTRAINT `fk_tripDetail_tripPlan1`
-    FOREIGN KEY (`detail_tripid`)
-    REFERENCES `rtp`.`tripPlan` (`id`)
+  `trip_rate_avg` FLOAT NOT NULL DEFAULT 0,
+  `trip_rate_num` INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`, `trip_userid`),
+  INDEX `fk_tripPlan_userInfo1_idx` (`trip_userid` ASC),
+  CONSTRAINT `fk_tripPlan_userInfo1`
+    FOREIGN KEY (`trip_userid`)
+    REFERENCES `rtp`.`userInfo` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -117,6 +102,8 @@ CREATE TABLE IF NOT EXISTS `rtp`.`question` (
   `question_userid` INT NOT NULL,
   `question_text` VARCHAR(1024) NOT NULL,
   `question_timestamp` TIMESTAMP NOT NULL,
+  `question_rate_avg` FLOAT NOT NULL DEFAULT 0,
+  `question_rate_num` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`, `question_userid`),
   INDEX `fk_question_userInfo1_idx` (`question_userid` ASC),
   CONSTRAINT `fk_question_userInfo1`
@@ -137,6 +124,8 @@ CREATE TABLE IF NOT EXISTS `rtp`.`answer` (
   `answer_questionid` INT NOT NULL,
   `answer_text` VARCHAR(512) NOT NULL,
   `answer_timestamp` TIMESTAMP NOT NULL,
+  `answer_rate_avg` FLOAT NOT NULL DEFAULT 0,
+  `answer_rate_num` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`, `answer_userid`, `answer_questionid`),
   INDEX `fk_answer_userInfo1_idx` (`answer_userid` ASC),
   INDEX `fk_answer_question1_idx` (`answer_questionid` ASC),
@@ -166,6 +155,13 @@ CREATE TABLE IF NOT EXISTS `rtp`.`travelJournal` (
   `journal_timestamp` TIMESTAMP NOT NULL,
   `journal_cover_page` VARCHAR(100),
   `journal_status` Boolean NOT NULL,
+  `journal_rate_avg` FLOAT NOT NULL DEFAULT 0,
+  `journal_rate_num` INT NOT NULL DEFAULT 0,
+  `journal_tag1` VARCHAR(45) NULL DEFAULT NULL,
+  `journal_tag2` VARCHAR(45) NULL DEFAULT NULL,
+  `journal_tag3` VARCHAR(45) NULL DEFAULT NULL,
+  `journal_tag4` VARCHAR(45) NULL DEFAULT NULL,
+  `journal_tag5` VARCHAR(45) NULL DEFAULT NULL,
 
   PRIMARY KEY (`id`, `journal_userid`),
   INDEX `fk_travelJournal_userInfo1_idx` (`journal_userid` ASC),
@@ -202,29 +198,6 @@ CREATE TABLE IF NOT EXISTS `rtp`.`travelJournalComment` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `rtp`.`travelJournalTag`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `rtp`.`travelJournalTag` ;
-
-CREATE TABLE IF NOT EXISTS `rtp`.`travelJournalTag` (
-  `travelJournal_id` INT NOT NULL,
-  `journal_tag1` VARCHAR(45) NULL DEFAULT NULL,
-  `journal_tag2` VARCHAR(45) NULL DEFAULT NULL,
-  `journal_tag3` VARCHAR(45) NULL DEFAULT NULL,
-  `journal_tag4` VARCHAR(45) NULL DEFAULT NULL,
-  `journal_tag5` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`travelJournal_id`),
-  INDEX `fk_travelJournalTag_travelJournal1_idx` (`travelJournal_id` ASC),
-  CONSTRAINT `fk_travelJournalTag_travelJournal1`
-    FOREIGN KEY (`travelJournal_id`)
-    REFERENCES `rtp`.`travelJournal` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
