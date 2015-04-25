@@ -31,10 +31,11 @@ function register_new_user($user, $conn){
 		$_SESSION["email"] = $user["email"];
 		$_SESSION["lname"] = $user["lname"];
 		$_SESSION["fname"] = $user["fname"];
-		$query = "SELECT id FROM userinfo WHERE user_email = '". $user["email"]."'";
+		$query = "SELECT id FROM userInfo WHERE user_email = '". $user["email"]."'";
 		$result = mysql_query($query);
 		$k = mysql_fetch_assoc($result);
 		$_SESSION["id"] = $k["id"];
+		/*
 		$dir = "users";
 		while(!is_dir($dir)){
 			$dir = "../". $dir;
@@ -43,7 +44,9 @@ function register_new_user($user, $conn){
 		mkdir("$dir/$email") or die("ER1");
 		mkdir("$dir/$email/pic") or die("ER2");
 		mkdir("$dir/$email/journal") or die("ER3");
-		$result = mysql_query("SELECT id FROM userinfo WHERE user_email = '$email'");
+		*/
+
+		$result = mysql_query("SELECT id FROM userInfo WHERE user_email = '$email'");
 		$row = mysql_fetch_assoc($result);
 		$user_id = $row["id"];
 		$ip = $_SERVER["REMOTE_ADDR"];
@@ -93,10 +96,15 @@ function sign_out_user($user, $conn){
 		unset($_SESSION["fname"]);
 		unset($_SESSION["id"]);
 		session_destroy();
-		$result = mysql_query("SELECT id FROM userinfo WHERE user_email = '$email'");
+		$query = "SELECT id FROM userInfo WHERE user_email = '$email'";
+		$result = mysql_query($query);
+		if($result == FALSE) { 
+		    die(mysql_error()); // TODO: better error handling
+		}
 		$ip = $_SERVER["REMOTE_ADDR"];
-		$user_id = mysql_fetch_assoc($result)["id"];
-		mysql_query("INSERT INTO userLog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'log out')");
+		$line = mysql_fetch_assoc($result);
+		$user_id = $line["id"];
+		mysql_query("INSERT INTO userLog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'log out')");	
 	}
 }
 

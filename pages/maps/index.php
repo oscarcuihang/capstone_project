@@ -181,20 +181,26 @@
 <script type='text/javascript'>
  
 	var undefined_marker = "";	// markers not in the path, only one will appear on the map
-	var settle_markers = []		// markers included in the path
+	var settle_markers = [];		// markers included in the path
 	var map = "";
+	var last_index_marker = 0;
+	var directionsService = new google.maps.DirectionsService();
+	var directionsDisplay;
 	function initialize() {
 		var mapOptions = {
 			zoom: 11
 		};
 		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-		
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function (position) {
 				initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 				map.setCenter(initialLocation);
 			});
 		}
+		directionsDisplay = new google.maps.DirectionsRenderer({
+			suppressMarkers: true
+		});
+		directionsDisplay.setMap(map);
 
 		var input = /** @type {HTMLInputElement} */
 			document.getElementById('pac-input');
@@ -206,15 +212,17 @@
 		var autocomplete = new google.maps.places.Autocomplete(input);
 		autocomplete.bindTo('bounds', map);
 
-		var infowindow = new google.maps.InfoWindow();
-		var marker = new google.maps.Marker({
-			map: map,
-			anchorPoint: new google.maps.Point(0, -29)
-		});
+		//var infowindow = new google.maps.InfoWindow();
+		
 
 		google.maps.event.addListener(autocomplete, 'place_changed', function() {
-			infowindow.close();
+			var marker = new google.maps.Marker({
+				map: map,
+				anchorPoint: new google.maps.Point(0, -29)
+				//draggable: true
+			});
 			marker.setVisible(false);
+			undefined_marker = marker;
 			var place = autocomplete.getPlace();
 			if (!place.geometry) {
 				return;
@@ -245,9 +253,25 @@
 					(place.address_components[2] && place.address_components[2].short_name || '')
 				].join(' ');
 			}
-
-			infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-			infowindow.open(map, marker);
+			
+			var lat = place.geometry.location.lat();
+			var lon = place.geometry.location.lng();
+			
+			$.ajax({
+				url: "http://maps.googleapis.com/maps/api/geocode/json",
+				type: "GET",
+				async: false,
+				data: { latlng: lat + "," + lon, sensor: "true_or_false"},
+				success: function(data, status){
+					results = data.results;
+					$(".card-content").html(results[0].formatted_address)
+					$("#card-info").hide().show(200);
+				}
+			})
+			google.maps.event.addListener(marker, "click", function(){
+				if($("#card-info").css("display") == "none")
+					$("#card-info").show(200)
+			})
 		});
 
 	  // Sets a listener on a radio button to change the filter type on Places
@@ -264,7 +288,7 @@
 		google.maps.event.addListener(map, 'click', function(event) {
 			if(undefined_marker != "")
 				undefined_marker.setMap(null)
-			console.log(event.latLng)
+			//console.log(event.latLng)
 			var marker = new google.maps.Marker({
 				position: event.latLng,
 				map: map,
@@ -295,6 +319,40 @@
 			})
 		});
 	}
+	
+	function calc_route(){
+		console.log(settle_markers)
+		var settle_markers_len = 0;
+		var i;
+		for(i in settle_markers)
+			settle_markers_len++;
+		console.log(settle_markers_len)
+		if(settle_markers_len / 2 >= 2){
+			var start = settle_markers[settle_markers[0]].getPosition();
+			var end = settle_markers[settle_markers[settle_markers_len / 2 - 1]].getPosition();
+			var waypoints = [];
+			for(var i = 1; i < settle_markers_len / 2 - 1; i++){
+				console.log(settle_markers[i])
+				waypoints.push({
+					location: settle_markers[settle_markers[i]].getPosition(),
+					stopover: true
+				})
+			}
+			
+			var request = {
+				origin: start,
+				destination: end,
+				waypoints: waypoints,
+				travelMode: google.maps.DirectionsTravelMode.DRIVING
+			};
+			
+			directionsService.route(request, function(response, status){
+				if(status == google.maps.DirectionsStatus.OK){
+					 directionsDisplay.setDirections(response);
+				}
+			})
+		}
+	}
 
 	google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -316,12 +374,33 @@
 			});
 		});
 		$(".add-location").click(function(){
-			var target = $("#menu-toggle").attr("data-target");
-			if($("#sidebar-wrapper > div.row[data-address='" + $(".card-content").html() + "']").length == 0){
-				if($(target).width() != 250) 
-					$(target).animate({width:250}, 700, function(){
+			var settle_markers_len = 0;
+			var i;
+			for(i in settle_markers)
+				settle_markers_len++;
+			//console.log(settle_markers_len);
+			if(settle_markers_len / 2 >= 10)
+				alert("Cannot add more than 10 spots to the path")
+			else {
+				var target = $("#menu-toggle").attr("data-target");
+				if(settle_markers[$(".card-content").html()] == null){
+					if($(target).width() != 250) 
+						$(target).animate({width:250}, 700, function(){
+							$("#sidebar-wrapper").append(
+								"<div class = 'row location-in-route' data-address = '" + $(".card-content").html() + "'>" + 
+									"<div class = 'col-md-6'>" +
+										$(".card-content").html() +
+									"</div>" +
+									"<div class = 'col-md-1'>" +
+										"<i class = 'glyphicon glyphicon-remove close delete-loc'></i>" +
+									"</div>" +
+								"</div>"
+							)
+							$("#sidebar-wrapper").show();
+						})
+					else {
 						$("#sidebar-wrapper").append(
-							"<div class = 'row' data-address = '" + $(".card-content").html() + "'>" + 
+							"<div class = 'row location-in-route' data-address = '" + $(".card-content").html() + "'>" + 
 								"<div class = 'col-md-6'>" +
 									$(".card-content").html() +
 								"</div>" +
@@ -330,41 +409,32 @@
 								"</div>" +
 							"</div>"
 						)
-						$("#sidebar-wrapper").show();
+					}
+					undefined_marker.setMap(null);	// Replace the undefined marker with a different marker
+													// to change color into blue
+					var pinColor = "2F76EE";
+					var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+						new google.maps.Size(21, 34),
+						new google.maps.Point(0,0),
+						new google.maps.Point(10, 34)
+					);
+					var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+						new google.maps.Size(40, 37),
+						new google.maps.Point(0, 0),
+						new google.maps.Point(12, 35)
+					);
+					var marker = new google.maps.Marker({
+						position: undefined_marker.getPosition(),
+						map: map,
+						icon: pinImage,
+						shadow: pinShadow,
+						draggable: false
 					})
-				else {
-					$("#sidebar-wrapper").append(
-						"<div class = 'row' data-address = '" + $(".card-content").html() + "'>" + 
-							"<div class = 'col-md-6'>" +
-								$(".card-content").html() +
-							"</div>" +
-							"<div class = 'col-md-1'>" +
-								"<i class = 'glyphicon glyphicon-remove close delete-loc'></i>" +
-							"</div>" +
-						"</div>"
-					)
-				}
-				undefined_marker.setMap(null);	// Replace the undefined marker with a different marker
-												// to change color into blue
-				var pinColor = "2F76EE";
-				var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-					new google.maps.Size(21, 34),
-					new google.maps.Point(0,0),
-					new google.maps.Point(10, 34)
-				);
-				var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
-					new google.maps.Size(40, 37),
-					new google.maps.Point(0, 0),
-					new google.maps.Point(12, 35)
-				);
-				var marker = new google.maps.Marker({
-					position: undefined_marker.getPosition(),
-					map: map,
-					icon: pinImage,
-					shadow: pinShadow
-				})
-				settle_markers[$(".card-content").html()] = marker;
-				undefined_marker = "";
+					settle_markers[$(".card-content").html()] = marker;
+					settle_markers.push($(".card-content").html());
+					undefined_marker = "";
+					calc_route();
+				} else alert("already in the path");
 			}
 		})
 		$(".close-card-info").click(function(){
@@ -372,10 +442,13 @@
 		})
 		$("body").on("click", ".delete-loc", function(){
 			var target = $(this).parent().parent().attr("data-address");
+			$("#card-info").hide(200);
 			$("#sidebar-wrapper > div.row[data-address='" + target + "']").remove()
-			console.log(target);
 			settle_markers[target].setMap(null);
+			var index = settle_markers.indexOf(target);
 			delete settle_markers[target];
+			settle_markers.splice(index, 1);
+			console.log(settle_markers)
 		})
 	})
 
