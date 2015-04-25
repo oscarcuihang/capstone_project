@@ -153,7 +153,7 @@ if(isset($_POST["action"])){
 <?php
 	}
 	else if($_POST["action"] == 'edit'){
-		if(isset(_POST[])){
+		if(isset($_POST["Jid"])){
 			$query = "SELECT * FROM travelJournal WHERE id = ".$_POST['Jid'];
 			$result= mysql_query($query,$conn) or die(mysql_error());
 			$record= mysql_fetch_assoc($result);
