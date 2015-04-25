@@ -124,6 +124,7 @@
 		color: #666;
 		cursor: pointer;
 	}
+
 </style>
 
 <?php include '../templates/navbar.html'; ?>
@@ -222,6 +223,8 @@
 				//draggable: true
 			});
 			marker.setVisible(false);
+			if(undefined_marker != "")
+				undefined_marker.setMap(null);
 			undefined_marker = marker;
 			var place = autocomplete.getPlace();
 			if (!place.geometry) {
@@ -348,9 +351,14 @@
 			
 			directionsService.route(request, function(response, status){
 				if(status == google.maps.DirectionsStatus.OK){
-					 directionsDisplay.setDirections(response);
+					directionsDisplay.setMap(map);
+					directionsDisplay.setDirections(response);
 				}
 			})
+		} else {
+			if(directionsDisplay != null){
+				directionsDisplay.setMap(null);
+			}
 		}
 	}
 
@@ -394,6 +402,8 @@
 									"<div class = 'col-md-1'>" +
 										"<i class = 'glyphicon glyphicon-remove close delete-loc'></i>" +
 									"</div>" +
+									"<i class = 'glyphicon glyphicon-arrow-up move-up'></i>" +
+									"<i class = 'glyphicon glyphicon-arrow-down move-down'></i>" +
 								"</div>"
 							)
 							$("#sidebar-wrapper").show();
@@ -407,6 +417,8 @@
 								"<div class = 'col-md-1'>" +
 									"<i class = 'glyphicon glyphicon-remove close delete-loc'></i>" +
 								"</div>" +
+								"<i class = 'glyphicon glyphicon-arrow-up move-up'></i>" +
+								"<i class = 'glyphicon glyphicon-arrow-down move-down'></i>" +
 							"</div>"
 						)
 					}
@@ -448,7 +460,38 @@
 			var index = settle_markers.indexOf(target);
 			delete settle_markers[target];
 			settle_markers.splice(index, 1);
-			console.log(settle_markers)
+			calc_route();
+			//console.log(settle_markers)
+		}).on("click", ".move-up", function(){
+			var $cur = $(this).parent();
+			var $pre = $cur.prev(".location-in-route");
+			if($pre.length != 0){
+				var index = settle_markers.indexOf($cur.attr("data-address"));
+				if(index > 0){
+					var tmp = settle_markers[index - 1];
+					settle_markers[index - 1] = settle_markers[index];
+					settle_markers[index] = tmp;
+				} else console.log("Error: fail to switch the index")
+				$pre.before($cur);
+				console.log(settle_markers)
+			}
+		}).on("click", ".move-down", function(){
+			var settle_markers_len = 0;
+			var i;
+			for(i in settle_markers)
+				settle_markers_len++;
+			var $cur = $(this).parent();
+			var $aft = $cur.next();
+			if($aft.length != 0){
+				var index = settle_markers.indexOf($cur.attr("data-address"));
+				if(index < settle_markers_len / 2 - 1){
+					var tmp = settle_markers[index + 1];
+					settle_markers[index + 1] = settle_markers[index];
+					settle_markers[index] = tmp;
+				}
+				$aft.after($cur);
+				console.log(settle_markers)
+			}
 		})
 	})
 
