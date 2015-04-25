@@ -37,7 +37,7 @@ function clickAction(form, Jid, action)
 <?php include '../templates/navbar.html'; ?>
    
 <form action='text_editor.php' id='action_form' method='POST'>
-    <input type='hidden' name = 'Jide'>
+    <input type='hidden' name = 'Jid'>
     <input type='hidden' name = 'action'>
 </form>
   
@@ -79,7 +79,7 @@ function clickAction(form, Jid, action)
         <!--The function bar-->
         
         <div class="f-title">
-          <a href="text_editor.php">Create</a>
+          <a onclick="clickAction('action_form', '', 'create');">Create</a>
           <h2>Travel Journal</h2>
           <a href="../home.php">Search</a>
         </div>
@@ -89,11 +89,31 @@ function clickAction(form, Jid, action)
           <?php $record= mysql_fetch_assoc($result);?>
           <h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
           <p><?php printf("%s", $record["journal_content"]) ?></p>
+		  <hr>
+		  <h3>Tag:</h3>  
+		  <p><a class="tag icon-tag"><?php$record["journal_tag1"]?></a> <a class="tag icon-tag"><?php$record["journal_tag2"]?></a> <a class="tag icon-tag"><?php$record["journal_tag3"]?></a> <a class="tag icon-tag"><?php$record["journal_tag4"]?></a> <a class="tag icon-tag"><?php$record["journal_tag5"]?></a></p>
+		  <hr>
+		  <h3>Comment:</h3>
+<?php 
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND comment_traveljournalid = ".$record["id"];
+	echo $query2;
+	$result2=mysql_query($query2, $conn) or die(mysql_error());
+	$total_num2 = mysql_num_rows($result2);
+	for($i=0;$i<$total_num2;$i++){
+		$record2= mysql_fetch_assoc($result2);
+?>
+	<p><b><?php $record2["user_fname"]?> <?php $record2["user_lname"]?>:</b></p> 
+	<p><?php $record["comment_text"]?></p>
+	<p color="gray"><?php $record2["comment_timestamp"]?></p>
+	<hr>
+<?php		
+	}
+?>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -104,11 +124,32 @@ function clickAction(form, Jid, action)
           <?php $record= mysql_fetch_assoc($result);?>
           <h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
           <p><?php printf("%s", $record["journal_content"]) ?></p>
+		  
+		  <hr>
+		  <h3>Tag:</h3>  
+		  <p><a class="tag icon-tag"><?php$record["journal_tag1"]?></a> <a class="tag icon-tag"><?php$record["journal_tag2"]?></a> <a class="tag icon-tag"><?php$record["journal_tag3"]?></a> <a class="tag icon-tag"><?php$record["journal_tag4"]?></a> <a class="tag icon-tag"><?php$record["journal_tag5"]?></a></p>
+		  <hr>
+		  <h3>Comment:</h3>
+<?php 
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND comment_traveljournalid = ".$record["id"];
+	echo $query2;
+	$result2=mysql_query($query2, $conn) or die(mysql_error());
+	$total_num2 = mysql_num_rows($result2);
+	for($i=0;$i<$total_num2;$i++){
+		$record2= mysql_fetch_assoc($result2);
+?>
+	<p><b><?php $record2["user_fname"]?> <?php $record2["user_lname"]?>:</b></p> 
+	<p><?php $record["comment_text"]?></p>
+	<p color="gray"><?php $record2["comment_timestamp"]?></p>
+	<hr>
+<?php		
+	}
+?>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -119,11 +160,32 @@ function clickAction(form, Jid, action)
           <?php $record= mysql_fetch_assoc($result);?>
           <h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
           <p><?php printf("%s", $record["journal_content"]) ?></p>
+
+		  <hr>
+		  <h3>Tag:</h3>  
+		  <p><a class="tag icon-tag"><?php$record["journal_tag1"]?></a> <a class="tag icon-tag"><?php$record["journal_tag2"]?></a> <a class="tag icon-tag"><?php$record["journal_tag3"]?></a> <a class="tag icon-tag"><?php$record["journal_tag4"]?></a> <a class="tag icon-tag"><?php$record["journal_tag5"]?></a></p>
+		  <hr>
+		  <h3>Comment:</h3>
+<?php 
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND comment_traveljournalid = ".$record["id"];
+	echo $query2;
+	$result2=mysql_query($query2, $conn) or die(mysql_error());
+	$total_num2 = mysql_num_rows($result2);
+	for($i=0;$i<$total_num2;$i++){
+		$record2= mysql_fetch_assoc($result2);
+?>
+	<p><b><?php $record2["user_fname"]?> <?php $record2["user_lname"]?>:</b></p> 
+	<p><?php $record["comment_text"]?></p>
+	<p color="gray"><?php $record2["comment_timestamp"]?></p>
+	<hr>
+<?php		
+	}
+?>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -134,11 +196,32 @@ function clickAction(form, Jid, action)
           <?php $record= mysql_fetch_assoc($result);?>
           <h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
           <p><?php printf("%s", $record["journal_content"]) ?></p>
+		  
+		  <hr>
+		  <h3>Tag:</h3>  
+		  <p><a class="tag icon-tag"><?php$record["journal_tag1"]?></a> <a class="tag icon-tag"><?php$record["journal_tag2"]?></a> <a class="tag icon-tag"><?php$record["journal_tag3"]?></a> <a class="tag icon-tag"><?php$record["journal_tag4"]?></a> <a class="tag icon-tag"><?php$record["journal_tag5"]?></a></p>
+		  <hr>
+		  <h3>Comment:</h3>
+<?php 
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND comment_traveljournalid = ".$record["id"];
+	echo $query2;
+	$result2=mysql_query($query2, $conn) or die(mysql_error());
+	$total_num2 = mysql_num_rows($result2);
+	for($i=0;$i<$total_num2;$i++){
+		$record2= mysql_fetch_assoc($result2);
+?>
+	<p><b><?php $record2["user_fname"]?> <?php $record2["user_lname"]?>:</b></p> 
+	<p><?php $record["comment_text"]?></p>
+	<p color="gray"><?php $record2["comment_timestamp"]?></p>
+	<hr>
+<?php		
+	}
+?>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+		  <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -149,11 +232,32 @@ function clickAction(form, Jid, action)
           <?php $record= mysql_fetch_assoc($result);?>
           <h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
           <p><?php printf("%s", $record["journal_content"]) ?></p>
+
+		  <hr>
+		  <h3>Tag:</h3>  
+		  <p><a class="tag icon-tag"><?php$record["journal_tag1"]?></a> <a class="tag icon-tag"><?php$record["journal_tag2"]?></a> <a class="tag icon-tag"><?php$record["journal_tag3"]?></a> <a class="tag icon-tag"><?php$record["journal_tag4"]?></a> <a class="tag icon-tag"><?php$record["journal_tag5"]?></a></p>
+		  <hr>
+		  <h3>Comment:</h3>
+<?php 
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND comment_traveljournalid = ".$record["id"];
+	echo $query2;
+	$result2=mysql_query($query2, $conn) or die(mysql_error());
+	$total_num2 = mysql_num_rows($result2);
+	for($i=0;$i<$total_num2;$i++){
+		$record2= mysql_fetch_assoc($result2);
+?>
+	<p><b><?php $record2["user_fname"]?> <?php $record2["user_lname"]?>:</b></p> 
+	<p><?php $record["comment_text"]?></p>
+	<p color="gray"><?php $record2["comment_timestamp"]?></p>
+	<hr>
+<?php		
+	}
+?>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -164,7 +268,7 @@ function clickAction(form, Jid, action)
       
       <div class="f-page">
         <div class="f-title">
-          <a href="text_editor.php">Create</a>
+          <a onclick="clickAction('action_form', '', 'create');">Create</a>
           <h2>Travel Journal</h2>
           <a href="../home.php">Search</a>
         </div>
@@ -177,7 +281,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -189,11 +293,31 @@ function clickAction(form, Jid, action)
           <?php $record= mysql_fetch_assoc($result);?>
           <h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
           <p><?php printf("%s", $record["journal_content"]) ?></p>
+		  <hr>
+		  <h3>Tag:</h3>  
+		  <p><a class="tag icon-tag"><?php$record["journal_tag1"]?></a> <a class="tag icon-tag"><?php$record["journal_tag2"]?></a> <a class="tag icon-tag"><?php$record["journal_tag3"]?></a> <a class="tag icon-tag"><?php$record["journal_tag4"]?></a> <a class="tag icon-tag"><?php$record["journal_tag5"]?></a></p>
+		  <hr>
+		  <h3>Comment:</h3>
+<?php 
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND comment_traveljournalid = ".$record["id"];
+	echo $query2;
+	$result2=mysql_query($query2, $conn) or die(mysql_error());
+	$total_num2 = mysql_num_rows($result2);
+	for($i=0;$i<$total_num2;$i++){
+		$record2= mysql_fetch_assoc($result2);
+?>
+	<p><b><?php $record2["user_fname"]?> <?php $record2["user_lname"]?>:</b></p> 
+	<p><?php $record["comment_text"]?></p>
+	<p color="gray"><?php $record2["comment_timestamp"]?></p>
+	<hr>
+<?php		
+	}
+?>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -208,7 +332,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -224,7 +348,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -235,7 +359,7 @@ function clickAction(form, Jid, action)
       
       <div class="f-page">
         <div class="f-title">
-          <a href="text_editor.php">Create</a>
+          <a onclick="clickAction('action_form', '', 'create');">Create</a>
           <h2>Travel Journal</h2>
           <a href="../home.php">Search</a>
         </div>
@@ -247,7 +371,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -263,7 +387,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -279,7 +403,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -294,7 +418,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -309,7 +433,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -324,7 +448,7 @@ function clickAction(form, Jid, action)
 ?>
       <div class="f-page">; 
         <div class="f-title">
-          <a href="text_editor.php">Create</a>
+          <a onclick="clickAction('action_form', '', 'create');">Create</a>
           <h2>Travel Journal</h2>
           <a href="../home.php">Search</a>
         </div>
@@ -340,7 +464,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -359,7 +483,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -378,7 +502,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -397,7 +521,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -416,7 +540,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -434,7 +558,7 @@ function clickAction(form, Jid, action)
       <div class="f-page">
         <!--The function bar-->       
         <div class="f-title">
-          <a href="text_editor.php">Create</a>
+          <a onclick="clickAction('action_form', '', 'create');">Create</a>
           <h2>Travel Journal</h2>
           <a href="">Search</a>
         </div>
@@ -448,7 +572,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -463,7 +587,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -478,7 +602,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -493,7 +617,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -508,7 +632,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -518,7 +642,7 @@ function clickAction(form, Jid, action)
       </div>      
       <div class="f-page">
         <div class="f-title">
-          <a href="text_editor.php">Create</a>
+          <a onclick="clickAction('action_form', '', 'create');">Create</a>
           <h2>Travel Journal</h2>
           <a href="../home.php">Search</a>
         </div>
@@ -534,7 +658,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -554,7 +678,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -573,7 +697,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -594,7 +718,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -611,7 +735,7 @@ function clickAction(form, Jid, action)
 ?>
       <div class="f-page">
         <div class="f-title">
-          <a href="text_editor.php">Create</a>
+          <a onclick="clickAction('action_form', '', 'create');">Create</a>
           <h2>Travel Journal</h2>
           <a href="../home.php">Search</a>
         </div>
@@ -626,7 +750,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -641,7 +765,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -656,7 +780,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -671,7 +795,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -686,7 +810,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -698,7 +822,7 @@ function clickAction(form, Jid, action)
 
       <div class="f-page">
         <div class="f-title">
-          <a href="text_editor.php">Create</a>
+          <a onclick="clickAction('action_form', '', 'create');">Create</a>
           <h2>Travel Journal</h2>
           <a href="../home.php">Search</a>
         </div>
@@ -711,7 +835,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -727,7 +851,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -742,7 +866,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -758,7 +882,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -770,7 +894,7 @@ function clickAction(form, Jid, action)
 
       <div class="f-page">
         <div class="f-title">
-          <a href="text_editor.php">Create</a>
+          <a onclick="clickAction('action_form', '', 'create');">Create</a>
           <h2>Travel Journal</h2>
           <a href="../home.php">Search</a>
         </div>  
@@ -785,7 +909,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -805,7 +929,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -825,7 +949,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -844,7 +968,7 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
@@ -859,11 +983,31 @@ function clickAction(form, Jid, action)
           <?php $record= mysql_fetch_assoc($result);?>
           <h3><?php printf("%s", $record["journal_title"]) ?><span>Published  <?php printf("%s",$record["journal_timestamp"])?></span></h3>
           <p><?php printf("%s", $record["journal_content"]) ?></p>
+		  <hr>
+		  <h3>Tag:</h3>  
+		  <p><a class="tag icon-tag"><?php$record["journal_tag1"]?></a> <a class="tag icon-tag"><?php$record["journal_tag2"]?></a> <a class="tag icon-tag"><?php$record["journal_tag3"]?></a> <a class="tag icon-tag"><?php$record["journal_tag4"]?></a> <a class="tag icon-tag"><?php$record["journal_tag5"]?></a></p>
+		  <hr>
+		  <h3>Comment:</h3>
+<?php 
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND comment_traveljournalid = ".$record["id"];
+	echo $query2;
+	$result2=mysql_query($query2, $conn) or die(mysql_error());
+	$total_num2 = mysql_num_rows($result2);
+	for($i=0;$i<$total_num2;$i++){
+		$record2= mysql_fetch_assoc($result2);
+?>
+	<p><b><?php $record2["user_fname"]?> <?php $record2["user_lname"]?>:</b></p> 
+	<p><?php $record["comment_text"]?></p>
+	<p color="gray"><?php $record2["comment_timestamp"]?></p>
+	<hr>
+<?php		
+	}
+?>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>');")>Edit</a>
+          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
           <a href="">Delete</a>
 <?php 
     }
