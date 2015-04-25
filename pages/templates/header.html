@@ -2,7 +2,7 @@
   //include '../../database.php'; 
 	if(!session_start())
 		die("Error: fail to start session");
-    $conn = mysql_connect("localhost", "root", "");
+    $conn = mysql_connect("localhost", "root", "root");
 	mysql_select_db("rtp", $conn);
     mysql_set_charset('utf8',$conn);
 
