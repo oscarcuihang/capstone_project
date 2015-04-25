@@ -70,7 +70,6 @@ CREATE TABLE IF NOT EXISTS `rtp`.`tripPlan` (
   `trip_title` VARCHAR(50) NOT NULL,
   `trip_startaddress` VARCHAR(100) NOT NULL,
   `trip_endaddress` VARCHAR(100) NOT NULL,
-  `trip_detailid` INT NULL,
   `trip_last_updated` TIMESTAMP NOT NULL,
   `detail_waypoint1_address` VARCHAR(100) NULL DEFAULT NULL,
   `detail_waypoint2_address` VARCHAR(100) NULL DEFAULT NULL,
@@ -198,6 +197,22 @@ CREATE TABLE IF NOT EXISTS `rtp`.`travelJournalComment` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `rtp`.`rating`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `rtp`.`rating` ;
+
+CREATE TABLE IF NOT EXISTS `rtp`.`rating` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `rating_user_id` INT NOT NULL,
+  `rating_category` INT NOT NULL,
+  `rating_category_id` INT NOT NULL,
+  `rating_value` INT NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
