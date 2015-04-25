@@ -404,6 +404,7 @@
 									"</div>" +
 									"<i class = 'glyphicon glyphicon-arrow-up move-up'></i>" +
 									"<i class = 'glyphicon glyphicon-arrow-down move-down'></i>" +
+									"<hr>" +
 								"</div>"
 							)
 							$("#sidebar-wrapper").show();
@@ -419,6 +420,7 @@
 								"</div>" +
 								"<i class = 'glyphicon glyphicon-arrow-up move-up'></i>" +
 								"<i class = 'glyphicon glyphicon-arrow-down move-down'></i>" +
+								"<hr>" +
 							"</div>"
 						)
 					}
@@ -473,6 +475,7 @@
 					settle_markers[index] = tmp;
 				} else console.log("Error: fail to switch the index")
 				$pre.before($cur);
+				calc_route();
 				console.log(settle_markers)
 			}
 		}).on("click", ".move-down", function(){
@@ -490,6 +493,7 @@
 					settle_markers[index] = tmp;
 				}
 				$aft.after($cur);
+				calc_route();
 				console.log(settle_markers)
 			}
 		})
