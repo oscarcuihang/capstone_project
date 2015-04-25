@@ -31,12 +31,13 @@
             </div>
             <div class="col-md-5">
                 <h3>Hang CUI</h3>
-                <p>Web Server</p>
-                <p>Database</p>
+                <p>AWS Web Server</p>
+                <p>Data Architecture/Database</p>
                 <p>Trip Plan, Google Maps API</p>
                 <p>UI Design</p>
                 <a class="btn btn-primary" href="http://cuihang.net">View <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
+
         </div>
         <!-- /.row -->
 
@@ -53,7 +54,6 @@
                 <h3>Zhenni HU</h3>
 				<p>Travel Journal</p>
                 <p>Database</p>
-                <p>User Sharing</p>
                 <p>Q/A Section</p>
                                
 				<a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -72,8 +72,8 @@
             </div>
             <div class="col-md-5">
                 <h3>Zhongrong JIAN</h3>
+                <p>Authentication</p>
 				<p>Trip Plan, Google Maps API</p>
-                <p>UI Design</p>
 				<a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
@@ -92,7 +92,6 @@
             <div class="col-md-5">
                 <h3>Bowei XU</h3>
                 <p>Travel Journal</p>
-                <p>User Sharing</p>
                 <p>Q/A Section</p>
                 <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
