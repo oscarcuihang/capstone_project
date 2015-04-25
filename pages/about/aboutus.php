@@ -21,6 +21,7 @@
                 <h1 class="page-header">About Team
                     <small>Road Trip Planner</small>
                     <a class="icon_color" href="https://github.com/oscarcuihang/capstone_project" target="_blank"><i class="fa fa-github-alt fa-2x"></i></a>
+                    <small>Now You See Me.</small>
                 </h1>
             </div>
         </div>
