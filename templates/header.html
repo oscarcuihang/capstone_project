@@ -4,6 +4,7 @@
 		die("Error: fail to start session");
 	$conn = mysql_connect("localhost", "root", "");
 	mysql_select_db("rtp", $conn);
+    mysql_set_charset('utf8',$conn);
 ?>
 
 <!DOCTYPE html>
