@@ -168,7 +168,6 @@ if(isset($_POST["action"])){
 	else if($_POST["action"] == "edit"){
 		if(isset($_POST["Jid"])){
 			$jid = $_POST["Jid"];
-			echo $jid."asdasds";
 			$query = "SELECT * FROM travelJournal WHERE id = '$jid' ";
 			$result= mysql_query($query,$conn) or die(mysql_error());
 			$record= mysql_fetch_assoc($result);
@@ -188,8 +187,10 @@ if(isset($_POST["action"])){
 							</div>
 						</div>
 					</div>
-					<textarea class = "form-control" rows = "3" name = "editor" id = "editor" value="<?php echo $record["journal_content"]; ?>"></textarea>
+					<textarea class = "form-control" rows = "3" name = "editor" id = "editor"> <?php echo $record["journal_content"]; ?></textarea>
 					
+
+
 					<div style = "margin-top: 10px;">
 						<label for="journal_tag">Please set Tags: </label>
 						<input type = "text" name = "tag1" id = "tag1" value="<?php echo $record["journal_tag1"]; ?>" style = "width:90px">
