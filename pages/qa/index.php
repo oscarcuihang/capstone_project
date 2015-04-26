@@ -81,7 +81,7 @@ for($i=0; $i<$total_num;$i++){
 	}
 ?>
 							  
-							  <h2 class="title"><a href="question.php"><?php echo $record["question_text"]?></a></h2>
+							  <p1 class="title"><a class = "myquestion" href="question.php"><?php echo $record["question_text"]?></a></p1>
 							  
 							</div>
 					</section>
@@ -181,6 +181,31 @@ if(typeof BAIDU_CLB_fillSlotAsync === 'function') {
     BAIDU_CLB_fillSlotAsync('981179','adid-981179');
 }
 </script>
+
+
+
+<script type="text/javascript">
+
+    //charactors limit for question
+    $(function() {
+        var limit = 200;
+        for (var j = 0; j < $(".myquestion").length; j++)
+        { 
+            var chars = $(".myquestion").eq(j).text(); 
+            if (chars.length > limit) {
+                var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
+                var dots = $("<span class='dots'>... </span>");
+
+                $(".myquestion").eq(j).empty()
+                    .append(visiblePart)
+                    .append(dots);
+            }
+        }
+    });
+</script>
+
+
+
 
 <?php include '../templates/footer.html'; ?>
 
