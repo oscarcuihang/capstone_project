@@ -91,7 +91,6 @@ if(isset($_POST['search'])){
             <h3><?php echo $journal_title; ?></h3>
             <h4><?php echo $user_name; ?></h4>
             <p><?php echo $journal_timestamp; ?></p>
-            <p><?php echo $journal_id; ?></p>
 
             <p class="myPara"><?php echo $journal_content; ?></p>
             <?php
@@ -135,7 +134,7 @@ if(isset($_POST['search'])){
     <!--display QA col-->
     <div class="col-md-3"><h2>Q/As</h2><hr>
 <?php
-        $query_question = "SELECT * FROM question WHERE (question_text LIKE '%$input%') ORDER BY question_timestamp DESC LIMIT 20";
+        $query_question = "SELECT * FROM question WHERE (question_text LIKE '%$input%') ORDER BY question_timestamp DESC LIMIT 15";
         $result = mysql_query($query_question,$conn) or die(mysql_error());
         $rows = mysql_num_rows($result);
         if ($rows == 0){
@@ -234,7 +233,7 @@ else {
     <!--display QA col-->
     <div class="col-md-3"><h2>Q/As</h2><hr>
 <?php
-        $query_question = "SELECT * FROM question ORDER BY question_timestamp DESC LIMIT 20";
+        $query_question = "SELECT * FROM question ORDER BY question_timestamp DESC LIMIT 15";
         $result = mysql_query($query_question,$conn) or die(mysql_error());
         while ($line = mysql_fetch_assoc($result)) 
         {
