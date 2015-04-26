@@ -38,7 +38,7 @@ for($i=0; $i<$total_num;$i++){
 					<section class="stream-list__item">
 							<div class="qa-rank">
 							  <div class="votes plus hidden-xs">
-								<?php echo $record["question_rate_avg"] ?><small>Rate</small>
+								<?php echo $record["question_rate_avg"]."/5"; ?><small>Rate</small>
 							  </div>
 							  <div class="answers answered solved">
 <?php
@@ -46,7 +46,7 @@ for($i=0; $i<$total_num;$i++){
 	$result2= mysql_query($query2,$conn) or die(mysql_error());
 	$answer_num = mysql_num_rows($result2);
 ?>                
-									<?php echo $answer_num;?><small>Answer/Reply</small>
+									<?php echo $answer_num;?><small>Reply</small>
 							  </div>
 							  <div class="views hidden-xs">
 									<?php echo $record["question_rate_num"];?><small>Votes</small>
