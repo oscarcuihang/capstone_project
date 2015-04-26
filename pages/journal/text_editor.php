@@ -1,8 +1,6 @@
 <?php include '../templates/header.html'; ?>
 <?php include '../templates/navbar.html'; ?>
-<?php 
-	if(!isset($_REQUEST["editor"])){
-?>
+
 <script src="../../style/RichTextEditor/ckeditor.js"></script>
 <script>
 
@@ -228,6 +226,6 @@ if(isset($_POST["action"])){
 			}
 		});
 	</script>
-<?php } else print_r($_REQUEST); ?>
 
-<?php //include '../templates/footer.html'; ?>
+
+<?php include '../templates/footer.html'; ?>

@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="//static.segmentfault.com/build/global/css/responsive.2e038079.css" />
 
 
+
 <?php include '../templates/navbar.html'; ?>
 
 <div class="wrap">
@@ -18,14 +19,14 @@
                 </p>
 
                 <ul class="nav nav-tabs nav-tabs-zen mb10">
-                    <li class="active"><a href="index.php">Newest</a></li>
-                    <li><a href="hottest_q.php">Hottest</a></li>
+                    <li><a href="index.php">Newest</a></li>
+                    <li class="active"><a href="hottest_q.php">Hottest</a></li>
                     <li><a href="unanswered_q.php">Unanswered</a></li>
                 </ul>
 
 			<div class="stream-list question-stream">
 <?php
-$query = "SELECT * FROM question ORDER BY question_timestamp DESC LIMIT 50;";
+$query = "SELECT * FROM question WHERE id=(SELECT COUNT(*) FROM answer GROUP BY answer_questionid;)";
 $result= mysql_query($query,$conn) or die(mysql_error());
 $total_num = mysql_num_rows($result);
 
@@ -64,7 +65,7 @@ for($i=0; $i<$total_num;$i++){
                                   </li>
               </ul>
               
-              <h2 class="title"><a href="question.php"><?php echo $record["question_text"]?></a></h2>
+              <h2 class="title"><a href="/q/1010000002614099"><?php echo $record["question_text"]?></a></h2>
               
             </div>
     </section>
@@ -75,7 +76,7 @@ for($i=0; $i<$total_num;$i++){
                                     </div><!-- /.stream-list -->
 
                 <div class="text-center">
-                                            <ul class="pagination"><li class="active"><a href="javascript:void(0);">1</a></li><li><a href="/questions/hottest?page=2">2</a></li><li><a href="/questions/hottest?page=3">3</a></li><li><a href="/questions/hottest?page=4">4</a></li><li><a href="/questions/hottest?page=5">5</a></li><li class="disabled"><span>&hellip;</span></li><li class="next"><a href="/questions/hottest?page=2">下一页</a></li></ul>
+                                            <ul class="pagination"><li class="active"><a href="javascript:void(0);">1</a></li><li><a href="/questions/hottest?page=2">2</a></li><li><a href="/questions/hottest?page=3">3</a></li><li><a href="/questions/hottest?page=4">4</a></li><li><a href="/questions/hottest?page=5">5</a></li><li class="disabled"><span>&hellip;</span></li><li class="next"><a href="/questions/hottest?page=2">��һҳ</a></li></ul>
                                     </div>
             </div><!-- /.main -->
            
@@ -166,4 +167,3 @@ if(typeof BAIDU_CLB_fillSlotAsync === 'function') {
 </script>
 
 <?php include '../templates/footer.html'; ?>
-

@@ -119,8 +119,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -161,8 +161,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -339,8 +339,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -381,8 +381,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -423,8 +423,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -466,8 +466,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -516,8 +516,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -559,8 +559,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -602,8 +602,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -644,8 +644,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -686,8 +686,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -744,8 +744,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -790,8 +790,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -836,8 +836,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -882,8 +882,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -928,8 +928,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -987,8 +987,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1029,8 +1029,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1113,8 +1113,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1155,8 +1155,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1208,8 +1208,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1255,8 +1255,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1301,8 +1301,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1349,8 +1349,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1408,8 +1408,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1450,8 +1450,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1492,8 +1492,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1534,8 +1534,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1576,8 +1576,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1628,8 +1628,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1671,8 +1671,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1713,8 +1713,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1756,8 +1756,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1810,8 +1810,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1857,8 +1857,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1904,8 +1904,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }
@@ -1950,8 +1950,8 @@ function clickAction(form, Jid, action)
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
-          <a onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</a>
-          <a href="">Delete</a>
+          <button class="btn btn-warning" onclick="clickAction('action_form', '<?php $record["id"] ?>', 'edit');">Edit</button>
+          <button class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $record["id"]; ?>">Delete</button>
 <?php 
     }
   }

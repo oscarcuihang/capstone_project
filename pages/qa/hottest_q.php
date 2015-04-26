@@ -6,7 +6,9 @@
 <link rel="stylesheet" href="//static.segmentfault.com/build/global/css/responsive.2e038079.css" />
 
 
+
 <?php include '../templates/navbar.html'; ?>
+
 
 <div class="wrap">
     <div class="container">
@@ -18,14 +20,14 @@
                 </p>
 
                 <ul class="nav nav-tabs nav-tabs-zen mb10">
-                    <li class="active"><a href="index.php">Newest</a></li>
-                    <li><a href="hottest_q.php">Hottest</a></li>
+                    <li><a href="index.php">Newest</a></li>
+                    <li class="active"><a href="hottest_q.php">Hottest</a></li>
                     <li><a href="unanswered_q.php">Unanswered</a></li>
                 </ul>
 
 			<div class="stream-list question-stream">
 <?php
-$query = "SELECT * FROM question ORDER BY question_timestamp DESC LIMIT 50;";
+$query = "SELECT * FROM question ORDER BY question_rate_num DESC LIMIT 50;";
 $result= mysql_query($query,$conn) or die(mysql_error());
 $total_num = mysql_num_rows($result);
 
@@ -64,7 +66,7 @@ for($i=0; $i<$total_num;$i++){
                                   </li>
               </ul>
               
-              <h2 class="title"><a href="question.php"><?php echo $record["question_text"]?></a></h2>
+              <h2 class="title"><a href="/q/1010000002614099"><?php echo $record["question_text"]?></a></h2>
               
             </div>
     </section>
