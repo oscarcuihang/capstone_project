@@ -1,5 +1,16 @@
 <?php include '../templates/header.html'; ?>
-
+<?php 
+	$trip_info = array();
+	if(isset($_REQUEST["tripid"])){
+		$trip_id = $_REQUEST["tripid"];
+		$result = mysql_query("SELECT * FROM tripplan WHERE id = $trip_id") or die(mysql_error());
+		$num = mysql_num_rows($result);
+		if($num > 0){
+			$row = mysql_fetch_assoc($result);
+			$trip_info = $row;
+		} else $_REQUEST["tripid"] = NULL;
+	}
+?>
  <style>
 	*{
 		z-index: 1;
@@ -134,27 +145,39 @@
 	}
 	
 	#sidebar-content{
-		height: 89%;
+		height: 84%;
 	}
 		
 	#path-button-set{
 		text-align: center;
 		height: 10%;
 	}
+	
+	table.plan-table > tr{
+		cursor: pointer;
+	}
+	
+	table.plan-table > tr:hover{
+		background-color: #97FFFF;
+	}
+
 </style>
 
 <?php include '../templates/navbar.html'; ?>
-	<input id = "trip_id" type = "hidden" value = "<?= (isset($_REQUEST["tripid"])? $_REQUEST["tripid"] : ""); ?>" name = "dfsdf">
 	
 	<div id="wrapper">
 	
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
 			<div id = "siderbar-inner-wrapper">
+				<div class = "panel-heading trip-plan-title" style = "text-align:center;" contentEditable>
+					<?= isset($trip_info["trip_title"])? $trip_info["trip_title"] : "Unname Travel Plan"; ?>
+				</div>
+				<hr style = "margin:0px;"/>
 				<div id = "sidebar-content">
 				</div>
 				<div id = "path-button-set">
-					<button class="btn btn-default save-path" type="button" <?= (isset($_SESSION["id"])? "" : "disabled"); ?>>Save</button>
+					<button class="btn btn-default save-path" type="button" <?= (isset($_SESSION["id"])? ((!isset($_REQUEST["tripid"]) || (isset($trip_info["trip_userid"]) && $_SESSION["id"] == $trip_info["trip_userid"]))? "" : "disabled" ) : "disabled"); ?>>Save</button>
 					<button class = "btn btn-default delete-path" type = "button">Start Over</button>
 					<button class = "btn btn-default load-path" type = "button" <?= (isset($_SESSION["id"])? "" : "disabled"); ?>>Load</button>
 				</div>
@@ -206,13 +229,54 @@
 <script type='text/javascript' src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed&signed_in=true&libraries=places"></script>
 
 <script type='text/javascript'>
- 
 	var undefined_marker = "";	// markers not in the path, only one will appear on the map
 	var settle_markers = [];		// markers included in the path
 	var map = "";
 	var last_index_marker = 0;
 	var directionsService = new google.maps.DirectionsService();
 	var directionsDisplay;
+	var trip_id = <?= (isset($_REQUEST["tripid"])? $_REQUEST["tripid"] : -1); ?>;
+	var trip_info = JSON.parse('<?= (isset($_REQUEST["tripid"])? json_encode($trip_info) : json_encode(array())); ?>');
+	
+	function cordTranslate(lat, lng){
+		location = new google.maps.LatLng(lat, lng);
+		var pinColor = "2F76EE";
+		var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+			new google.maps.Size(21, 34),
+			new google.maps.Point(0,0),
+			new google.maps.Point(10, 34)
+		);
+		var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+			new google.maps.Size(40, 37),
+			new google.maps.Point(0, 0),
+			new google.maps.Point(12, 35)
+		);
+		var marker = new google.maps.Marker({
+			position: location.getPosition(),
+			map: map,
+			icon: pinImage,
+			shadow: pinShadow,
+			draggable: false
+		})
+		return marker;
+	}
+	
+	function getInfoByCord(lat, lng){
+		console.log(lat + "," + lng)
+		var result;
+		$.ajax({
+			url: "http://maps.googleapis.com/maps/api/geocode/json",
+			type: "GET",
+			async: false,
+			data: { latlng: lat + "," + lng, sensor: "true_or_false"},
+			success: function(data, status){
+				console.log(data)
+				result = data.results[0].formatted_address;
+				return result;
+			}
+		})
+	}
+	
 	function initialize() {
 		var mapOptions = {
 			zoom: 11
@@ -240,7 +304,6 @@
 		autocomplete.bindTo('bounds', map);
 
 		//var infowindow = new google.maps.InfoWindow();
-		
 
 		google.maps.event.addListener(autocomplete, 'place_changed', function() {
 			var marker = new google.maps.Marker({
@@ -390,6 +453,13 @@
 
 	google.maps.event.addDomListener(window, 'load', initialize);
 
+	if(trip_info.length != 0){
+		var loc = [];
+		var loc1 = trip_info.trip_startaddress;
+		loc1 = loc1.split(",");
+		var startinfo = getInfoByCord(loc1[0], loc1[1]);
+		console.log(startinfo)
+	} else console.log("empty trip");
   </script>
         
   
@@ -524,6 +594,7 @@
 			}
 		}).on("click", ".save-path", function(){
 			if($(".path-window-content").length == 0){
+				var title = $(".trip-plan-title").html().trim() == "Unname Travel Plan" ? "" : $(".trip-plan-title").html().trim();
 				$("body").append(
 					"<div class = 'path-window-wrapper' style = 'position:absolute;left:50%;width:500px;top:20%'>" +
 						"<div class='panel panel-default path-window-content' style = 'position: relative;right:50%;'>" +
@@ -532,7 +603,7 @@
 							"</div>" +
 							"<div class='panel-body'>" +
 								"<div class='input-group'>" +
-									"<input type='text' class='form-control plan-name' placeholder='Travel Plan Name'>" +
+									"<input type='text' class='form-control plan-name' placeholder='Travel Plan Name' value = '" + title + "'>" +
 									"<span class='input-group-btn'>" +
 										"<button class='btn btn-default save-path-submit' type='button'>Save</button>" +
 									"</span>" +
@@ -559,7 +630,46 @@
 			$(".location-in-route").remove();
 			calc_route();
 		}).on("click", ".load-path", function(){
-			
+			if($(".path-window-wrapper").length > 0)
+				$("div.path-window-wrapper").remove();
+			$("body").append(
+				"<div class = 'path-window-wrapper' style = 'position:absolute;left:50%;min-width:500px;top:20%;display:none;'>" +
+					"<div class='panel panel-default path-window-content' style = 'position: relative;right:50%;'>" +
+						"<div class='panel-heading'>Load a path" +
+							"<a aria-hidden='true' class = 'pull-right close-path-panel' style = 'cursor:pointer;color:grey;'>&times;</a>" +
+						"</div>" +
+						"<div class='panel-body path-load-content'>" +
+						"</div>" +
+					"</div>" +
+				"</div>"
+			)
+			$.ajax({
+				type: "POST",
+				url: "ajax_handler.php",
+				data: {operation: "loadplan"},
+				success: function(data){
+					var content = "";
+					if(JSON.parse(data).content.length > 0){
+						var plans = JSON.parse(data).content;
+						console.log(plans)
+						content = "<table class = 'table plan-table'>\n<tr>\n<th>plan name</th><th>latest update time</th>\n</tr>\n";
+						for(var i = 0; i < plans.length; i++)
+							content += "<tr data-id = '" +plans[i].id + "' class = 'plan-click-load'><td>" + plans[i].trip_title + "</td><td>" + plans[i].trip_last_updated + "</td></tr>";
+						content += "\n</table>\n<input type = 'hidden' id = 'plan-id'>\n<button class = 'btn btn-default pull-right load-this-plan'>Load</button>";
+					} else {
+						content = "<p>You have not made any plans yet! Come and make your own plan now!</p>";
+					}
+					$("div.path-load-content").html(content)
+				}
+			})
+			$(".path-window-content").draggable();
+			$('div.path-window-content').on('mousedown mouseup', function mouseState(e) {
+				if (e.type == "mousedown") {
+					//code triggers on hold
+					$(".path-window-content").css("cursor", "move");
+				} else $(".path-window-content").css("cursor", "default");
+			});
+			$("div.path-window-wrapper").fadeIn(500);
 		}).on("click", ".close-path-panel", function(){
 			$(".path-window-content").fadeOut(500, function(){ $(".path-window-content").remove() });
 		}).on("click", ".save-path-submit", function(){
@@ -579,14 +689,18 @@
 					tmp.lng = settle_markers[settle_markers[i]].getPosition().lng();
 					loc_string.push(tmp);
 				}
-				console.log(loc_string)
-				var tripid = $("#trip_id").val() == "" ? "unnamed" : $("#trip_id").val();
 				$.ajax({
 					type: "POST",
 					url: "ajax_handler.php",
-					data: {json:JSON.stringify(loc_string), trip_id: trip_id},
+					data: {json:JSON.stringify(loc_string), trip_id: trip_id, operation: "trip_save", title: name},
 					success: function(data){
-						
+						console.log(data)
+						if(JSON.parse(data).trip_id != null && parseInt(JSON.parse(data).trip_id) != -1){
+							$("div.path-window-content").fadeOut(200, function(){
+								$("div.path-window-wrapper").remove();
+								window.location.href = "index.php?tripid=" + JSON.parse(data).trip_id;
+							})
+						} else console.log(data);
 					}
 				})
 			} else {
@@ -602,6 +716,22 @@
 				$(".warning-window").prepend(content);
 				$(".warning-window > .alert:first-child").fadeIn(800).delay(3000).fadeOut(1000, function(){$(this).remove();});
 				
+			}
+		}).on("click", ".plan-click-load", function(){
+			var id = $(this).attr("data-id");
+			$("#plan-id").val(id);
+		}).on("click", "button.load-this-plan", function(){
+			var selected = $("#plan-id").val() == "" ? false : true;
+			if(selected){
+				$(".path-window-wrapper").fadeOut(200, function(){
+					window.location.href = "index.php?tripid=" + $("#plan-id").val();
+				})
+			} else {
+				var content = "<div class='alert alert-danger' role='alert' style = 'width: 100%;z-index:2;display:none;'>" +
+								"Notice: No plan is selected yet!" +
+							"</div>";
+				$(".warning-window").prepend(content);
+				$(".warning-window > .alert:first-child").fadeIn(800).delay(3000).fadeOut(1000, function(){$(this).remove();});
 			}
 		})
 	})	

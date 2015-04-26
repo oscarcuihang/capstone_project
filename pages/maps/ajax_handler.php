@@ -139,6 +139,58 @@ if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
 	//
 	$r = register_new_user($_REQUEST, $conn);
 	echo $r;
+} else if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == "trip_save"){
+	$receive = $_REQUEST;
+	$json = json_decode($receive["json"], true);
+	$title = $receive["title"];
+	$trip_id = ($receive["trip_id"] == -1)? "DEFAULT" : $receive["trip_id"];
+	$head = array_shift($json);
+	$start = $head["lat"]. "," . $head["lng"];
+	$end = end($json)["lat"]. ",". end($json)["lng"];
+	array_pop($json);
+	$userid = $_SESSION["id"];
+	if($trip_id == -1){
+		$query = "INSERT INTO tripplan VALUES($trip_id, $userid, '$title', '$start', '$end', DEFAULT";
+		for($i = 0; $i < 8; $i++){
+			if(isset($json[$i])){
+				$tmp = $json[$i];
+				$tmp = $tmp["lat"]. ",". $tmp["lng"];
+				$query .= ", '$tmp'";
+			} else $query .= ", NULL";
+		}
+		$query .= ", DEFAULT, DEFAULT)";
+		//echo $query;
+		mysql_query($query) or die(mysql_error());
+	} else {
+		$query = "UPDATE tripplan SET trip_title = '$title', trip_startaddress = '$start', trip_endaddress = '$end', trip_last_updated = DEFAULT";
+		for($i = 0; $i < 8; $i++){
+			if(isset($json[$i])){
+				$tmp = $json[$i];
+				$tmp = $tmp["lat"]. ",". $tmp["lng"];
+				$query .= ", detail_waypoint". $i. "_address = '$tmp'";
+			} else $query .= ", detail_waypoint". $i. "_adress = NULL";
+		}
+		$query .= " WHERE id = $trip_id";
+	}
+	if($trip_id != -1){
+		$result = mysql_query("SELECT id FROM tripplan WHERE trip_userid = $userid ORDER BY trip_last_updated DESC") or die(mysql_error());
+		if(mysql_num_rows($result) > 0){
+			$row = mysql_fetch_assoc($result);
+			echo json_encode(array("trip_id" => $row["id"]));
+		} else echo json_encode(array("trip_id" => -1));
+	} else echo json_encode(array("trip_id" => $trip_id));
+} else if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == "loadplan"){
+	$id = $_SESSION["id"];
+	$result = mysql_query("SELECT * FROM tripplan WHERE trip_userid = $id ORDER BY trip_last_updated DESC") or die(mysql_error());
+	$num = mysql_num_rows($result);
+	$plans = array();
+	if($num > 0){
+		$plans["content"] = array();
+		while($row = mysql_fetch_assoc($result)){
+			$plans["content"][] = $row;
+		}
+		echo json_encode($plans);
+	} else echo json_encode(array("content" => array()));
 } else echo "fail";
 mysql_close($conn);
 ?>
