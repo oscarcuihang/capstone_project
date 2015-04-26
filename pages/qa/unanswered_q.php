@@ -1,6 +1,6 @@
 <!--
-	The Hottest page shows the questions order by
-	number of rating(votes number) from highest to lowest
+	The unanswered question page shows the questions
+	order by time , using not exist to select
 -->
 <?php include '../templates/header.html'; ?>
 
@@ -22,13 +22,13 @@
 
                 <ul class="nav nav-tabs nav-tabs-zen mb10">
                     <li><a href="index.php">Newest</a></li>
-                    <li class="active"><a href="hottest_q.php">Hottest</a></li>
-                    <li><a href="unanswered_q.php">Unanswered</a></li>
+                    <li><a href="hottest_q.php">Hottest</a></li>
+                    <li class="active"><a href="unanswered_q.php">Unanswered</a></li>
                 </ul>
 
 				<div class="stream-list question-stream">
 <?php
-$query = "SELECT * FROM question ORDER BY question_rate_num DESC LIMIT 50;";
+$query = "SELECT * FROM question WHERE id NOT IN (SELECT answer_questionid FROM answer) ORDER BY question_timestamp;";
 $result= mysql_query($query,$conn) or die(mysql_error());
 $total_num = mysql_num_rows($result);
 
@@ -38,7 +38,7 @@ for($i=0; $i<$total_num;$i++){
 					<section class="stream-list__item">
 							<div class="qa-rank">
 							  <div class="votes plus hidden-xs">
-								<?php echo $record["question_rate_avg"] ?><small>Rate</small>
+								<?php echo $record["question_rate_avg"]."/5"; ?><small>Rate</small>
 							  </div>
 							  <div class="answers answered solved">
 <?php
@@ -46,7 +46,7 @@ for($i=0; $i<$total_num;$i++){
 	$result2= mysql_query($query2,$conn) or die(mysql_error());
 	$answer_num = mysql_num_rows($result2);
 ?>                
-									<?php echo $answer_num;?><small>Answer/Reply</small>
+									<?php echo $answer_num;?><small>Reply</small>
 							  </div>
 							  <div class="views hidden-xs">
 									<?php echo $record["question_rate_num"];?><small>Votes</small>
