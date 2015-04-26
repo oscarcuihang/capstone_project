@@ -1,4 +1,7 @@
-
+<!--
+	The index page is the same page as newest page,
+	shows the questions order by timestamp from newest to the oldest
+-->
 <?php include '../templates/header.html'; ?>
 
 <link rel="stylesheet" href="//static.segmentfault.com/build/global/css/global.1e5f56f0.css" />
