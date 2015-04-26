@@ -1,5 +1,11 @@
+
+<?php include '../templates/header.html'; ?>
+<?php //include '../templates/navbar.html'; ?>
+
 <?php
-if(!session_start()){
+
+
+if(!isset($_SESSION['id'])){
 	die ("Miaomiao shi huai ren!");
 }
  if(isset($_POST["editor"])){
@@ -27,7 +33,8 @@ if(!session_start()){
 				$query = "UPDATE traveljournal SET journal_title='$title', journal_content='$editor', journal_tag1='$tag1', journal_tag2='$tag2', journal_tag3='$tag3', journal_tag4='$tag4', journal_tag5='$tag5', journal_timestamp = DEFAULT WHERE id='$Jid'";
 				mysql_query($query, $conn) or die(mysql_error());
 				
-				header('../mypages/myjournal.php');
+				header('Location: ../mypages/myjournal.php');
+				//header('../mypages/myjournal.php');
 			}
 		}
 		else if($_POST["operation"]=="save"){//$_POST["s_s"]=="save",only difference is can not be searched
@@ -46,4 +53,6 @@ if(!session_start()){
 			}
 		}
 }
+
+
 ?>

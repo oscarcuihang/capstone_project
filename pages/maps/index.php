@@ -151,14 +151,27 @@
 	#path-button-set{
 		text-align: center;
 		height: 10%;
+		position: fixed;
 	}
 	
-	table.plan-table > tr{
+	table.plan-table tr{
 		cursor: pointer;
 	}
 	
-	table.plan-table > tr:hover{
-		background-color: #97FFFF;
+	table.plan-table tr:hover{
+		background-color: #F0FFFF;
+	}
+	
+	table.plan-table tr:first-child{
+		cursor:default;
+	}
+	
+	table.plan-table tr:first-child:hover{
+		background-color: #fff;
+	}
+	
+	.lavender {
+		background-color: #E6E6FA;
 	}
 
 </style>
@@ -262,7 +275,6 @@
 	}
 	
 	function getInfoByCord(lat, lng){
-		console.log(lat + "," + lng)
 		var result;
 		$.ajax({
 			url: "http://maps.googleapis.com/maps/api/geocode/json",
@@ -272,9 +284,9 @@
 			success: function(data, status){
 				console.log(data)
 				result = data.results[0].formatted_address;
-				return result;
 			}
 		})
+		return result;
 	}
 	
 	function initialize() {
@@ -457,8 +469,18 @@
 		var loc = [];
 		var loc1 = trip_info.trip_startaddress;
 		loc1 = loc1.split(",");
-		var startinfo = getInfoByCord(loc1[0], loc1[1]);
-		console.log(startinfo)
+		console.log(loc1)
+		/*$.ajax({
+			url: "http://maps.googleapis.com/maps/api/geocode/json",
+			type: "GET",
+			async: false,
+			data: { latlng: lat + "," + lng, sensor: "true_or_false"},
+			success: function(data, status){
+				console.log(data)
+				result = data.results[0].formatted_address;
+			}
+		})*/
+		
 	} else console.log("empty trip");
   </script>
         
@@ -719,7 +741,11 @@
 			}
 		}).on("click", ".plan-click-load", function(){
 			var id = $(this).attr("data-id");
-			$("#plan-id").val(id);
+			$("tr.plan-click-load").removeClass("lavender");
+			if(id != $("#plan-id").val()){
+				$("#plan-id").val(id);
+				$(this).addClass("lavender");
+			} else $("#plan-id").val("");
 		}).on("click", "button.load-this-plan", function(){
 			var selected = $("#plan-id").val() == "" ? false : true;
 			if(selected){
