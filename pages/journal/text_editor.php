@@ -167,7 +167,9 @@ if(isset($_POST["action"])){
 	}
 	else if($_POST["action"] == "edit"){
 		if(isset($_POST["Jid"])){
-			$query = "SELECT * FROM travelJournal WHERE id = ".$_POST['Jid'];
+			$jid = $_POST["Jid"];
+			echo $jid."asdasds";
+			$query = "SELECT * FROM travelJournal WHERE id = '$jid' ";
 			$result= mysql_query($query,$conn) or die(mysql_error());
 			$record= mysql_fetch_assoc($result);
 ?>
@@ -177,7 +179,7 @@ if(isset($_POST["action"])){
 				<form action = 'getSubmitJournal.php' method = "POST" class = "journal">
 					<input type='hidden' name = 'Jaction' value='edit'>
 					<input type='hidden' name = 'operation' value> 
-					<input type='hidden' name = 'Jid' value= "<?php echo $_POST["Jid"];?>">
+					<input type='hidden' name = 'Jid' value= "<?php echo $_POST["Jid"]; ?>">
 					<div class="form-horizontal">
 						<div class="form-group">
 							<label for="journal_title" class="col-sm-2 control-label"></label>
@@ -190,11 +192,11 @@ if(isset($_POST["action"])){
 					
 					<div style = "margin-top: 10px;">
 						<label for="journal_tag">Please set Tags: </label>
-						<input type = "text" name = "tag1" id = "tag1" value="<?php echo $record["journal_tag1"];?>" style = "width:90px">
-						<input type = "text" name = "tag2" id = "tag2" value="<?php echo $record["journal_tag2"];?>" style = "width:90px">
-						<input type = "text" name = "tag3" id = "tag3" value="<?php echo $record["journal_tag3"];?>" style = "width:90px">
-						<input type = "text" name = "tag4" id = "tag4" value="<?php echo $record["journal_tag4"];?>" style = "width:90px">
-						<input type = "text" name = "tag5" id = "tag5" value="<?php echo $record["journal_tag5"];?>" style = "width:90px">
+						<input type = "text" name = "tag1" id = "tag1" value="<?php echo $record["journal_tag1"]; ?>" style = "width:90px">
+						<input type = "text" name = "tag2" id = "tag2" value="<?php echo $record["journal_tag2"]; ?>" style = "width:90px">
+						<input type = "text" name = "tag3" id = "tag3" value="<?php echo $record["journal_tag3"]; ?>" style = "width:90px">
+						<input type = "text" name = "tag4" id = "tag4" value="<?php echo $record["journal_tag4"]; ?>" style = "width:90px">
+						<input type = "text" name = "tag5" id = "tag5" value="<?php echo $record["journal_tag5"]; ?>" style = "width:90px">
 					</div>
 					
 					<button type = "button" class = "btn btn-success" onclick = "SubmitContents()">Submit</button>
