@@ -1,6 +1,9 @@
 <?php include '../templates/header.html'; ?>
 
  <style>
+	*{
+		z-index: 1;
+	}
      .controls {
         margin-top: 16px;
         border: 1px solid transparent;
@@ -125,15 +128,37 @@
 		cursor: pointer;
 	}
 
+	#siderbar-inner-wrapper{
+		height: 100%;
+		display:none;
+	}
+	
+	#sidebar-content{
+		height: 89%;
+	}
+		
+	#path-button-set{
+		text-align: center;
+		height: 10%;
+	}
 </style>
 
 <?php include '../templates/navbar.html'; ?>
-
+	<input id = "trip_id" type = "hidden" value = "<?= (isset($_REQUEST["tripid"])? $_REQUEST["tripid"] : ""); ?>" name = "dfsdf">
+	
 	<div id="wrapper">
-
+	
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            
+			<div id = "siderbar-inner-wrapper">
+				<div id = "sidebar-content">
+				</div>
+				<div id = "path-button-set">
+					<button class="btn btn-default save-path" type="button" <?= (isset($_SESSION["id"])? "" : "disabled"); ?>>Save</button>
+					<button class = "btn btn-default delete-path" type = "button">Start Over</button>
+					<button class = "btn btn-default load-path" type = "button" <?= (isset($_SESSION["id"])? "" : "disabled"); ?>>Load</button>
+				</div>
+			</div>
         </div>
         <!-- /#sidebar-wrapper -->
 
@@ -169,14 +194,15 @@
     <div class="container">
 	
     </div> <!-- /container -->
-
+	<div class = "warning-window" style = 'position:fixed;width:500px;bottom:0px;left:0px;'>
+	</div>
 
 <?php include '../templates/footer.html'; ?>
 
 <!--
 <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 -->
-
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type='text/javascript' src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed&signed_in=true&libraries=places"></script>
 
 <script type='text/javascript'>
@@ -375,10 +401,10 @@
 			var target = $(this).attr("data-target");
 			var width = $(target).width() == 0? "250px" : "0px";
 			if(width == "0px")
-				$("#sidebar-wrapper > .row").hide();
+				$("#siderbar-inner-wrapper").hide();
 			$(target).animate({width: width}, 700, function(){
 				if(width == "250px")
-					$("#sidebar-wrapper > .row").show();
+					$("#siderbar-inner-wrapper").show();
 			});
 		});
 		$(".add-location").click(function(){
@@ -394,7 +420,7 @@
 				if(settle_markers[$(".card-content").html()] == null){
 					if($(target).width() != 250) 
 						$(target).animate({width:250}, 700, function(){
-							$("#sidebar-wrapper").append(
+							$("#sidebar-content").append(
 								"<div class = 'row location-in-route' data-address = '" + $(".card-content").html() + "'>" + 
 									"<div class = 'col-md-6'>" +
 										$(".card-content").html() +
@@ -404,13 +430,13 @@
 									"</div>" +
 									"<i class = 'glyphicon glyphicon-arrow-up move-up'></i>" +
 									"<i class = 'glyphicon glyphicon-arrow-down move-down'></i>" +
-									"<hr>" +
+									"<hr" +
 								"</div>"
 							)
-							$("#sidebar-wrapper").show();
+							$("#siderbar-inner-wrapper").show();
 						})
 					else {
-						$("#sidebar-wrapper").append(
+						$("#sidebar-content").append(
 							"<div class = 'row location-in-route' data-address = '" + $(".card-content").html() + "'>" + 
 								"<div class = 'col-md-6'>" +
 									$(".card-content").html() +
@@ -496,7 +522,87 @@
 				calc_route();
 				console.log(settle_markers)
 			}
+		}).on("click", ".save-path", function(){
+			if($(".path-window-content").length == 0){
+				$("body").append(
+					"<div class = 'path-window-wrapper' style = 'position:absolute;left:50%;width:500px;top:20%'>" +
+						"<div class='panel panel-default path-window-content' style = 'position: relative;right:50%;'>" +
+							"<div class='panel-heading'>Save Path" +
+								"<a aria-hidden='true' class = 'pull-right close-path-panel' style = 'cursor:pointer;color:grey;'>&times;</a>" +
+							"</div>" +
+							"<div class='panel-body'>" +
+								"<div class='input-group'>" +
+									"<input type='text' class='form-control plan-name' placeholder='Travel Plan Name'>" +
+									"<span class='input-group-btn'>" +
+										"<button class='btn btn-default save-path-submit' type='button'>Save</button>" +
+									"</span>" +
+								"</div>" +
+							"</div>" +
+						"</div>" +
+					"</div>"
+				)
+				$(".path-window-content").draggable();
+				$('div.path-window-content').on('mousedown mouseup', function mouseState(e) {
+					if (e.type == "mousedown") {
+						//code triggers on hold
+						$(".path-window-content").css("cursor", "move");
+					} else $(".path-window-content").css("cursor", "default");
+				});
+			}
+		}).on("click", ".delete-path", function(){
+			while(settle_markers[0] != null){
+				var tmp = settle_markers[0];
+				settle_markers[tmp].setMap(null);
+				delete settle_markers[tmp];
+				settle_markers.splice(0, 1);
+			}
+			$(".location-in-route").remove();
+			calc_route();
+		}).on("click", ".load-path", function(){
+			
+		}).on("click", ".close-path-panel", function(){
+			$(".path-window-content").fadeOut(500, function(){ $(".path-window-content").remove() });
+		}).on("click", ".save-path-submit", function(){
+			var name = $("input.plan-name").val()
+			var empty_name = name == "" ? true : false;
+			var empty_loc = settle_markers[0] == null ? true : false;
+			if(!empty_name && !empty_loc){
+				var loc_string = [];
+				var count = 0;
+				var i;
+				for(i in settle_markers)
+					count++;
+				count /= 2;
+				for(i = 0; i < count; i++){
+					var tmp = new Object();
+					tmp.lat = settle_markers[settle_markers[i]].getPosition().lat();
+					tmp.lng = settle_markers[settle_markers[i]].getPosition().lng();
+					loc_string.push(tmp);
+				}
+				console.log(loc_string)
+				var tripid = $("#trip_id").val() == "" ? "unnamed" : $("#trip_id").val();
+				$.ajax({
+					type: "POST",
+					url: "ajax_handler.php",
+					data: {json:JSON.stringify(loc_string), trip_id: trip_id},
+					success: function(data){
+						
+					}
+				})
+			} else {
+				var content = "";
+				if(empty_name)
+					content = "<div class='alert alert-danger' role='alert' style = 'width: 100%;z-index:2;display:none;'>" +
+								"Notice: The name of your plan cannot be empty!" +
+							"</div>";
+				else if(empty_loc)
+					content = "<div class='alert alert-danger' role='alert' style = 'width: 100%;z-index:2;display:none;'>" +
+								"Notice: No location is in the path!" +
+							"</div>";
+				$(".warning-window").prepend(content);
+				$(".warning-window > .alert:first-child").fadeIn(800).delay(3000).fadeOut(1000, function(){$(this).remove();});
+				
+			}
 		})
-	})
-
+	})	
     </script>
