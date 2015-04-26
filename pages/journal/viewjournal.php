@@ -39,7 +39,7 @@ function clickAction(form, Jid, action)
 			
 ?>			
 				<p1>Your are the onwer, you can</p1>
-				          <a class="btn btn-warning" onclick="clickAction('action_form', '<?php echo $journal_id; ?>', 'edit');">Update</a>
+				    <a class="btn btn-warning" onclick="clickAction('action_form', '<?php echo $journal_id; ?>', 'edit');">Update</a>
 				<p1> OR </p1>
 		        <a class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $journal_id; ?>">Delete <span class="glyphicon glyphicon-chevron-right"></span></a>
 		        <p1>This Journal</p1>
