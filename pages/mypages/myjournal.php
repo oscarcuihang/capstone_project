@@ -61,7 +61,7 @@
         $journal_timestamp = $line['journal_timestamp'];
         $journal_userid  = $line['journal_userid'];
         $journal_content  = $line['journal_content'];
-
+        $journal_id = $line['id'];
         $query_user = "SELECT * FROM userInfo WHERE id = '$journal_userid'";
         $result_user = mysql_query($query_user,$conn) or die(mysql_error());
         $user_info = mysql_fetch_assoc($result_user);
@@ -75,7 +75,9 @@
                 <p class="myPara"><?php echo $journal_content; ?></p>
                 <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
                 <a class="btn btn-warning" href="">Update <span class="glyphicon glyphicon-chevron-right"></span></a>
-                <a class="btn btn-danger" href="">Delete <span class="glyphicon glyphicon-chevron-right"></span></a>
+                
+                <a class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $journal_id; ?>&direction=myjournal">Delete <span class="glyphicon glyphicon-chevron-right"></span></a>
+                
 
             </div>
         </div>
