@@ -30,16 +30,13 @@ function clickAction(form, pk, tbl)
 	    if (isset($_SESSION['id'])) {
 	    	if ($journal['journal_userid'] == $_SESSION["id"])
 			{
+			
 ?>			
 				<p1>Your are the onwer, you can</p1>
-		        <input class="btn btn-warning" type = "button" value ="Update">
-		        OR
-		        <form action='/capstone_project/pages/journal/viewjournal.php' id='delete_action' method='POST'>
-        		<input type='hidden' name='pk'>
-        		<input type='hidden' name='tbl'>
-		        <input class="btn btn-danger" type = "button" value ="Delete">
-		        This Journal
-		        </form>
+				<a class="btn btn-warning" href="/capstone_project/pages/journal/viewjournal.php?id=<?php echo $journal_id; ?>">Update <span class="glyphicon glyphicon-chevron-right"></span></a>
+				<p1> OR </p1>
+		        <a class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $journal_id; ?>">Delete <span class="glyphicon glyphicon-chevron-right"></span></a>
+		        <p1>This Journal</p1>
 <?php
 			}
 		}
