@@ -47,25 +47,23 @@ function clickAction(form, Jid, action)
     <!-- Main component for a primary marketing message or call to action -->
 
     <header class="main-title">
-      <h1>Experimental Page Layout <strong>Inspired by Flipboard</strong></h1>
-      <p>Swipe or drag to flip the pages, click to open items </p>
-      <p><strong>Best viewed in a Webkit browser (Safari, Chrome)</strong></p>
+      <h1>Welcom to Journal Sharing! <strong>By Road Trip Planner</strong></h1>
+      <p>Try to swipe or drag to flip the pages, click to open items! </p>
+      <p><strong>Get Amazing Experience! </strong></p>
     </header> 
     <div id="flip" class="Jcontainer">
     
       <div class="f-page f-cover">
         <div class="cover-elements">
           <div class="logo">
-            Travel 
-            <a class="f-ref" href="http://www.flickr.com/photos/nasahqphoto/">Images by NASA HQ Photo</a>
+            Travel
           </div>
-          <h1> <span>Inspired by <a href="http://flipboard.com/">Flipboard</a></span></h1>
-          <div class="f-cover-story"><span>Cover Story</span>Shuttle Enterprise Flight to New York</div>
+          <div class="f-cover-story"><span>Interesting Story and Trip Journal</span>Customized by Users ALL OVER THE WORLD</div>
         </div>
         <div class="f-cover-flip">&lt; Flip</div>
       </div>
 <?php
-  $query = "SELECT * FROM travelJournal WHERE journal_status = 1";
+  $query = "SELECT * FROM travelJournal WHERE journal_status = 1 ORDER BY journal_timestamp DESC";
   $result= mysql_query($query,$conn) or die(mysql_error());
   $total_num = mysql_num_rows($result);
   $com_num=$total_num/14;
@@ -145,7 +143,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -187,7 +185,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -229,7 +227,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -271,7 +269,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -322,7 +320,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -365,7 +363,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -407,7 +405,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -450,7 +448,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -500,7 +498,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -543,7 +541,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -586,7 +584,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -628,7 +626,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -670,7 +668,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -728,7 +726,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -774,7 +772,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -820,7 +818,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -866,7 +864,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -912,7 +910,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -971,7 +969,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1013,7 +1011,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1055,7 +1053,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1097,7 +1095,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1139,7 +1137,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1192,7 +1190,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1239,7 +1237,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1285,7 +1283,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1333,7 +1331,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1392,7 +1390,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1434,7 +1432,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1476,7 +1474,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1518,7 +1516,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1560,7 +1558,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1612,7 +1610,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1655,7 +1653,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1697,7 +1695,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1740,7 +1738,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1794,7 +1792,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1841,7 +1839,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1888,7 +1886,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
@@ -1934,7 +1932,7 @@ function clickAction(form, Jid, action)
 		  <hr>
 		  <h3>Comment:</h3>
 <?php 
-	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM traveljournalcomment C, userinfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
+	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
 	$result2=mysql_query($query2, $conn) or die(mysql_error());
 	$total_num2 = mysql_num_rows($result2);
