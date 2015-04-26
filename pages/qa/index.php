@@ -95,7 +95,15 @@ for($i=0; $i<$total_num;$i++){
 
 				<!--setting paging (分页)-->
 				<div class="text-center">
-					<ul class="pagination"><li class="active"><a href="javascript:void(0);">1</a></li><li><a href="/questions/hottest?page=2">2</a></li><li><a href="/questions/hottest?page=3">3</a></li><li><a href="/questions/hottest?page=4">4</a></li><li><a href="/questions/hottest?page=5">5</a></li><li class="disabled"><span>&hellip;</span></li><li class="next"><a href="/questions/hottest?page=2">下一页</a></li></ul>
+					<ul class="pagination">
+						<li class="active"><a href="javascript:void(0);">1</a></li>
+						<li><a href="/questions/hottest?page=2">2</a></li>
+						<li><a href="/questions/hottest?page=3">3</a></li>
+						<li><a href="/questions/hottest?page=4">4</a></li>
+						<li><a href="/questions/hottest?page=5">5</a></li>
+						
+						<li class="disabled"><span>&hellip;</span></li>
+						<li class="next"><a href="/questions/hottest?page=2">Next Page</a></li></ul>
 				</div>
             </div><!-- /.main -->
            
@@ -103,89 +111,7 @@ for($i=0; $i<$total_num;$i++){
      </div>
 </div>
 
-
-<script>
-    (function (w) {
-        w.SF = {
-            staticUrl: "//static.segmentfault.com",
-        };
-        w.SF.token = (function () {
-    var _qfotKKs = //'dGO'
-'81'+'e85'//'E'
-+//'OM'
-'73'+'c'//'qvm'
-+//'t'
-'cc6'+/* 'vG'//'vG' */''+'wS'//'wS'
-+'d0'//'ZY'
-+//'Mc'
-'f'+//'e'
-'6'+//'P'
-'94'+'5d'//'t6x'
-+'XL'//'XL'
-+//'GWT'
-'a1e'+//'k'
-'k'+'4a'//'aq'
-+//'jMX'
-'jMX'+'XU'//'XU'
-+'v8'//'v8'
-+//'v3'
-'0d'+//'vkZ'
-'14'+'0'//'HGD'
-+//'F'
-'e7d', _Sale44 = [[11,13],[19,21],[22,23],[24,27],[24,26],[24,26]];
-
-    for (var i = 0; i < _Sale44.length; i ++) {
-        _qfotKKs = _qfotKKs.substring(0, _Sale44[i][0]) + _qfotKKs.substring(_Sale44[i][1]);
-    }
-
-    return _qfotKKs;
-})();
-    })(window);
-</script>
-
-    <script src="//static.segmentfault.com/build/3rd/assets.ce4fe392.js"></script>
-    <script>
-    requirejs.config({
-        baseUrl: "//static.segmentfault.com/build/global/js"
-    });
-    </script>
-            <script src="//static.segmentfault.com/build/qa/js/index.3e69e5af.js"></script>
-    
-<script>
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-918487-8']);
-  _gaq.push(['_trackPageview']);
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-918487-8', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?e23800c454aa573c0ccb16b52665ac26";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-<script src="http://cbjs.baidu.com/js/m.js"></script>
-<script>
-if(typeof BAIDU_CLB_fillSlotAsync === 'function') {
-    BAIDU_CLB_fillSlotAsync('981183','adid-981183');
-    BAIDU_CLB_fillSlotAsync('981184','adid-981184');
-    BAIDU_CLB_fillSlotAsync('981694','adid-981694');
-    BAIDU_CLB_fillSlotAsync('981179','adid-981179');
-}
-</script>
-
-
+<script src="//static.segmentfault.com/build/3rd/assets.ce4fe392.js"></script>
 
 <script type="text/javascript">
 
@@ -207,8 +133,4 @@ if(typeof BAIDU_CLB_fillSlotAsync === 'function') {
     });
 </script>
 
-
-
-
 <?php include '../templates/footer.html'; ?>
-
