@@ -25,7 +25,7 @@
 	else{
 ?>	
 					Want to ask a question? 
-					<a class="sign-in-btn-nav cursor-pointer ">
+					<a class="sign-in-btn-nav cursor-pointer ">Sign In</a>
 <?php
 	}
 ?>
