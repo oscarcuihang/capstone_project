@@ -22,6 +22,7 @@
 				   What's your question?
                     <a id="goAsk" href="/ask" class="btn btn-primary">I have question!</a>
 <?php
+	}
 	else{
 ?>	
 					Want to ask a question? 
