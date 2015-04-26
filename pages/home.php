@@ -10,12 +10,23 @@
 
 
 <script type="text/javascript">
-function clickAction(form, pk)
+function clickAction(form, pk, tbl)
 {
-  document.forms[form].elements['pk'].value = pk;
-  
-  document.getElementById(form).submit();
+    document.forms[form].elements['pk'].value = pk;
+    document.forms[form].elements['tbl'].value = tbl;
+
+    document.getElementById(form).submit();
 }
+
+function viewtripplan(form, pk, tbl)
+{
+    document.forms[form].elements['pk'].value = pk;
+    document.forms[form].elements['tbl'].value = tbl;
+
+    document.getElementById(form).submit();
+}
+
+
 </script>
 
 
@@ -69,6 +80,7 @@ if(isset($_POST['search'])){
         
         echo "<form action='/capstone_project/pages/journal/viewjournal.php' id='action_form' method='POST'>";
         echo "<input type='hidden' name='pk'>";
+        echo "<input type='hidden' name='tbl'>";
 
         if ($rows == 0){
 ?>
@@ -94,8 +106,9 @@ if(isset($_POST['search'])){
 
             <p class="myPara"><?php echo $journal_content; ?></p>
             <?php
-            echo "<input class = \"btn btn-primary\" type=\"button\" name=\"action1\" value=\"View\" onclick=\"clickAction('action_form','".$journal_id."');\" />";
+            echo "<input class = \"btn btn-primary\" type=\"button\" name=\"action1\" value=\"View\" onclick=\"clickAction('action_form','".$journal_id."','journal');\" />";
             ?> 
+
             <hr>
 <?php
         }
@@ -106,6 +119,7 @@ if(isset($_POST['search'])){
     <!--display trip plan col-->
     <div class="col-md-3"><h2>Trip Plans</h2><hr>
 <?php
+        
         $query_trip = "SELECT * FROM tripPlan WHERE (trip_title LIKE '%$input%' OR trip_startaddress LIKE '%$input%' OR trip_endaddress LIKE '%$input%') ORDER BY trip_last_updated DESC LIMIT 20";
         $result = mysql_query($query_trip,$conn) or die(mysql_error());
         $rows = mysql_num_rows($result);
@@ -122,7 +136,9 @@ if(isset($_POST['search'])){
             $trip_endaddress  = $line['trip_endaddress'];
             $trip_last_updated  = $line['trip_last_updated'];
 ?>
-            <h4><?php echo $trip_title; ?></h4>
+
+            
+            <h4><a href="/capstone_project/pages/maps/index.php?tripid=<?php echo $trip_id; ?>"><?php echo $trip_title; ?></a></h4>
             <p2><?php echo $trip_last_updated; ?></p2>
             <p><?php echo $trip_startaddress." -> ".$trip_endaddress; ?></p> 
             <hr>
@@ -175,6 +191,7 @@ else {
                 
         echo "<form action='/capstone_project/pages/journal/viewjournal.php' id='action_form' method='POST'>";
         echo "<input type='hidden' name='pk'>";
+        echo "<input type='hidden' name='tbl'>";
 
         //$total_num = mysql_num_row($result);
         while ($line = mysql_fetch_assoc($result)) 
@@ -195,7 +212,7 @@ else {
             <p><?php echo $journal_timestamp; ?></p>
             <p class="myPara"><?php echo $journal_content; ?></p>
             <?php 
-            echo "<input class = \"btn btn-primary\" type=\"button\" name=\"action1\" value=\"View\" onclick=\"clickAction('action_form','".$journal_id."');\" />";
+            echo "<input class = \"btn btn-primary\" type=\"button\" name=\"action1\" value=\"View\" onclick=\"clickAction('action_form','".$journal_id."','journal');\" />";
             ?>
             <!--
             <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -220,9 +237,9 @@ else {
             $trip_endaddress  = $line['trip_endaddress'];
             $trip_last_updated  = $line['trip_last_updated'];
 ?>
-            <h4><?php echo $trip_title; ?></h4>
-            <p2><?php echo $trip_last_updated; ?></p2>
             
+            <h4><a href="/capstone_project/pages/maps/index.php?tripid=<?php echo $trip_id; ?>"><?php echo $trip_title; ?></a></h4>
+            <p2><?php echo $trip_last_updated; ?></p2>
             <p><?php echo $trip_startaddress." -> ".$trip_endaddress; ?></p> 
             <hr>
 <?php
