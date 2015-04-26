@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!--  template of html page displaying Q&A section -->
-<html>
-<head>
+<?php include '../templates/header.html'; ?>
 
 <link rel="stylesheet" href="//static.segmentfault.com/build/global/css/global.1e5f56f0.css" />
 <link rel="stylesheet" href="//static.segmentfault.com/build/qa/css/qa_all.5c45d211.css" />
@@ -13,8 +12,7 @@
     <script src="//static.segmentfault.com/global/js/respond.js?"></script>
 <![endif]-->
 
-</head>
-<body class="qa-index">
+<?php include '../templates/navbar.html'; ?>
 <!--[if lt IE 9]>
     <div class="alert alert-danger topframe" role="alert">你的浏览器实在<strong>太太太太太太旧了</strong>，放学别走，升级完浏览器再说 <a target="_blank" class="alert-link" href="http://browsehappy.com">立即升级</a></div>
 <![endif]-->
@@ -35,7 +33,9 @@
                 </ul>
 
                 <div class="stream-list question-stream">
-        
+<?php
+ 
+?>       
           <section class="stream-list__item">
             <div class="qa-rank">
               <div class="votes plus hidden-xs">
@@ -838,6 +838,5 @@ if(typeof BAIDU_CLB_fillSlotAsync === 'function') {
 }
 </script>
 
+<?php include '../templates/footer.html'; ?>
 
-</body>
-</html>
