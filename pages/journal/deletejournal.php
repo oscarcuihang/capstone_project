@@ -10,6 +10,13 @@
     $journalid = $_GET['id'];
     $query = "DELETE FROM travelJournal WHERE id = '$journalid'";
     mysql_query($query,$conn) or die(mysql_error());
+    
+    $ip = $_SERVER["REMOTE_ADDR"];
+
+    $user_id = $_SESSION['id'];
+
+    mysql_query("INSERT INTO userLog VALUES(DEFAULT, $user_id, '$ip', DEFAULT, 'delete journal')");
+
 ?>
     <h4>Journal has been deleted.</h4>
     <hr>
