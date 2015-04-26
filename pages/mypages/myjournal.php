@@ -18,7 +18,7 @@
   if(isset($_POST['draft']))
   {
     $user_id = $_SESSION["id"];
-  $query = "SELECT * FROM travelJournal WHERE journal_userid = '$user_id' AND journal_status = 0";
+  $query = "SELECT * FROM travelJournal WHERE journal_userid = '$user_id' AND journal_status = 0 ORDER BY journal_timestamp DESC";
   
   $result = mysql_query($query,$conn) or die(mysql_error());  
       while ($line = mysql_fetch_assoc($result)) 
@@ -52,7 +52,7 @@
   else
   {
   $user_id = $_SESSION["id"];
-  $query = "SELECT * FROM travelJournal WHERE journal_userid = '$user_id' AND journal_status = 1";
+  $query = "SELECT * FROM travelJournal WHERE journal_userid = '$user_id' AND journal_status = 1 ORDER BY journal_timestamp DESC";
   
   $result = mysql_query($query,$conn) or die(mysql_error());  
       while ($line = mysql_fetch_assoc($result)) 
