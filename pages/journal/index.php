@@ -68,9 +68,11 @@ function clickAction(form, Jid, action)
   $total_num = mysql_num_rows($result);
   $com_num=$total_num/14;
   $rest_num=$total_num%14;
-
-  for($i=0;$i<$com_num-1;$i++){
-    
+  if($rest_num>0){
+	  $com_num-=1;
+  }
+  for($i=0;$i<$com_num;$i++){
+   
 ?>
       
       <div class="f-page">

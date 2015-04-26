@@ -16,8 +16,19 @@
         <div class="row">
             <div class="col-xs-12 col-md-9 main">
                 <p class="main-title hidden-xs">
-                    What's your question?
+<?php
+	if(isset($_SESSION["id"])){
+?>                   
+				   What's your question?
                     <a id="goAsk" href="/ask" class="btn btn-primary">I have question!</a>
+<?php
+	else{
+?>	
+					Want to ask a question? 
+					<a class="sign-in-btn-nav cursor-pointer ">
+<?php
+	}
+?>
                 </p>
 
                 <ul class="nav nav-tabs nav-tabs-zen mb10">
