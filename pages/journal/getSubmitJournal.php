@@ -30,10 +30,10 @@ if(!isset($_SESSION['id'])){
 				  mysql_query("INSERT INTO userLog VALUES(DEFAULT, $id, '$ip', DEFAULT, 'create/post journal')");
 
 				//#then jump to the view mypage
-				header('../mypages/myjournal.php');
+				header('Location: ../mypages/myjournal.php');
 			}
 			else if($_POST["Jaction"]=="edit"){
-				$query = "UPDATE traveljournal SET journal_title='$title', journal_content='$editor', journal_tag1='$tag1', journal_tag2='$tag2', journal_tag3='$tag3', journal_tag4='$tag4', journal_tag5='$tag5', journal_timestamp = DEFAULT WHERE id='$Jid'";
+				$query = "UPDATE traveljournal SET journal_title='$title', journal_content='$editor', journal_tag1='$tag1', journal_tag2='$tag2', journal_tag3='$tag3', journal_tag4='$tag4', journal_tag5='$tag5', journal_timestamp = DEFAULT , journal_status=1 WHERE id='$Jid'";
 				mysql_query($query, $conn) or die(mysql_error());
 				
     			mysql_query("INSERT INTO userLog VALUES(DEFAULT, $id, '$ip', DEFAULT, 'edit/post journal')");
@@ -49,14 +49,14 @@ if(!isset($_SESSION['id'])){
 				    			mysql_query("INSERT INTO userLog VALUES(DEFAULT, $id, '$ip', DEFAULT, 'create/save journal')");
 
 				//#then jump to the view mypage
-				header('../mypages/myjournal.php');
+				header('Location: ../mypages/myjournal.php');
 			}
 			else if($_POST["Jaction"]=="edit"){
 				$query = "UPDATE traveljournal SET journal_title='$title', journal_content='$editor', journal_tag1='$tag1', journal_tag2='$tag2', journal_tag3='$tag3', journal_tag4='$tag4', journal_tag5='$tag5', journal_timestamp = DEFAULT, journal_status=0 WHERE id='$Jid'";
 				mysql_query($query, $conn) or die(mysql_error());
 				mysql_query("INSERT INTO userLog VALUES(DEFAULT, $id, '$ip', DEFAULT, 'edit/save journal')");
 
-				header('../mypages/myjournal.php');
+				header('Location: ../mypages/myjournal.php');
 			}
 		}
 }

@@ -201,7 +201,7 @@ if(isset($_POST["action"])){
 					</div>
 					
 					<button type = "button" class = "btn btn-success" onclick = "SubmitContents()">Submit</button>
-					<button type = "button" class = "btn btn-primary" onclick = "SubmitContents()">Save</button>
+					<button type = "button" class = "btn btn-primary" onclick = "SaveContents()">Save</button>
 				</form>
 			</div>
 		</div>
