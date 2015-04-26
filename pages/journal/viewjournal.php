@@ -1,17 +1,23 @@
 <?php include '../templates/header.html'; ?>
 
 <script type="text/javascript">
-function clickAction(form, pk, tbl)
-{
-    document.forms[form].elements['pk'].value = pk;
-    document.forms[form].elements['tbl'].value = tbl;
 
-    document.getElementById(form).submit();
+function clickAction(form, Jid, action)
+{
+  document.forms[form].elements['Jid'].value = Jid;
+  document.forms[form].elements['action'].value = action;
+
+  document.getElementById(form).submit();
 }
+
 </script>
 
 <?php include '../templates/navbar.html'; ?>
 
+<form action='text_editor.php' id='action_form' method='POST'>
+    <input type='hidden' name = 'Jid'>
+    <input type='hidden' name = 'action'>
+</form>
 
 <div class="container">
      
@@ -33,7 +39,7 @@ function clickAction(form, pk, tbl)
 			
 ?>			
 				<p1>Your are the onwer, you can</p1>
-				<a class="btn btn-warning" href="/capstone_project/pages/journal/viewjournal.php?id=<?php echo $journal_id; ?>">Update <span class="glyphicon glyphicon-chevron-right"></span></a>
+				          <a class="btn btn-warning" onclick="clickAction('action_form', '<?php echo $journal_id; ?>', 'edit');">Update</a>
 				<p1> OR </p1>
 		        <a class="btn btn-danger" href="/capstone_project/pages/journal/deletejournal.php?action=delete&id=<?php echo $journal_id; ?>">Delete <span class="glyphicon glyphicon-chevron-right"></span></a>
 		        <p1>This Journal</p1>
