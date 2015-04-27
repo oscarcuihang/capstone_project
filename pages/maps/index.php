@@ -272,7 +272,8 @@
 		};
 		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 		
-		/*****  *****/
+		//
+		var spot_start = "";
 		if(trip_info.length != 0){
 			var loc1 = trip_info.trip_startaddress;
 			loc1 = loc1.replace(" ", "").split(",");
@@ -414,18 +415,16 @@
 				$("#siderbar-inner-wrapper").show();
 			});
 			calc_route();
-			
-		} else console.log("empty trip");
-		/*****  *****/
+		}
+		//
 		//var infowindow = new google.maps.InfoWindow();
-		var initialLocation;
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function (position) {
 				initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				initialLocation = spot_start == "" ? initialLocation : spot_start;
+				map.setCenter(initialLocation);
 			});
 		}
-		initialLocation = (spot_start == null)? initialLocation : spot_start;
-		map.setCenter(initialLocation);
 		directionsDisplay = new google.maps.DirectionsRenderer({
 			suppressMarkers: true
 		});
