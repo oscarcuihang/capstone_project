@@ -9,14 +9,23 @@ if(!isset($_SESSION['id'])){
 	die ("Miaomiao shi huai ren!");
 }
  if(isset($_POST["editor"])){
+	 if($_POST["editor"]==NULL){
+		 echo '<script language="javascript">';
+		 echo 'alert("Empty message cannot be created")';
+		 echo '</script>';
+		 header('Location: index.php');
+	 }
+	 else{
 		$id=$_SESSION["id"];
 		$editor=$_POST["editor"];
 		$query = "INSERT INTO question VALUES(DEFAULT,'$id','$editor',DEFAULT,0,0)";
 		mysql_query($query,$conn) or die(mysql_error());
 				
 		mysql_query("INSERT INTO userLog VALUES(DEFAULT, $id, '$ip', DEFAULT, 'create/post question')");
-
-		header('Location: index.php');
 		
- }
+		echo '<script language="javascript">';
+		echo 'alert("Question successfully post!!")';
+		echo '</script>';
+		header('Location: index.php');
+	 }		
 ?>
