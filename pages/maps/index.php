@@ -498,7 +498,6 @@
 				if($("#card-info").css("display") == "none")
 					$("#card-info").show(200)
 			})
-			calc_route()
 		});
 
 	  // Sets a listener on a radio button to change the filter type on Places
@@ -780,10 +779,10 @@
 					if(JSON.parse(data).content.length > 0){
 						var plans = JSON.parse(data).content;
 						console.log(plans)
-						content = "<table class = 'table plan-table'>\n<tr>\n<th>plan name</th><th>latest update time</th>\n</tr>\n";
+						content = "<div style = 'max-height:500px;overflow-y:scroll;'><table class = 'table plan-table'>\n<tr>\n<th>plan name</th><th>latest update time</th>\n</tr>\n";
 						for(var i = 0; i < plans.length; i++)
 							content += "<tr data-id = '" +plans[i].id + "' class = 'plan-click-load'><td>" + plans[i].trip_title + "</td><td>" + plans[i].trip_last_updated + "</td></tr>";
-						content += "\n</table>\n<input type = 'hidden' id = 'plan-id'>\n<button class = 'btn btn-default pull-right load-this-plan'>Load</button>";
+						content += "\n</table>\n</div>\n<input type = 'hidden' id = 'plan-id'>\n<button class = 'btn btn-default pull-right load-this-plan'>Load</button>";
 					} else {
 						content = "<p>You have not made any plans yet! Come and make your own plan now!</p>";
 					}
