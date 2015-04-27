@@ -84,7 +84,7 @@ function questionDetail(form, Qid)
 					<table id="exampletable">
 					<thead><tr><th></th></tr></thead>
 <?php
-$query = "SELECT * FROM question ORDER BY question_timestamp DESC;";
+$query = "SELECT * FROM question ORDER BY question_timestamp DESC LIMIT 150;";
 $result= mysql_query($query,$conn) or die(mysql_error());
 $total_num = mysql_num_rows($result);
 

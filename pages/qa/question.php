@@ -45,7 +45,7 @@
 				
 
 <?php	
-		$query2="SELECT U.user_fname, U.user_lname, A.answer_text, A.answer_timestamp FROM answer A, userInfo U WHERE U.id = A.answer_userid AND A.answer_questionid ='$Qid'";
+		$query2="SELECT U.user_fname, U.user_lname, A.answer_rate_avg, A.answer_text, A.answer_timestamp FROM answer A, userInfo U WHERE U.id = A.answer_userid AND A.answer_questionid ='$Qid'";
 		$result2=mysql_query($query2,$conn) or die(mysql_error());
 		$answer_num=mysql_num_rows($result2);
 ?>
@@ -73,7 +73,7 @@
 						
 						<strong><a class="mr5"><?php echo $answer["user_fname"]." ".$answer["user_lname"];?></a></strong>
 
-							<span class="ml10 text-muted">Reply a: <?php echo $answer["answer_timestamp"]; ?></span>
+							<span class="ml10 text-muted">Reply at: <?php echo $answer["answer_timestamp"]; ?></span>
 
 							<div class="answer fmt mt10">
 								<p><?php echo $answer["answer_text"];?></p>
