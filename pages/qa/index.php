@@ -38,8 +38,19 @@
 	}
 
 </script>
-<?php include '../templates/navbar.html'; ?>
+<script>
+function clickAction(form, Qid)
+{
+  document.forms[form].elements['Qid'].value = Qid;
 
+
+  document.getElementById(form).submit();
+}
+</script>
+<?php include '../templates/navbar.html'; ?>
+<form action="question.php" id="action_form" method="POST">
+	<input type="hidden" name="Qid">
+</form>
 
 
 <div class="wrap">
@@ -73,7 +84,7 @@
 					<table id="exampletable">
 					<thead><tr><th></th></tr></thead>
 <?php
-$query = "SELECT * FROM question ORDER BY question_timestamp DESC LIMIT 50;";
+$query = "SELECT * FROM question ORDER BY question_timestamp DESC;";
 $result= mysql_query($query,$conn) or die(mysql_error());
 $total_num = mysql_num_rows($result);
 
@@ -130,7 +141,7 @@ for($i=0; $i<$total_num;$i++){
 	}
 ?>
 							  
-							  <p1 class="title"><a class = "myquestion" href="question.php"><?php echo $record["question_text"]?></a></p1>
+							   <p1 class="title"><a class = "myquestion" onclick="questionDetail('action_form','<?php echo $record["id"]; ?>');"><?php echo $record["question_text"]?></a></p1>
 							  
 							</div>
 					</section></td></tr>
