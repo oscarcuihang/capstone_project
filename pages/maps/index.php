@@ -287,7 +287,7 @@
 					//console.log(data)
 					if(data.results.length != 0)
 						result = data.results[0].formatted_address;
-					result = loc1[0] + "," + loc1[1];
+					else result = loc1[0] + "," + loc1[1];
 				}
 			})
 			//console.log(loc1[0],loc1[1]);
@@ -327,7 +327,7 @@
 							//console.log(data)
 							if(data.results.length != 0)
 								result = data.results[0].formatted_address;
-							result = loc1[0] + "," + loc1[1];
+							else result = loc1[0] + "," + loc1[1];
 						}
 					})
 					var spot = new google.maps.LatLng(loc1[0],loc1[1])
@@ -366,7 +366,7 @@
 					//console.log(data)
 					if(data.results.length != 0)
 						result = data.results[0].formatted_address;
-					result = loc1[0] + "," + loc1[1];
+					else result = loc1[0] + "," + loc1[1];
 				}
 			})
 			var spot_end = new google.maps.LatLng(loc1[0],loc1[1])
