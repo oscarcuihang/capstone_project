@@ -8,16 +8,28 @@
 <link rel="stylesheet" href="//static.segmentfault.com/build/qa/css/qa_all.5c45d211.css" />
 <link rel="stylesheet" href="//static.segmentfault.com/build/global/css/responsive.2e038079.css" />
 
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script>
-$(".askquestion").click(function(){
-	var content = "<h4>Ask Question: </h4>"+
-				  "<form action = 'getSubmitQuestion.php' method = 'POST' class = 'question'>"+
-				  "<textarea rows='4' cols='50' name='editor' id='editor'></textarea>"+
-				  "<button class='btn btn-success' onclick=\"SubmitContents()\">Submit</button>"+
-				  "</form>"
-	$("body").append(content);
-	$("div.sign-in-window-container").fadeIn();
-});
+$(document).ready(function(){
+	$("#goAsk").click(function(){
+		console.log("lalalal");
+		var content = "<div class = 'cover-window-shell'></div>"+
+					  "<div class = 'create-question-window' style = 'position:absolute;left:50%;width:500px;top:35%;z-index:2000;'>"+
+						"<div class = 'panel panel-success' style = 'position:relative;right:50%;'>"+
+							"<div class = 'panel-heading'>Ask Question: </div>"+
+								"<div class = 'panel-body'>"+
+									"<form action = 'getSubmitQuestion.php' method = 'POST' class = 'question'>"+
+										"<textarea rows='4' cols='50' name='editor' id='editor'></textarea>"+
+										"<button class='btn btn-success' onclick=\"SubmitContents()\">Submit</button>"+
+									"</form>"+
+								"</div>"+
+						"</div>"+
+					"</div>";
+					  
+		$("body").append(content);
+	});
+})
+
 </script>
 <script>
 	function SubmitContents() {
