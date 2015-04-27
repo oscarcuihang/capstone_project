@@ -137,6 +137,7 @@ if(isset($_POST["action"])){
 			<div style = "right: 50%;position:relative;">
 				<form action = 'getSubmitJournal.php' method = "POST" class = "journal">
 					<input type='hidden' name = 'Jaction' value='create'>
+					<input type = 'hidden' name = 'operation'>
 					<div class="form-horizontal">
 						<div class="form-group">
 							<label for="journal_title" class="col-sm-2 control-label">Title</label>
