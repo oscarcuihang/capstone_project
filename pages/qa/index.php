@@ -18,10 +18,10 @@ $(document).ready(function(){
 		var content = "<div class = 'cover-window-shell'></div>"+
 					  "<div class = 'create-question-window' style = 'position:absolute;left:50%;width:500px;top:35%;z-index:2000;'>"+
 						"<div class = 'panel panel-success' style = 'position:relative;right:50%;'>"+
-							"<div class = 'panel-heading'><h2 class = 'panel-title'>Ask Question:<span class = 'glyphicon glyphicon-remove text-danger closeWindow' style = 'cursor:pointer; float:right'></span></h2></div>"
+							"<div class = 'panel-heading'><h2 class = 'panel-title'>Ask Question:<span class = 'glyphicon glyphicon-remove text-danger closeWindow' style = 'cursor:pointer; float:right'></span></h2></div>"+
 								"<div class = 'panel-body'>"+
 									"<form action = 'getSubmitQuestion.php' method = 'POST' class = 'question'>"+
-										"<textarea rows='4' cols='50' name='editor' id='editor'></textarea>"+
+										"<textarea rows='4' cols='65' name='editor' id='editor'></textarea>"+
 										"<button class='btn btn-success questionSubmit' onclick=\" SubmitContents()\">Submit</button>"+							
 									"</form>"+
 								"</div>"+
