@@ -4,49 +4,27 @@
 -->
 <?php include '../templates/header.html'; ?>
 
+
+<!--for paging-->
+
+<link rel="stylesheet" href="../../style/css/slimtable.css">
+<link rel="stylesheet" href="../../style/css/site.css">
+
 <script src="../../style/RichTextEditor/ckeditor.js"></script>
 
+<!--for questions and answers-->
 <link rel="stylesheet" href="//static.segmentfault.com/build/global/css/global.1e5f56f0.css" />
 <link rel="stylesheet" href="//static.segmentfault.com/build/qa/css/qa_all.5c45d211.css" />
 <link rel="stylesheet" href="//static.segmentfault.com/build/global/css/responsive.2e038079.css" />
 
-<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script>
+
+
 <?php 
 	if(isset($_POST["message"])){
 		echo "alert('". $_POST["message"]. "');";
 	}
 ?>
-$(document).ready(function(){
-	$("#goAsk").click(function(){
-		console.log("lalalal");
-		var content = "<div class = 'cover-window-shell'></div>"+
-					  "<div class = 'create-question-window' style = 'position:absolute;left:50%;width:500px;top:35%;z-index:2000;'>"+
-						"<div class = 'panel panel-success' style = 'position:relative;right:50%;'>"+
-							"<div class = 'panel-heading'><h2 class = 'panel-title'>Ask Question:<span class = 'glyphicon glyphicon-remove text-danger closeWindow' style = 'cursor:pointer; float:right'></span></h2></div>"+
-								"<div class = 'panel-body'>"+
-									"<form action = 'getSubmitQuestion.php' method = 'POST' class = 'question'>"+
-										"<textarea rows='4' cols='65' name='editor' id='editor'></textarea>"+
-										"<button class='btn btn-success questionSubmit' onclick=\" SubmitContents()\">Submit</button>"+							
-									"</form>"+
-								"</div>"+
-						"</div>"+
-					"</div>";
-					  
-		$("body").append(content);
-	});
-})
 
-$("document").ready(function(){
-	$("body").on("click", ".closeWindow", function(){
-		$("div.cover-window-shell").remove();
-		$("div.create-question-window").fadeOut(function(){
-			$("div.create-question-window").remove();
-		})
-	})
-})
-
-</script>
 <script>
 	function SubmitContents() {
 		// Get the editor instance that you want to interact with.
@@ -92,6 +70,8 @@ $("document").ready(function(){
                 </ul>
 
 				<div class="stream-list question-stream">
+					<table id="exampletable">
+					<thead><tr><th></th></tr></thead>
 <?php
 $query = "SELECT * FROM question ORDER BY question_timestamp DESC LIMIT 50;";
 $result= mysql_query($query,$conn) or die(mysql_error());
@@ -100,6 +80,7 @@ $total_num = mysql_num_rows($result);
 for($i=0; $i<$total_num;$i++){
 	$record=mysql_fetch_assoc($result);
 ?>
+					<tr><td>
 					<section class="stream-list__item">
 							<div class="qa-rank">
 							  <div class="votes plus hidden-xs">
@@ -152,24 +133,14 @@ for($i=0; $i<$total_num;$i++){
 							  <p1 class="title"><a class = "myquestion" href="question.php"><?php echo $record["question_text"]?></a></p1>
 							  
 							</div>
-					</section>
+					</section></td></tr>
 <?php	
 }
 ?>   
-				</div><!-- /.stream-list -->
+				</table>
 
-				<!--setting paging (分页)-->
-				<div class="text-center">
-					<ul class="pagination">
-						<li class="active"><a href="javascript:void(0);">1</a></li>
-						<li><a href="/questions/hottest?page=2">2</a></li>
-						<li><a href="/questions/hottest?page=3">3</a></li>
-						<li><a href="/questions/hottest?page=4">4</a></li>
-						<li><a href="/questions/hottest?page=5">5</a></li>
-						
-						<li class="disabled"><span>&hellip;</span></li>
-						<li class="next"><a href="/questions/hottest?page=2">Next Page</a></li></ul>
-				</div>
+				</div><!-- /.stream-list -->
+		
             </div><!-- /.main -->
            
          </div><!-- /.side -->
@@ -199,3 +170,42 @@ for($i=0; $i<$total_num;$i++){
 </script>
 
 <?php include '../templates/footer.html'; ?>
+<script type="text/javascript" src="../../style/js/slimtable.min.js"></script>
+
+<script type="text/javascript">
+$("document").ready(function(){
+	$("#exampletable").slimtable();
+});
+</script>
+
+<script>
+$(document).ready(function(){
+	$("#goAsk").click(function(){
+		console.log("lalalal");
+		var content = "<div class = 'cover-window-shell'></div>"+
+					  "<div class = 'create-question-window' style = 'position:absolute;left:50%;width:500px;top:35%;z-index:2000;'>"+
+						"<div class = 'panel panel-success' style = 'position:relative;right:50%;'>"+
+							"<div class = 'panel-heading'><h2 class = 'panel-title'>Ask Question:<span class = 'glyphicon glyphicon-remove text-danger closeWindow' style = 'cursor:pointer; float:right'></span></h2></div>"+
+								"<div class = 'panel-body'>"+
+									"<form action = 'getSubmitQuestion.php' method = 'POST' class = 'question'>"+
+										"<textarea rows='4' cols='65' name='editor' id='editor'></textarea>"+
+										"<button class='btn btn-success questionSubmit' onclick=\" SubmitContents()\">Submit</button>"+							
+									"</form>"+
+								"</div>"+
+						"</div>"+
+					"</div>";
+					  
+		$("body").append(content);
+	});
+});
+
+$("document").ready(function(){
+	$("body").on("click", ".closeWindow", function(){
+		$("div.cover-window-shell").remove();
+		$("div.create-question-window").fadeOut(function(){
+			$("div.create-question-window").remove();
+		})
+	});
+});
+
+</script>
