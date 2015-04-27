@@ -2149,6 +2149,7 @@ function clickAction(form, Jid, action)
 								"<p style='color:gray;'>" + receive.time + "</p>" +
 								"<hr/>"
 							$("h3[data-id='" + jid + "']").after(kk);
+							$("div.comment-textarea[data-id='" + jid + "']").html("")
 						} else console.log(receive)
 					}
 				})

@@ -142,7 +142,7 @@ if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
 } else if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == "comment"){
 	$userid = $_SESSION["id"];
 	$jid = $_REQUEST["jid"];
-	$context = htmlspecialchars($_REQUEST["context"]);
+	$context = htmlspecialchars($_REQUEST["context"], ENT_QUOTES);
 	$query = "INSERT INTO traveljournalcomment VALUES(DEFAULT, $userid, $jid, '$context', DEFAULT)";
 	mysql_query($query) or die(mysql_error());
 	$query = "SELECT comment_timestamp FROM traveljournalcomment WHERE comment_userid = $userid AND comment_traveljournalid = $jid ORDER BY comment_timestamp DESC";
