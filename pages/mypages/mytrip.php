@@ -20,14 +20,14 @@
         $trip_title = $line['trip_title'];
         $trip_startaddress  = $line['trip_startaddress'];
         $trip_endaddress  = $line['trip_endaddress'];
-        $trip_detailid  = $line['trip_detailid'];
 
 ?>
         <div class="row">
             <div class="col-md-12" style="weight:300px">
-                <h3><?php echo $trip_title; ?></h3>
+                <h3><a href="/capstone_project/pages/maps/index.php?tripid=<?php echo $trip_id; ?>"><?php echo $trip_title; ?></a></h3>
+
                 <p><?php echo $trip_startaddress . " -> ".$trip_endaddress; ?></p>
-                
+            
             </div>
         </div>
         <hr>
