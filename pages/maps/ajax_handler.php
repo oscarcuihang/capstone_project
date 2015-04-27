@@ -151,7 +151,7 @@ if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
 	array_pop($json);
 	$userid = $_SESSION["id"];
 	if($trip_id == "DEFAULT"){
-		$query = "INSERT INTO tripplan VALUES($trip_id, $userid, '$title', '$start', '$end', DEFAULT";
+		$query = "INSERT INTO tripPlan VALUES($trip_id, $userid, '$title', '$start', '$end', DEFAULT";
 		for($i = 0; $i < 8; $i++){
 			if(isset($json[$i])){
 				$tmp = $json[$i];
@@ -163,7 +163,7 @@ if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
 		//echo $query;
 		mysql_query($query) or die(mysql_error());
 	} else {
-		$query = "UPDATE tripplan SET trip_title = '$title', trip_startaddress = '$start', trip_endaddress = '$end', trip_last_updated = DEFAULT";
+		$query = "UPDATE tripPlan SET trip_title = '$title', trip_startaddress = '$start', trip_endaddress = '$end', trip_last_updated = DEFAULT";
 		for($i = 0; $i < 8; $i++){
 			if(isset($json[$i])){
 				$tmp = $json[$i];
@@ -176,7 +176,7 @@ if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
 		mysql_query($query) or die(mysql_error());
 	}
 	if($trip_id != -1){
-		$result = mysql_query("SELECT id FROM tripplan WHERE trip_userid = $userid ORDER BY trip_last_updated DESC") or die(mysql_error());
+		$result = mysql_query("SELECT id FROM tripPlan WHERE trip_userid = $userid ORDER BY trip_last_updated DESC") or die(mysql_error());
 		if(mysql_num_rows($result) > 0){
 			$row = mysql_fetch_assoc($result);
 			echo json_encode(array("trip_id" => $row["id"]));
@@ -184,7 +184,7 @@ if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
 	} else echo json_encode(array("trip_id" => $trip_id));
 } else if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == "loadplan"){
 	$id = $_SESSION["id"];
-	$result = mysql_query("SELECT * FROM tripplan WHERE trip_userid = $id ORDER BY trip_last_updated DESC") or die(mysql_error());
+	$result = mysql_query("SELECT * FROM tripPlan WHERE trip_userid = $id ORDER BY trip_last_updated DESC") or die(mysql_error());
 	$num = mysql_num_rows($result);
 	$plans = array();
 	if($num > 0){
