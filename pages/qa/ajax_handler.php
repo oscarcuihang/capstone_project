@@ -139,6 +139,19 @@ if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
 	//
 	$r = register_new_user($_REQUEST, $conn);
 	echo $r;
-} else echo "fail";
+} else if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == "answer"){
+	$userid = $_SESSION["id"];
+	$Qid = $_REQUEST["Qid"];
+	$context = htmlspecialchars($_REQUEST["context"]);
+	$query = "INSERT INTO answer VALUES(DEFAULT, $userid, $Qid, '$context', DEFAULT)";
+	mysql_query($query) or die(mysql_error());
+	$query = "SELECT answer_timestamp FROM answer WHERE answer_userid = $userid AND answer_questionid = $Qid ORDER BY answer_timestamp DESC";
+	$result = mysql_query($query) or die(mysql_error());
+	$num = mysql_num_rows($result);
+	if($num > 0){
+		$row = mysql_fetch_assoc($result);
+		echo json_encode(array("status" => "success", "time" => $row["answer_timestamp"]));
+	} else echo json_encode(array("status" => "fail"));
+}else echo "fail";
 mysql_close($conn);
 ?>

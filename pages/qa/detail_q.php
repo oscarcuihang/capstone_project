@@ -1,29 +1,15 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<meta name="renderer" content="webkit" />
-<meta property="qc:admins" content="15317273575564615446375" />
-<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, maximum-scale=1, user-scalable=no" />
-<meta name="alexaVerifyID" content="LkzCRJ7rPEUwt6fVey2vhxiw1vQ"/>
+<?php include '../templates/header.html'; ?>
 <title>有什么方法可以让别人看不到我的js代码 - SegmentFault</title>
 
-<meta name="description" content="感觉所有js代码都曝露出来，辛苦做出来的代码很快被人抄袭，怎么可以隐藏一下呢" />
-
-<meta name="keywords" content="javascript" />
 
 <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="SegmentFault" />
-<meta name="userId" value="" id="SFUserId" />
-<meta name="userRank" value="" id="SFUserRank" />
 
 
     <link rel="stylesheet" href="//static.segmentfault.com/build/global/css/global.676c5944.css" />
             <link rel="stylesheet" href="//static.segmentfault.com/build/qa/css/qa_all.fe492d19.css" />
         <link rel="stylesheet" href="//static.segmentfault.com/build/global/css/responsive.2e038079.css" />
 
-</head>
-<body class="qa-question">
+<?php include '../templates/navbar.html'; ?>
 
 
 <div class="wrap">
