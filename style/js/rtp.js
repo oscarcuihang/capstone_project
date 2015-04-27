@@ -1,4 +1,4 @@
-$(".sign-in-btn-nav").click(function(){
+$("body").on("click", ".sign-in-btn-nav", function(){
 	var content = 	"<div class = 'cover-window-shell'></div>" +
 					"<div class = 'sign-in-window-container show-up-window-container'>" +
 					"<div class = 'panel panel-default sign-in-window'>" +

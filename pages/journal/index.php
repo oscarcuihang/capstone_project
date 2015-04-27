@@ -42,7 +42,7 @@ function clickAction(form, Jid, action)
 </form>
   
  
-<div class="container" style="margin: 0px;height:100%;">
+<div class="container" style="margin: 0px;padding:0px;">
 
     <!-- Main component for a primary marketing message or call to action -->
 
@@ -117,6 +117,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -127,6 +130,7 @@ function clickAction(form, Jid, action)
     }
   }
 ?>
+		
         </div>
         <div class="box w-50 h-70 box-b-l box-b-r">
           <?php $record= mysql_fetch_assoc($result);?>
@@ -159,6 +163,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -201,6 +208,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color:#BEBEBE;";?>'"></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -243,6 +253,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -285,6 +298,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -336,7 +352,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
-		  
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button> 
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -379,6 +397,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" :""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;'"></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -421,6 +442,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -464,6 +488,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -514,6 +541,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -557,6 +587,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -600,6 +633,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -642,6 +678,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -684,7 +723,10 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
-<?php
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
+<?php	
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
 ?>
@@ -742,6 +784,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -788,6 +833,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -834,6 +882,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -880,6 +931,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -926,6 +980,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -985,6 +1042,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1027,6 +1087,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1069,6 +1132,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1111,6 +1177,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1153,6 +1222,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1206,6 +1278,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1253,6 +1328,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1299,6 +1377,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1347,6 +1428,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1406,6 +1490,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1448,6 +1535,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1490,6 +1580,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1532,6 +1625,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1574,6 +1670,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1626,6 +1725,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1669,6 +1771,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1711,6 +1816,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1754,6 +1862,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1808,6 +1919,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1855,6 +1969,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1902,6 +2019,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1948,6 +2068,9 @@ function clickAction(form, Jid, action)
 <?php		
 	}
 ?>
+	<h3>Write a comment: </h3>
+	<div class = "comment-textarea" data-id = "<?= $record["id"]; ?>" <?= isset($_SESSION["id"])? "contentEditable" : ""; ?> style = "width: 80%;height: 200px;padding:10px;border-radius:4px;font-size:20px;font-family:Georgia;border:1px solid #ccc;<?= isset($_SESSION["id"])? "": "background-color: #BEBEBE;"; ?>'"><?= isset($_SESSION["id"])? "" : "<p style = 'text-align:center;margin-top:50px;'>Please <button class = 'btn btn-lg btn-success sign-in-btn-nav'>Log In</button> First</p>"; ?></div>
+	<button type="button" class="btn btn-default btn-lg submit-comment btn-success" style="margin-top: 9px;" <?= isset($_SESSION["id"])? "" : "disabled"; ?>>Comment</button>
 <?php
   if (isset($_SESSION["id"])){
     if( $_SESSION["id"]==$record["journal_userid"]){
@@ -1983,7 +2106,7 @@ function clickAction(form, Jid, action)
 <?php include '../templates/footer.html'; ?>
 
 <script type="text/javascript">
-        
+      $(".reply-textarea").unbind("click");
       var $Jcontainer   = $( '#flip' ),
         $pages    = $Jcontainer.children().hide();
       
@@ -2002,5 +2125,24 @@ function clickAction(form, Jid, action)
       
         }
       });
-        
+    
+	
+	$(document).ready(function(){
+		$("body").on("click", ".submit-comment", function(){
+			var content = $(this).prev();
+			var html = content.html();
+			if(html.length == 0){
+				content.css("border-color", "#a94442");
+			} else {
+				var jid = content.attr("data-id");
+				$.ajax({
+					url: "ajax_handler.php",
+					type: "POST",
+					data: {jid:jid, context:html}
+				})
+			}
+		}).on("click", ".comment-textarea", function(){
+			$(this).css("border-color", "#ccc");
+		})
+	})
 </script>

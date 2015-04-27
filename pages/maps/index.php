@@ -400,7 +400,7 @@
 				$("#sidebar-content").append(
 					"<div class = 'row location-in-route' data-address = '" + settle_markers[i] + "'>" + 
 						"<div class = 'col-md-6' style = 'word-break:break-all'>" +
-							"<p>" + settle_markers[i] + "</p>" +
+							settle_markers[i] +
 						"</div>" +
 						"<div class = 'col-md-1'>" +
 							"<i class = 'glyphicon glyphicon-remove close delete-loc'></i>" +
@@ -620,7 +620,7 @@
 							$("#sidebar-content").append(
 								"<div class = 'row location-in-route' data-address = '" + $(".card-content").html() + "'>" + 
 									"<div class = 'col-md-6' style = 'word-break:break-all;'>" +
-										"<p>" + $(".card-content").html() + "</p>" +
+										$(".card-content").html() +
 									"</div>" +
 									"<div class = 'col-md-1'>" +
 										"<i class = 'glyphicon glyphicon-remove close delete-loc'></i>" +
@@ -636,7 +636,7 @@
 						$("#sidebar-content").append(
 							"<div class = 'row location-in-route' data-address = '" + $(".card-content").html() + "'>" + 
 								"<div class = 'col-md-6' style = 'word-break:break-all'>" +
-									"<p>" + $(".card-content").html() + "</p>" +
+									$(".card-content").html() +
 								"</div>" +
 								"<div class = 'col-md-1'>" +
 									"<i class = 'glyphicon glyphicon-remove close delete-loc'></i>" +
@@ -679,8 +679,9 @@
 		})
 		$("body").on("click", ".delete-loc", function(){
 			var target = $(this).parent().parent().attr("data-address");
+			console.log(target)
 			$("#card-info").hide(200);
-			$("#sidebar-wrapper > div.row[data-address='" + target + "']").remove()
+			$("#sidebar-wrapper div.row[data-address='" + target + "']").remove()
 			settle_markers[target].setMap(null);
 			var index = settle_markers.indexOf(target);
 			delete settle_markers[target];

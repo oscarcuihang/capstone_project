@@ -10,7 +10,7 @@ div.cover-window-shell{
 	opacity: 0.3;
 	filter: Alpha(opacity = 30);
 	position: fixed;
-	z-index: 1031;
+	z-index: 9999;
 }
 
 div.sign-in-window-container{
@@ -19,7 +19,7 @@ div.sign-in-window-container{
 	left: 50%;
 	width: 450px;
 	top: 20%;
-	z-index: 1032;
+	z-index: 10000;
 }
 div.sign-in-window {
 	position: relative;
