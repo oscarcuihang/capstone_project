@@ -29,7 +29,7 @@
                     <div class="post-col">
                         <div class="widget-vote">
                             
-                            <span class="count"><?php echo $record["question_rate_avg"]; ?></span><!--问题的rating显示在这里-->
+                            <span class="count"><?php echo $record["question_rate_avg"]; ?>/5</span><!--问题的rating显示在这里-->
                             
                         </div><!-- end .widget-vote -->
                     </div>
