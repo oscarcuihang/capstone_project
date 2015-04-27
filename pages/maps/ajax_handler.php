@@ -144,12 +144,13 @@ if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
 	$json = json_decode($receive["json"], true);
 	$title = $receive["title"];
 	$trip_id = ($receive["trip_id"] == -1)? "DEFAULT" : $receive["trip_id"];
+	//echo $receive["trip_id"]. " ". $trip_id;
 	$head = array_shift($json);
 	$start = $head["lat"]. "," . $head["lng"];
 	$end = end($json)["lat"]. ",". end($json)["lng"];
 	array_pop($json);
 	$userid = $_SESSION["id"];
-	if($trip_id == -1){
+	if($trip_id == "DEFAULT"){
 		$query = "INSERT INTO tripplan VALUES($trip_id, $userid, '$title', '$start', '$end', DEFAULT";
 		for($i = 0; $i < 8; $i++){
 			if(isset($json[$i])){
@@ -171,6 +172,8 @@ if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
 			} else $query .= ", detail_waypoint". $i. "_adress = NULL";
 		}
 		$query .= " WHERE id = $trip_id";
+		//echo $query;
+		mysql_query($query) or die(mysql_error());
 	}
 	if($trip_id != -1){
 		$result = mysql_query("SELECT id FROM tripplan WHERE trip_userid = $userid ORDER BY trip_last_updated DESC") or die(mysql_error());

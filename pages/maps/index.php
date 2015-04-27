@@ -259,7 +259,7 @@
 			async: false,
 			data: { latlng: lat + "," + lng, sensor: "true_or_false"},
 			success: function(data, status){
-				console.log(data)
+				//console.log(data)
 				result = data.results[0].formatted_address;
 			}
 		})
@@ -290,9 +290,9 @@
 					result = loc1[0] + "," + loc1[1];
 				}
 			})
-			console.log(loc1[0],loc1[1]);
+			//console.log(loc1[0],loc1[1]);
 			var spot_start = new google.maps.LatLng(loc1[0],loc1[1]);
-			console.log(spot_start);
+			//console.log(spot_start);
 			var pinColor = "2F76EE";
 			var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
 				new google.maps.Size(21, 34),
@@ -396,7 +396,7 @@
 			for(T_T in settle_markers)
 				count_miao++;
 			for(var i = 0; i < count_miao / 2; i++){
-				console.log(settle_markers[i])
+				//console.log(settle_markers[i])
 				$("#sidebar-content").append(
 					"<div class = 'row location-in-route' data-address = '" + settle_markers[i] + "'>" + 
 						"<div class = 'col-md-6' style = 'word-break:break-all'>" +
@@ -535,7 +535,11 @@
 				data: { latlng: lat + "," + lon, sensor: "true_or_false"},
 				success: function(data, status){
 					results = data.results;
-					$(".card-content").html(results[0].formatted_address)
+					var addr = "";
+					if(results.length == 0)
+						addr = lat + "," + lon;
+					else addr = results[0].formatted_address
+					$(".card-content").html(addr)
 					$("#card-info").hide().show(200);
 				}
 			})
@@ -553,13 +557,13 @@
 		var i;
 		for(i in settle_markers)
 			settle_markers_len++;
-		console.log(settle_markers_len)
+		//console.log(settle_markers_len)
 		if(settle_markers_len / 2 >= 2){
 			var start = settle_markers[settle_markers[0]].getPosition();
 			var end = settle_markers[settle_markers[settle_markers_len / 2 - 1]].getPosition();
 			var waypoints = [];
 			for(var i = 1; i < settle_markers_len / 2 - 1; i++){
-				console.log(settle_markers[i])
+				//console.log(settle_markers[i])
 				waypoints.push({
 					location: settle_markers[settle_markers[i]].getPosition(),
 					stopover: true
@@ -679,7 +683,7 @@
 		})
 		$("body").on("click", ".delete-loc", function(){
 			var target = $(this).parent().parent().attr("data-address");
-			console.log(target)
+			//console.log(target)
 			$("#card-info").hide(200);
 			$("#sidebar-wrapper div.row[data-address='" + target + "']").remove()
 			settle_markers[target].setMap(null);
@@ -700,7 +704,7 @@
 				} else console.log("Error: fail to switch the index")
 				$pre.before($cur);
 				calc_route();
-				console.log(settle_markers)
+				//console.log(settle_markers)
 			}
 		}).on("click", ".move-down", function(){
 			var settle_markers_len = 0;
@@ -718,7 +722,7 @@
 				}
 				$aft.after($cur);
 				calc_route();
-				console.log(settle_markers)
+				//console.log(settle_markers)
 			}
 		}).on("click", ".save-path", function(){
 			if($(".path-window-content").length == 0){
@@ -756,6 +760,15 @@
 				settle_markers.splice(0, 1);
 			}
 			$(".location-in-route").remove();
+			$(".trip-plan-title").html("Unname Travel Plan");
+			trip_id = -1;
+			trip_info = [];
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function (position) {
+					initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+					map.setCenter(initialLocation);
+				});
+			}	
 			calc_route();
 		}).on("click", ".load-path", function(){
 			if($(".path-window-wrapper").length > 0)
@@ -779,7 +792,7 @@
 					var content = "";
 					if(JSON.parse(data).content.length > 0){
 						var plans = JSON.parse(data).content;
-						console.log(plans)
+						//console.log(plans)
 						content = "<div style = 'max-height:500px;overflow-y:scroll;'><table class = 'table plan-table'>\n<tr>\n<th>plan name</th><th>latest update time</th>\n</tr>\n";
 						for(var i = 0; i < plans.length; i++)
 							content += "<tr data-id = '" +plans[i].id + "' class = 'plan-click-load'><td>" + plans[i].trip_title + "</td><td>" + plans[i].trip_last_updated + "</td></tr>";
@@ -828,7 +841,7 @@
 								$("div.path-window-wrapper").remove();
 								window.location.href = "index.php?tripid=" + JSON.parse(data).trip_id;
 							})
-						} else console.log(data);
+						} else console.log(JSON.parse(data));
 					}
 				})
 			} else {
