@@ -20,6 +20,7 @@ if(!isset($_SESSION['id'])){
 	 else{
 		$id=$_SESSION["id"];
 		$editor=$_POST["editor"];
+		$ip = $_SERVER["REMOTE_ADDR"];
 		$query = "INSERT INTO question VALUES(DEFAULT,'$id','$editor',DEFAULT,0,0)";
 		mysql_query($query,$conn) or die(mysql_error());
 				
