@@ -1,42 +1,22 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>droppable demo</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <style>
-  #draggable {
-    width: 100px;
-    height: 100px;
-    background: #ccc;
-  }
-  #droppable {
-    position: absolute;
-    left: 250px;
-    top: 0;
-    width: 125px;
-    height: 125px;
-    background: #999;
-    color: #fff;
-    padding: 10px;
-  }
-  </style>
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-</head>
-<body>
- 
-<div id="droppable">Drop here</div>
-<div id="draggable">Drag me</div>
- 
-<script>
-$( "#draggable" ).draggable();
-$( "#droppable" ).droppable({
-  drop: function() {
-    alert( "dropped" );
-  }
-});
-</script>
- 
-</body>
-</html>
+<?php include '../templates/header.html'; ?>
+<?php include '../templates/navbar.html'; ?>
+
+
+    
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Navbar example</h1>
+        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <p>To see the difference between static and fixed top navbars, just scroll.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
+        </p>
+      </div>
+
+    </div> <!-- /container -->
+	<button class = 'sign-in-btn-nav'>fsfsdfd</button>
+
+<?php include '../templates/footer.html'; ?>

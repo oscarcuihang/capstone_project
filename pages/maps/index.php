@@ -251,29 +251,6 @@
 	var trip_id = <?= (isset($_REQUEST["tripid"])? $_REQUEST["tripid"] : -1); ?>;
 	var trip_info = JSON.parse('<?= (isset($_REQUEST["tripid"])? json_encode($trip_info) : json_encode(array())); ?>');
 	
-	function cordTranslate(lat, lng){
-		location = new google.maps.LatLng(lat, lng);
-		var pinColor = "2F76EE";
-		var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-			new google.maps.Size(21, 34),
-			new google.maps.Point(0,0),
-			new google.maps.Point(10, 34)
-		);
-		var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
-			new google.maps.Size(40, 37),
-			new google.maps.Point(0, 0),
-			new google.maps.Point(12, 35)
-		);
-		var marker = new google.maps.Marker({
-			position: location.getPosition(),
-			map: map,
-			icon: pinImage,
-			shadow: pinShadow,
-			draggable: false
-		})
-		return marker;
-	}
-	
 	function getInfoByCord(lat, lng){
 		var result;
 		$.ajax({
@@ -294,17 +271,164 @@
 			zoom: 11
 		};
 		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		
+		/*****  *****/
+		if(trip_info.length != 0){
+			var loc1 = trip_info.trip_startaddress;
+			loc1 = loc1.replace(" ", "").split(",");
+			var result = "";
+			$.ajax({
+				url: "http://maps.googleapis.com/maps/api/geocode/json",
+				type: "GET",
+				async: false,
+				data: { latlng: loc1[0] + "," + loc1[1], sensor: "true_or_false"},
+				success: function(data, status){
+					//console.log(data)
+					if(data.results.length != 0)
+						result = data.results[0].formatted_address;
+					result = loc1[0] + "," + loc1[1];
+				}
+			})
+			console.log(loc1[0],loc1[1]);
+			var spot_start = new google.maps.LatLng(loc1[0],loc1[1]);
+			console.log(spot_start);
+			var pinColor = "2F76EE";
+			var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+				new google.maps.Size(21, 34),
+				new google.maps.Point(0,0),
+				new google.maps.Point(10, 34)
+			);
+			var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+				new google.maps.Size(40, 37),
+				new google.maps.Point(0, 0),
+				new google.maps.Point(12, 35)
+			);
+			var marker = new google.maps.Marker({
+				position: spot_start,
+				map: map,
+				icon: pinImage,
+				shadow: pinShadow,
+				draggable: false
+			})
+			settle_markers.push(result);
+			settle_markers[result] = marker;
+			for(var i = 0; i < 8; i++){
+				if(trip_info["detail_waypoint" + (i + 1) + "_address"]){
+					loc1 = trip_info["detail_waypoint" + (i + 1) + "_address"];
+					loc1 = loc1.replace(" ", "").split(",");
+					result = "";
+					$.ajax({
+						url: "http://maps.googleapis.com/maps/api/geocode/json",
+						type: "GET",
+						async: false,
+						data: { latlng: loc1[0] + "," + loc1[1], sensor: "true_or_false"},
+						success: function(data, status){
+							//console.log(data)
+							if(data.results.length != 0)
+								result = data.results[0].formatted_address;
+							result = loc1[0] + "," + loc1[1];
+						}
+					})
+					var spot = new google.maps.LatLng(loc1[0],loc1[1])
+					//locationlist.push(spot); // this function has to be used before the map is set
+					var pinColor = "2F76EE";
+					var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+						new google.maps.Size(21, 34),
+						new google.maps.Point(0,0),
+						new google.maps.Point(10, 34)
+					);
+					var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+						new google.maps.Size(40, 37),
+						new google.maps.Point(0, 0),
+						new google.maps.Point(12, 35)
+					);
+					marker = new google.maps.Marker({
+						position: spot,
+						map: map,
+						icon: pinImage,
+						shadow: pinShadow,
+						draggable: false
+					})
+					settle_markers.push(result);
+					settle_markers[result] = marker;
+				} else break;
+			}
+			loc1 = trip_info["trip_endaddress"];
+			loc1 = loc1.replace(" ", "").split(",");
+			result = "";
+			$.ajax({
+				url: "http://maps.googleapis.com/maps/api/geocode/json",
+				type: "GET",
+				async: false,
+				data: { latlng: loc1[0] + "," + loc1[1], sensor: "true_or_false"},
+				success: function(data, status){
+					//console.log(data)
+					if(data.results.length != 0)
+						result = data.results[0].formatted_address;
+					result = loc1[0] + "," + loc1[1];
+				}
+			})
+			var spot_end = new google.maps.LatLng(loc1[0],loc1[1])
+			//locationlist.push(spot); // this function has to be used before the map is set
+			var pinColor = "2F76EE";
+			var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+				new google.maps.Size(21, 34),
+				new google.maps.Point(0,0),
+				new google.maps.Point(10, 34)
+			);
+			var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+				new google.maps.Size(40, 37),
+				new google.maps.Point(0, 0),
+				new google.maps.Point(12, 35)
+			);
+			marker = new google.maps.Marker({
+				position: spot_end,
+				map: map,
+				icon: pinImage,
+				shadow: pinShadow,
+				draggable: false
+			})
+			settle_markers.push(result);
+			settle_markers[result] = marker;
+			var T_T;
+			var count_miao = 0;
+			for(T_T in settle_markers)
+				count_miao++;
+			for(var i = 0; i < count_miao / 2; i++){
+				console.log(settle_markers[i])
+				$("#sidebar-content").append(
+					"<div class = 'row location-in-route' data-address = '" + settle_markers[i] + "'>" + 
+						"<div class = 'col-md-6' style = 'word-break:break-all'>" +
+							"<p>" + settle_markers[i] + "</p>" +
+						"</div>" +
+						"<div class = 'col-md-1'>" +
+							"<i class = 'glyphicon glyphicon-remove close delete-loc'></i>" +
+						"</div>" +
+						"<i class = 'glyphicon glyphicon-arrow-up move-up'></i>" +
+						"<i class = 'glyphicon glyphicon-arrow-down move-down'></i>" +
+					"</div>"
+				)
+			}
+			var target = $("#menu-toggle").attr("data-target");
+			$(target).animate({width:250}, 700, function(){
+				$("#siderbar-inner-wrapper").show();
+			});
+			calc_route();
+			
+		} else console.log("empty trip");
+		/*****  *****/
+		//var infowindow = new google.maps.InfoWindow();
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function (position) {
 				initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-				map.setCenter(initialLocation);
 			});
 		}
+		initialLocation = (spot_start == null)? initialLocation : spot_start;
+		map.setCenter(initialLocation);
 		directionsDisplay = new google.maps.DirectionsRenderer({
 			suppressMarkers: true
 		});
 		directionsDisplay.setMap(map);
-
 		var input = /** @type {HTMLInputElement} */
 			document.getElementById('pac-input');
 
@@ -314,9 +438,7 @@
 
 		var autocomplete = new google.maps.places.Autocomplete(input);
 		autocomplete.bindTo('bounds', map);
-
-		//var infowindow = new google.maps.InfoWindow();
-
+		
 		google.maps.event.addListener(autocomplete, 'place_changed', function() {
 			var marker = new google.maps.Marker({
 				map: map,
@@ -376,6 +498,7 @@
 				if($("#card-info").css("display") == "none")
 					$("#card-info").show(200)
 			})
+			calc_route()
 		});
 
 	  // Sets a listener on a radio button to change the filter type on Places
@@ -422,10 +545,11 @@
 					$("#card-info").show(200)
 			})
 		});
+	
 	}
 	
 	function calc_route(){
-		console.log(settle_markers)
+		//console.log(settle_markers)
 		var settle_markers_len = 0;
 		var i;
 		for(i in settle_markers)
@@ -464,24 +588,6 @@
 	}
 
 	google.maps.event.addDomListener(window, 'load', initialize);
-
-	if(trip_info.length != 0){
-		var loc = [];
-		var loc1 = trip_info.trip_startaddress;
-		loc1 = loc1.split(",");
-		console.log(loc1)
-		/*$.ajax({
-			url: "http://maps.googleapis.com/maps/api/geocode/json",
-			type: "GET",
-			async: false,
-			data: { latlng: lat + "," + lng, sensor: "true_or_false"},
-			success: function(data, status){
-				console.log(data)
-				result = data.results[0].formatted_address;
-			}
-		})*/
-		
-	} else console.log("empty trip");
   </script>
         
   
@@ -514,8 +620,8 @@
 						$(target).animate({width:250}, 700, function(){
 							$("#sidebar-content").append(
 								"<div class = 'row location-in-route' data-address = '" + $(".card-content").html() + "'>" + 
-									"<div class = 'col-md-6'>" +
-										$(".card-content").html() +
+									"<div class = 'col-md-6' style = 'word-break:break-all;'>" +
+										"<p>" + $(".card-content").html() + "</p>" +
 									"</div>" +
 									"<div class = 'col-md-1'>" +
 										"<i class = 'glyphicon glyphicon-remove close delete-loc'></i>" +
@@ -530,8 +636,8 @@
 					else {
 						$("#sidebar-content").append(
 							"<div class = 'row location-in-route' data-address = '" + $(".card-content").html() + "'>" + 
-								"<div class = 'col-md-6'>" +
-									$(".card-content").html() +
+								"<div class = 'col-md-6' style = 'word-break:break-all'>" +
+									"<p>" + $(".card-content").html() + "</p>" +
 								"</div>" +
 								"<div class = 'col-md-1'>" +
 									"<i class = 'glyphicon glyphicon-remove close delete-loc'></i>" +
