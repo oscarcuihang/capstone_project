@@ -142,8 +142,8 @@ if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
 } else if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == "answer"){
 	$userid = $_SESSION["id"];
 	$Qid = $_REQUEST["Qid"];
-	$context = htmlspecialchars($_REQUEST["context"]);
-	$query = "INSERT INTO answer VALUES(DEFAULT, $userid, $Qid, '$context', DEFAULT)";
+	$context = htmlspecialchars($_REQUEST["context"], ENT_QUOTES);
+	$query = "INSERT INTO answer VALUES(DEFAULT, $userid, $Qid, '$context', DEFAULT, DEFAULT, DEFAULT)";
 	mysql_query($query) or die(mysql_error());
 	$query = "SELECT answer_timestamp FROM answer WHERE answer_userid = $userid AND answer_questionid = $Qid ORDER BY answer_timestamp DESC";
 	$result = mysql_query($query) or die(mysql_error());

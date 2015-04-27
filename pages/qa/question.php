@@ -134,14 +134,32 @@ $(document).ready(function(){
 					data: {Qid:Qid, context:html, operation:"answer"},
 					async: false,
 					success: function(data){
+						console.log(data)
 						var receive = JSON.parse(data);
 						
 						if(receive.status == "success"){
-							var kk = "<p><b><?php echo $_SESSION["fname"]; ?> <?php echo $_SESSION["lname"]?>:</b></p>" +
-								"<p>" + html + "</p>" +
-								"<p style='color:gray;'>" + receive.time + "</p>" +
-								"<hr/>"
-							$("h3[data-id='" + Qid + "']").after(kk);
+							var kk = "<article class='clearfix widget-answers__item accepted'>" +
+										"<div class='post-col'>" +
+											"<div class='widget-vote'>" +
+
+												"<span class='count'>0/5</span>" +
+
+											"</div>" +
+										"</div>" +
+
+										"<div class='post-offset'>" +
+											
+											"<strong><a class='mr5'><?php echo $_SESSION["fname"]." ".$_SESSION["lname"];?></a></strong>" +
+
+											"<span class='ml10 text-muted'>Reply at: " + receive.time + "</span>" +
+
+											"<div class='answer fmt mt10'>" +
+												"<p>" + html + "</p>" +
+											"</div>" +
+
+										"</div>" +
+									"</article>";
+							$("#answers-title").after(kk);
 						} else console.log(receive)
 					}
 				})
