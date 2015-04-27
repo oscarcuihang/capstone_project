@@ -3,7 +3,7 @@
 	$trip_info = array();
 	if(isset($_REQUEST["tripid"])){
 		$trip_id = $_REQUEST["tripid"];
-		$result = mysql_query("SELECT * FROM tripplan WHERE id = $trip_id") or die(mysql_error());
+		$result = mysql_query("SELECT * FROM tripPlan WHERE id = $trip_id") or die(mysql_error());
 		$num = mysql_num_rows($result);
 		if($num > 0){
 			$row = mysql_fetch_assoc($result);
