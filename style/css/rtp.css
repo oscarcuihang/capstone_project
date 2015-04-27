@@ -44,7 +44,7 @@ div.sign-up-window-container{
 	left: 50%;
 	width: 650px;
 	top: 20%;
-	z-index: 1032;
+	z-index: 10000;
 }
 button.sign-up-submit{
 	margin-left:87%;
