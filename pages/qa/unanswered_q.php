@@ -8,6 +8,56 @@
 <link rel="stylesheet" href="//static.segmentfault.com/build/qa/css/qa_all.5c45d211.css" />
 <link rel="stylesheet" href="//static.segmentfault.com/build/global/css/responsive.2e038079.css" />
 
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+<?php 
+	if(isset($_POST["message"])){
+		echo "alert('". $_POST["message"]. "');";
+	}
+?>
+$(document).ready(function(){
+	$("#goAsk").click(function(){
+		console.log("lalalal");
+		var content = "<div class = 'cover-window-shell'></div>"+
+					  "<div class = 'create-question-window' style = 'position:absolute;left:50%;width:500px;top:35%;z-index:2000;'>"+
+						"<div class = 'panel panel-success' style = 'position:relative;right:50%;'>"+
+							"<div class = 'panel-heading'><h2 class = 'panel-title'>Ask Question:<span class = 'glyphicon glyphicon-remove text-danger closeWindow' style = 'cursor:pointer; float:right'></span></h2></div>"+
+								"<div class = 'panel-body'>"+
+									"<form action = 'getSubmitQuestion.php' method = 'POST' class = 'question'>"+
+										"<textarea rows='4' cols='65' name='editor' id='editor'></textarea>"+
+										"<button class='btn btn-success questionSubmit' onclick=\" SubmitContents()\">Submit</button>"+							
+									"</form>"+
+								"</div>"+
+						"</div>"+
+					"</div>";
+					  
+		$("body").append(content);
+	});
+})
+
+$("document").ready(function(){
+	$("body").on("click", ".closeWindow", function(){
+		$("div.cover-window-shell").remove();
+		$("div.create-question-window").fadeOut(function(){
+			$("div.create-question-window").remove();
+		})
+	})
+})
+
+</script>
+<script>
+	function SubmitContents() {
+		// Get the editor instance that you want to interact with.
+		var editor = CKEDITOR.instances.editor;
+
+		// Get editor contents
+		// http://docs.ckeditor.com/#!/api/CKEDITOR.editor-method-getData
+		//alert( editor.getData() );
+		console.log(editor.getData());
+		document.getElementsByClassName("question")[0].submit();
+	}
+
+</script>
 
 <?php include '../templates/navbar.html'; ?>
 
@@ -16,8 +66,20 @@
         <div class="row">
             <div class="col-xs-12 col-md-9 main">
                 <p class="main-title hidden-xs">
-                    What's your question?
-                    <a id="goAsk" href="/ask" class="btn btn-primary">I have question!</a>
+<?php
+	if(isset($_SESSION["id"])){
+?>                   
+				   What's your question?
+                    <a id="goAsk" class="askquestion btn btn-primary">I have question!</a>
+<?php
+	}
+	else{
+?>	
+					Want to ask a question? 
+					<a class="sign-in-btn-nav cursor-pointer btn btn-danger">Sign In</a>
+<?php
+	}
+?>
                 </p>
 
                 <ul class="nav nav-tabs nav-tabs-zen mb10">

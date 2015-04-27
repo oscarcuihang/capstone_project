@@ -79,7 +79,7 @@ $("document").ready(function(){
 	else{
 ?>	
 					Want to ask a question? 
-					<a class="sign-in-btn-nav cursor-pointer btn-danger">Sign In</a>
+					<a class="sign-in-btn-nav cursor-pointer btn btn-danger">Sign In</a>
 <?php
 	}
 ?>
