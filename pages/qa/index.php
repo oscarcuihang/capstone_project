@@ -12,6 +12,11 @@
 
 <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script>
+<?php 
+	if(isset($_POST["message"])){
+		echo "alert('". $_POST["message"]. "')";
+	}
+?>
 $(document).ready(function(){
 	$("#goAsk").click(function(){
 		console.log("lalalal");

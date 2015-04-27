@@ -10,10 +10,12 @@ if(!isset($_SESSION['id'])){
 }
  if(isset($_POST["editor"])){
 	 if($_POST["editor"]==NULL){
+		 echo '<form id="emptyInfo" action="index.php" method="POST">';
+		 echo '<input type="hidden" name="message" value="Empty question cannot be created!!">'
+		 echo '</form>';
 		 echo '<script language="javascript">';
-		 echo 'alert("Empty message cannot be created")';
+		 echo 'document.getElementById("emptyInfo").submit()';
 		 echo '</script>';
-		 header('Location: index.php');
 	 }
 	 else{
 		$id=$_SESSION["id"];
@@ -23,9 +25,11 @@ if(!isset($_SESSION['id'])){
 				
 		mysql_query("INSERT INTO userLog VALUES(DEFAULT, $id, '$ip', DEFAULT, 'create/post question')");
 		
-		echo '<script language="javascript">';
-		echo 'alert("Question successfully post!!")';
-		echo '</script>';
-		header('Location: index.php');
+		 echo '<form id="emptyInfo" action="index.php" method="POST">';
+		 echo '<input type="hidden" name="message" value="Empty question cannot be created!!">'
+		 echo '</form>';
+		 echo '<script language="javascript">';
+		 echo 'document.getElementById("emptyInfo").submit()';
+		 echo '</script>';
 	 }		
 ?>
