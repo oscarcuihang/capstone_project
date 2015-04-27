@@ -8,8 +8,32 @@
 <link rel="stylesheet" href="//static.segmentfault.com/build/qa/css/qa_all.5c45d211.css" />
 <link rel="stylesheet" href="//static.segmentfault.com/build/global/css/responsive.2e038079.css" />
 
+<script>
+$(".askquestion").click(function(){
+	var content = "<h4>Ask Question: </h4>"+
+				  "<form action = 'getSubmitQuestion.php' method = 'POST' class = 'question'>"+
+				  "<textarea rows='4' cols='50' name='editor' id='editor'></textarea>"+
+				  "<button class='btn btn-success' onclick=\"SubmitContents()\">Submit</button>"+
+				  "</form>"
+	$("body").append(content);
+	$("div.sign-in-window-container").fadeIn();
+});
+</script>
+<script>
+	function SubmitContents() {
+		// Get the editor instance that you want to interact with.
+		var editor = CKEDITOR.instances.editor;
 
+		// Get editor contents
+		// http://docs.ckeditor.com/#!/api/CKEDITOR.editor-method-getData
+		//alert( editor.getData() );
+		console.log(editor.getData());
+		document.getElementsByClassName("question")[0].submit();
+	}
+</script>
 <?php include '../templates/navbar.html'; ?>
+
+
 
 <div class="wrap">
     <div class="container">
@@ -20,13 +44,13 @@
 	if(isset($_SESSION["id"])){
 ?>                   
 				   What's your question?
-                    <a id="goAsk" href="/ask" class="btn btn-primary">I have question!</a>
+                    <a id="goAsk" href="/ask" class="askqustion btn btn-primary">I have question!</a>
 <?php
 	}
 	else{
 ?>	
 					Want to ask a question? 
-					<a class="sign-in-btn-nav cursor-pointer ">Sign In</a>
+					<a class="sign-in-btn-nav cursor-pointer btn-danger">Sign In</a>
 <?php
 	}
 ?>
