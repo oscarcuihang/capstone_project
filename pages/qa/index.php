@@ -39,7 +39,7 @@
 
 </script>
 <script>
-function clickAction(form, Qid)
+function questionDetail(form, Qid)
 {
   document.forms[form].elements['Qid'].value = Qid;
 

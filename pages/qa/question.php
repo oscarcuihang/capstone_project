@@ -18,6 +18,7 @@
         <div class="row">
             <div class="col-xs-12 col-md-9 main">
 <?php
+	//echo $_POST["Qid"];
 	if(isset($_POST["Qid"])){
 		$Qid=$_POST["Qid"];
 		$query="SELECT* FROM question WHERE id='$Qid'";
@@ -29,7 +30,7 @@
                     <div class="post-col">
                         <div class="widget-vote">
                             
-                            <span class="count"><?php echo $record["question_rate_avg"]; ?>/5</span><!--问题的rating显示在这里-->
+                            <span class="count"><?php echo $record["question_rate_avg"]."/5"; ?></span><!--问题的rating显示在这里-->
                             
                         </div><!-- end .widget-vote -->
                     </div>
@@ -37,7 +38,7 @@
                     <div class="post-offset">
 
                         <div class="question fmt">
-							<p><?php echo $record["question_text"]; ?></p><!--问题的text内容就写在这里-->
+							<h2><?php echo $record["question_text"]; ?></h2><!--问题的text内容就写在这里-->
 						</div>
 					</div><!-- end .post-offset -->
                 </article>
@@ -50,7 +51,7 @@
 ?>
 		<div class="widget-answers">
 
-					<h2 class="title h4 mt30 mb20 post-title" id="answers-title"><?php echo $answer_num; ?></h2><!--一共有多少个回答数目-->
+					<h5 class="title h4 mt30 mb20 post-title" id="answers-title"><?php echo $answer_num; ?> Answers</h5><!--一共有多少个回答数目-->
 
 <?php
 		for($i=0;$i<$answer_num;$i++){
@@ -69,15 +70,13 @@
 						</div>
 
 						<div class="post-offset">
-<?php
-		
-?>							
-							<strong><a class="mr5"><?php echo $answer["user_fname"];?> <?php echo $answer["user_lname"];?></a></strong>
+						
+						<strong><a class="mr5"><?php echo $answer["user_fname"]." ".$answer["user_lname"];?></a></strong>
 
-							<span class="ml10 text-muted">Reply at <?php echo $answer["answer_timestamp"] ?></span>
+							<span class="ml10 text-muted">Reply a: <?php echo $answer["answer_timestamp"]; ?></span>
 
 							<div class="answer fmt mt10">
-								<p><?php echo $answer["answer_text"]?></p>
+								<p><?php echo $answer["answer_text"];?></p>
 							</div>
 
 						</div>
@@ -87,13 +86,6 @@
 		}
 	}
 ?>		
-        
-            
-
-
-
-
-
         
 				</div><!-- /.widget-answers -->
 
@@ -119,12 +111,12 @@
 </div>
 
 
+<?php include '../templates/footer.html'; ?>
 
 
     <script src="//static.segmentfault.com/build/3rd/assets.ce4fe392.js"></script>
    
-    <script src="//static.segmentfault.com/build/qa/js/question.ef55cf02.js"></script>
-    
+   
 
 <script src="http://cbjs.baidu.com/js/m.js"></script>
 <script>
