@@ -134,7 +134,7 @@ $(document).ready(function(){
 					data: {Qid:Qid, context:html, operation:"answer"},
 					async: false,
 					success: function(data){
-						console.log(data)
+						//console.log(data)
 						var receive = JSON.parse(data);
 						
 						if(receive.status == "success"){
@@ -160,6 +160,14 @@ $(document).ready(function(){
 										"</div>" +
 									"</article>";
 							$("#answers-title").after(kk);
+							var i = $("#answers-title").html();
+							i = i.split(" ");
+							var num = parseInt(i[0]);
+							num++;
+							var h5 = num + " " + i[1]
+							console.log(h5)
+							$("#answers-title").html(h5);
+							$(".answer-textarea").html("")
 						} else console.log(receive)
 					}
 				})
