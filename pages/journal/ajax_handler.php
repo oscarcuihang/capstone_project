@@ -139,6 +139,19 @@ if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
 	//
 	$r = register_new_user($_REQUEST, $conn);
 	echo $r;
+} else if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == "comment"){
+	$userid = $_SESSION["id"];
+	$jid = $_REQUEST["jid"];
+	$context = htmlspecialchars($_REQUEST["context"]);
+	$query = "INSERT INTO traveljournalcomment VALUES(DEFAULT, $userid, $jid, '$context', DEFAULT)";
+	mysql_query($query) or die(mysql_error());
+	$query = "SELECT comment_timestamp FROM traveljournalcomment WHERE comment_userid = $userid AND comment_traveljournalid = $jid ORDER BY comment_timestamp DESC";
+	$result = mysql_query($query) or die(mysql_error());
+	$num = mysql_num_rows($result);
+	if($num > 0){
+		$row = mysql_fetch_assoc($result);
+		echo json_encode(array("status" => "success", "time" => $row["comment_timestamp"]));
+	} else echo json_encode(array("status" => "fail"));
 } else echo "fail";
 mysql_close($conn);
 ?>

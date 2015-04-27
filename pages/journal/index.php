@@ -100,7 +100,7 @@ function clickAction(form, Jid, action)
 		</div>		  
 		  
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -147,7 +147,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		</div>	
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -192,7 +192,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>	
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -237,7 +237,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>	
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -282,7 +282,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>	
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -336,7 +336,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>	
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -381,7 +381,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -426,7 +426,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -472,7 +472,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -525,7 +525,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -571,7 +571,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -617,7 +617,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -662,7 +662,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -707,7 +707,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -768,7 +768,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -817,7 +817,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -866,7 +866,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -915,7 +915,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -964,7 +964,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1026,7 +1026,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1071,7 +1071,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1116,7 +1116,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1161,7 +1161,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1206,7 +1206,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1262,7 +1262,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1312,7 +1312,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1361,7 +1361,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1412,7 +1412,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1474,7 +1474,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1519,7 +1519,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1564,7 +1564,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1609,7 +1609,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1654,7 +1654,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1709,7 +1709,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1755,7 +1755,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1800,7 +1800,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1846,7 +1846,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1903,7 +1903,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -1953,7 +1953,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -2003,7 +2003,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -2052,7 +2052,7 @@ function clickAction(form, Jid, action)
 				<img src = "../../style/image/tag.png" style="width:20px;margin-left:10px;" ><a><?php echo $record["journal_tag5"];?></a>
 		  </div>
 		  <hr>
-		  <h3>Comment:</h3>
+		  <h3 class = "comment-insert" data-id = "<?= $record["id"]; ?>">Comment:</h3>
 <?php 
 	$query2 ="SELECT U.user_fname, U.user_lname, C.comment_text, C.comment_timestamp FROM travelJournalComment C, userInfo U WHERE U.id = C.comment_userid AND C.comment_traveljournalid = ".$record["id"];
 	//echo $query2;
@@ -2138,7 +2138,19 @@ function clickAction(form, Jid, action)
 				$.ajax({
 					url: "ajax_handler.php",
 					type: "POST",
-					data: {jid:jid, context:html}
+					data: {jid:jid, context:html, operation:"comment"},
+					async: false,
+					success: function(data){
+						var receive = JSON.parse(data);
+						
+						if(receive.status == "success"){
+							var kk = "<p><b><?php echo $_SESSION["fname"]; ?> <?php echo $_SESSION["lname"]?>:</b></p>" +
+								"<p>" + html + "</p>" +
+								"<p style='color:gray;'>" + receive.time + "</p>" +
+								"<hr/>"
+							$("h3[data-id='" + jid + "']").after(kk);
+						} else console.log(receive)
+					}
 				})
 			}
 		}).on("click", ".comment-textarea", function(){
