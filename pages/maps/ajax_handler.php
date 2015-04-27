@@ -168,14 +168,14 @@ if(isset($_REQUEST["operation"]) && $_REQUEST["operation"] == 'login'){
 			if(isset($json[$i])){
 				$tmp = $json[$i];
 				$tmp = $tmp["lat"]. ",". $tmp["lng"];
-				$query .= ", detail_waypoint". $i. "_address = '$tmp'";
-			} else $query .= ", detail_waypoint". $i. "_adress = NULL";
+				$query .= ", detail_waypoint". ($i + 1). "_address = '$tmp'";
+			} else $query .= ", detail_waypoint". ($i + 1) . "_address = NULL";
 		}
 		$query .= " WHERE id = $trip_id";
 		//echo $query;
 		mysql_query($query) or die(mysql_error());
 	}
-	if($trip_id != -1){
+	if($trip_id == "DEFAULT"){
 		$result = mysql_query("SELECT id FROM tripPlan WHERE trip_userid = $userid ORDER BY trip_last_updated DESC") or die(mysql_error());
 		if(mysql_num_rows($result) > 0){
 			$row = mysql_fetch_assoc($result);
