@@ -4,6 +4,8 @@
 -->
 <?php include '../templates/header.html'; ?>
 
+<script src="../../style/RichTextEditor/ckeditor.js"></script>
+
 <link rel="stylesheet" href="//static.segmentfault.com/build/global/css/global.1e5f56f0.css" />
 <link rel="stylesheet" href="//static.segmentfault.com/build/qa/css/qa_all.5c45d211.css" />
 <link rel="stylesheet" href="//static.segmentfault.com/build/global/css/responsive.2e038079.css" />
@@ -16,11 +18,11 @@ $(document).ready(function(){
 		var content = "<div class = 'cover-window-shell'></div>"+
 					  "<div class = 'create-question-window' style = 'position:absolute;left:50%;width:500px;top:35%;z-index:2000;'>"+
 						"<div class = 'panel panel-success' style = 'position:relative;right:50%;'>"+
-							"<div class = 'panel-heading'>Ask Question: </div>"+
+							"<div class = 'panel-heading'><h2 class = 'panel-title'>Ask Question:<span class = 'glyphicon glyphicon-remove text-danger closeWindow' style = 'cursor:pointer; float:right'></span></h2></div>"
 								"<div class = 'panel-body'>"+
 									"<form action = 'getSubmitQuestion.php' method = 'POST' class = 'question'>"+
 										"<textarea rows='4' cols='50' name='editor' id='editor'></textarea>"+
-										"<button class='btn btn-success' onclick=\"SubmitContents()\">Submit</button>"+
+										"<button class='btn btn-success questionSubmit' onclick=\" SubmitContents()\">Submit</button>"+							
 									"</form>"+
 								"</div>"+
 						"</div>"+
@@ -28,6 +30,15 @@ $(document).ready(function(){
 					  
 		$("body").append(content);
 	});
+})
+
+$("document").ready(function(){
+	$("body").on("click", ".closeWindow", function(){
+		$("div.cover-window-shell").remove();
+		$("div.create-question-window").fadeOut(function(){
+			$("div.create-question-window").remove();
+		})
+	})
 })
 
 </script>
@@ -42,6 +53,7 @@ $(document).ready(function(){
 		console.log(editor.getData());
 		document.getElementsByClassName("question")[0].submit();
 	}
+
 </script>
 <?php include '../templates/navbar.html'; ?>
 
