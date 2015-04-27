@@ -14,7 +14,7 @@
 <script>
 <?php 
 	if(isset($_POST["message"])){
-		echo "alert('". $_POST["message"]. "')";
+		echo "alert('". $_POST["message"]. "');";
 	}
 ?>
 $(document).ready(function(){
