@@ -44,7 +44,7 @@ $(".askquestion").click(function(){
 	if(isset($_SESSION["id"])){
 ?>                   
 				   What's your question?
-                    <a id="goAsk" href="/ask" class="askqustion btn btn-primary">I have question!</a>
+                    <a id="goAsk" class="askquestion btn btn-primary">I have question!</a>
 <?php
 	}
 	else{
