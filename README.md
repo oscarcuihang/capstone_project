@@ -6,7 +6,7 @@ University of Missouri - Columbia Computer Science Capstone Project
 
 
 ## Usage
-
+[52.10.86.94](http://52.10.86.94/) <br />
 
 ## API Reference
 1. [Google Maps API WEB](https://developers.google.com/maps/web/)
