@@ -214,9 +214,6 @@ else {
             <?php 
             echo "<input class = \"btn btn-primary\" type=\"button\" name=\"action1\" value=\"View\" onclick=\"clickAction('action_form','".$journal_id."','journal');\" />";
             ?>
-            <!--
-            <a class="btn btn-primary" href="">View <span class="glyphicon glyphicon-chevron-right"></span></a>
-            -->
             <hr>
 <?php
         }
@@ -275,8 +272,6 @@ else {
 }
 ?>
 </div> <!--container div end-->
-
-
 <?php include '../templates/footer.html'; ?>
 
 <script type="text/javascript">
@@ -314,5 +309,3 @@ else {
         }
     });
 </script>
-
-
